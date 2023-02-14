@@ -71,7 +71,11 @@ public class TelaPrincipal extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setForeground(Color.BLACK);
+<<<<<<< HEAD
 		contentPane.setBackground(new Color(153, 204, 204));
+=======
+		contentPane.setBackground(new Color(95, 158, 160));
+>>>>>>> visao
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -107,13 +111,29 @@ public class TelaPrincipal extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
+<<<<<<< HEAD
 				agendamenu.setForeground(Color.WHITE);
+=======
+				agendamenu.setForeground( new Color(95, 158, 160) );
+		
+>>>>>>> visao
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				agendamenu.setForeground(Color.BLACK);
 			}
+<<<<<<< HEAD
+=======
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				TelaAgenda telaAgenda = new TelaAgenda();
+				telaAgenda.setLocationRelativeTo(null);
+				telaAgenda.setVisible(true);
+				
+			}
+>>>>>>> visao
 		});
 		agendamenu.setForeground(Color.BLACK);
 		agendamenu.setBorder(null);
@@ -129,12 +149,26 @@ public class TelaPrincipal extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
+<<<<<<< HEAD
 				pacientemenu.setForeground(Color.WHITE);
+=======
+				pacientemenu.setForeground( new Color(95, 158, 160) );
+>>>>>>> visao
 			}
 			public void mouseExited(MouseEvent e) {
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				pacientemenu.setForeground(Color.BLACK);
 			}
+<<<<<<< HEAD
+=======
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				TelaPaciente telaPaciente = new TelaPaciente();
+				telaPaciente.setLocationRelativeTo(null);
+				telaPaciente.setVisible(true);
+			}
+>>>>>>> visao
 		});
 		pacientemenu.setForeground(Color.BLACK);
 		pacientemenu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -150,12 +184,26 @@ public class TelaPrincipal extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
+<<<<<<< HEAD
 				usuariomenu.setForeground(Color.WHITE);
+=======
+				usuariomenu.setForeground( new Color(95, 158, 160) );
+>>>>>>> visao
 			}
 			public void mouseExited(MouseEvent e) {
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				usuariomenu.setForeground(Color.BLACK);
 			}
+<<<<<<< HEAD
+=======
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				TelaUsuario telaUsuario = new TelaUsuario();
+				telaUsuario.setLocationRelativeTo(null);
+				telaUsuario.setVisible(true);
+			}
+>>>>>>> visao
 		});
 		usuariomenu.setForeground(Color.BLACK);
 		usuariomenu.setHorizontalAlignment(SwingConstants.CENTER);

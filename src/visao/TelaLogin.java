@@ -48,7 +48,11 @@ public class TelaLogin extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setForeground(Color.BLACK);
+<<<<<<< HEAD
 		contentPane.setBackground(new Color(153, 204, 204));
+=======
+		contentPane.setBackground(new Color(95, 158, 160));
+>>>>>>> visao
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
