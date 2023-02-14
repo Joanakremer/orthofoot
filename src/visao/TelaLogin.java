@@ -48,7 +48,7 @@ public class TelaLogin extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setForeground(Color.BLACK);
-		contentPane.setBackground(new Color(95, 158, 160));
+		contentPane.setBackground(new Color(153, 204, 204));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -61,6 +61,7 @@ public class TelaLogin extends JFrame {
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 653, 698);
 		contentPane.add(panel);
+		panel.setLayout(null);
 
 		JPanel Username = new JPanel();
 		Username.setBackground(Color.WHITE);
@@ -154,6 +155,10 @@ public class TelaLogin extends JFrame {
 		loginbt.setFocusPainted(false);
 		loginbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaPrincipal telaPrincipal = new TelaPrincipal();
+				telaPrincipal.setLocationRelativeTo(null);
+				telaPrincipal.setVisible(true);
 				lblNewLabel.setVisible(true);
 				lblNewLabel_2.setVisible(true);
 			}
