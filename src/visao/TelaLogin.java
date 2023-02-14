@@ -46,9 +46,9 @@ public class TelaLogin extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(90, 90, 1306, 698);
 		contentPane = new JPanel();
+		contentPane.setBorder(null);
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBackground(new Color(95, 158, 160));
-		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -56,6 +56,7 @@ public class TelaLogin extends JFrame {
 		// ----------------------------------------------------------------------------------------------------------------------
 
 		JPanel panel = new JPanel();
+		panel.setBorder(null);
 		panel.setEnabled(false);
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 653, 698);
@@ -149,15 +150,15 @@ public class TelaLogin extends JFrame {
 		// Button
 		// --------------------------------------------------------------------------------------------------------------------
 
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setFocusPainted(false);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton loginbt = new JButton("Login");
+		loginbt.setFocusPainted(false);
+		loginbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblNewLabel.setVisible(true);
 				lblNewLabel_2.setVisible(true);
 			}
 		});
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		loginbt.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
@@ -166,16 +167,16 @@ public class TelaLogin extends JFrame {
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
-		btnNewButton.setBorder(null);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 18));
-		btnNewButton.setBounds(861, 437, 266, 40);
-		contentPane.add(btnNewButton);
+		loginbt.setBorder(null);
+		loginbt.setForeground(Color.BLACK);
+		loginbt.setBackground(Color.WHITE);
+		loginbt.setFont(new Font("Arial", Font.BOLD, 18));
+		loginbt.setBounds(861, 437, 266, 40);
+		contentPane.add(loginbt);
 
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setFocusPainted(false);
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JButton sairbt = new JButton("");
+		sairbt.setFocusPainted(false);
+		sairbt.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TelaLogin.this.dispose();
 			}
@@ -188,11 +189,11 @@ public class TelaLogin extends JFrame {
 				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/sair-alt.png")));
-		btnNewButton_1.setBorder(null);
-		btnNewButton_1.setBackground(Color.WHITE);
-		btnNewButton_1.setBounds(1249, 11, 47, 33);
-		contentPane.add(btnNewButton_1);
+		sairbt.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/sair-alt.png")));
+		sairbt.setBorder(null);
+		sairbt.setBackground(Color.WHITE);
+		sairbt.setBounds(1249, 11, 47, 33);
+		contentPane.add(sairbt);
 		
 		
 	}
