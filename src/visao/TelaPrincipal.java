@@ -1,28 +1,28 @@
 package visao;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.Font;
 import java.awt.Cursor;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
 
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblclock;
+	private static int hora, minuto;
 
 	public void clock() {
 		Thread clock = new Thread() {
