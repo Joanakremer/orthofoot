@@ -3,17 +3,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import modelo.Mpaciente;
+import modelo.MPaciente;
 
 public class CDao {
 	private CConexao con;
 	//Insert
-	public boolean inserir(Mpaciente p) {
+	public boolean inserir(MPaciente p) {
 con = CConexao.getInstancia();
 		
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO pessoa (cpf, nome) VALLUES (?, ?);";
+			String query = "INSERT INTO paciente (cpf, nome) VALLUES (?, ?);";
 			PreparedStatement stm = c.prepareStatement(null);
 			
 			stm.setInt(1, 123);

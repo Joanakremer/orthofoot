@@ -2,7 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-public class Mpaciente {
+public class MPaciente {
 	
 	private int prontuario;
 	private String nome_completo;

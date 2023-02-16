@@ -2,7 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-public class Mmedico {
+public class MMedico {
 	private long crm;
 	private String nome_completo;
 	private String sexo;
