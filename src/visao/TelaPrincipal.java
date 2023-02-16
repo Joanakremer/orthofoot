@@ -2,13 +2,13 @@ package visao;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,7 +22,6 @@ public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblclock;
-	private static int hora, minuto;
 
 	public void clock() {
 		Thread clock = new Thread() {
@@ -30,13 +29,13 @@ public class TelaPrincipal extends JFrame {
 
 				try {
 					for (;;) {
-						LocalDate data = LocalDate.now();
-						LocalTime hora = LocalTime.now();
-						lblclock.setText(" " + data.toString() + "    |    " + hora.toString());
+						LocalDateTime dataHora = LocalDateTime.now();
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+						String horaFormatada = dataHora.format(formatter);
+						lblclock.setText(horaFormatada);
 						sleep(1000);
 					}
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
