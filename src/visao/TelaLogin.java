@@ -32,6 +32,7 @@ public class TelaLogin extends JFrame {
 			public void run() {
 				try {
 					TelaLogin frame = new TelaLogin();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,9 +60,15 @@ public class TelaLogin extends JFrame {
 		panel.setBorder(null);
 		panel.setEnabled(false);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 653, 698);
+		panel.setBounds(0, 0, 663, 709);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/logo png.png")));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(84, 178, 500, 340);
+		panel.add(lblNewLabel_4);
 
 		JPanel Username = new JPanel();
 		Username.setBackground(Color.WHITE);
@@ -158,6 +165,7 @@ public class TelaLogin extends JFrame {
 				dispose();
 				TelaPrincipal telaPrincipal = new TelaPrincipal();
 				telaPrincipal.setLocationRelativeTo(null);
+				telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaPrincipal.setVisible(true);
 				lblNewLabel.setVisible(true);
 				lblNewLabel_2.setVisible(true);
