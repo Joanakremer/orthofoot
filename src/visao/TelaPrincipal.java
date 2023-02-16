@@ -1,23 +1,22 @@
 package visao;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.Font;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
 
 public class TelaPrincipal extends JFrame {
 
@@ -30,13 +29,13 @@ public class TelaPrincipal extends JFrame {
 
 				try {
 					for (;;) {
-						LocalDate data = LocalDate.now();
-						LocalTime hora = LocalTime.now();
-						lblclock.setText(" " + data.toString() + "    |    " + hora.toString());
+						LocalDateTime dataHora = LocalDateTime.now();
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+						String horaFormatada = dataHora.format(formatter);
+						lblclock.setText(horaFormatada);
 						sleep(1000);
 					}
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
