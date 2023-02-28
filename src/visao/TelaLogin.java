@@ -16,9 +16,6 @@ import java.awt.event.FocusEvent;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JTextPane;
-import java.awt.ComponentOrientation;
-import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -32,11 +29,12 @@ public class TelaLogin extends JFrame {
 			public void run() {
 				try {
 					TelaLogin frame = new TelaLogin();
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setExtendedState(MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
 		});
 	}
@@ -64,21 +62,20 @@ public class TelaLogin extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/logo png.png")));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(84, 178, 500, 340);
-		panel.add(lblNewLabel_4);
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/Logo 1.png")));
+		lblNewLabel_3.setBounds(72, 223, 475, 188);
+		panel.add(lblNewLabel_3);
 
 		JPanel Username = new JPanel();
 		Username.setBackground(Color.WHITE);
-		Username.setBounds(736, 239, 504, 40);
+		Username.setBounds(732, 271, 504, 40);
 		contentPane.add(Username);
 		Username.setLayout(null);
 
 		JPanel senha = new JPanel();
 		senha.setBackground(Color.WHITE);
-		senha.setBounds(736, 318, 504, 40);
+		senha.setBounds(732, 367, 504, 40);
 		contentPane.add(senha);
 		senha.setLayout(null);
 
@@ -142,7 +139,7 @@ public class TelaLogin extends JFrame {
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setBounds(736, 369, 249, 20);
+		lblNewLabel.setBounds(732, 418, 249, 20);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setVisible(false);
 
@@ -150,7 +147,7 @@ public class TelaLogin extends JFrame {
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/remover.png")));
-		lblNewLabel_2.setBounds(985, 369, 31, 20);
+		lblNewLabel_2.setBounds(981, 418, 31, 20);
 		contentPane.add(lblNewLabel_2);
 		setLocationRelativeTo(null);
 		lblNewLabel_2.setVisible(false);
@@ -184,7 +181,7 @@ public class TelaLogin extends JFrame {
 		loginbt.setForeground(Color.BLACK);
 		loginbt.setBackground(Color.WHITE);
 		loginbt.setFont(new Font("Arial", Font.BOLD, 18));
-		loginbt.setBounds(861, 437, 266, 40);
+		loginbt.setBounds(860, 505, 266, 40);
 		contentPane.add(loginbt);
 
 		JButton sairbt = new JButton("");
