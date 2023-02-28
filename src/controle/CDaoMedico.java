@@ -19,7 +19,7 @@ public class CDaoMedico {
 con = CConexao.getInstancia();
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO medico (crm ,nomeCompleto, dataNasc, sexo) VALLUES (?, ?);";
+			String query = "INSERT INTO medico (crm ,nomeCompleto, dataNasc, sexo) VALLUES (?, ?, ?, ?);";
 			PreparedStatement stm = c.prepareStatement(query);
 			
 			stm.setLong(1, m.getCrm());

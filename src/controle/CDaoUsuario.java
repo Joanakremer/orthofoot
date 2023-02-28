@@ -1,15 +1,12 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.MMedico;
-import modelo.MPaciente;
 import modelo.MUsuario;
 
 
@@ -20,7 +17,7 @@ public class CDaoUsuario {
 	con = CConexao.getInstancia();
 			Connection c = con.conectar();
 			try {
-				String query = "INSERT INTO medico (idUsuario, login, senha, tipoUsuario) VALLUES (?, ?);";
+				String query = "INSERT INTO medico (idUsuario, login, senha, tipoUsuario) VALLUES (?, ?, ?, ?);";
 				PreparedStatement stm = c.prepareStatement(query);
 				
 				stm.setInt(1, u.getIdUsuario());

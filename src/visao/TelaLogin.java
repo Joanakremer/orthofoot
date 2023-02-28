@@ -10,12 +10,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import modelo.MUsuario;
+
 import javax.swing.ImageIcon;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JTextPane;
 import java.awt.ComponentOrientation;
 import java.awt.Component;
