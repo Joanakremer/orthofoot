@@ -19,15 +19,12 @@ public class CDaoAgenda {
 	con = CConexao.getInstancia();
 			Connection c = con.conectar();
 			try {
-				String query = "INSERT INTO agenda (idConsulta, nomeCompleto, contato, data, hora, titulo) VALLUES (?, ?);";
+				String query = "INSERT INTO agenda (idConsulta, data, hora) VALLUES (?, ?);";
 				PreparedStatement stm = c.prepareStatement(query);
 				
 				stm.setInt(1, s.getIdConsulta());
-				stm.setString(2, s.getNomeCompleto());
-				stm.setString(3, s.getContato());
 				stm.setDate(4, s.getData());
 				stm.setTime(5, s.getHora());
-				stm.setString(6, s.getTitulo());
 				stm.executeUpdate();
 				return true;
 			} catch (SQLException e) {
@@ -44,13 +41,10 @@ public class CDaoAgenda {
 					try {
 						String query = "UPDATE agenda Set idConsulta = ?, set nomeCompleto = ?, set contato = ?, set data = ?, set hora = ?, set titulo = ? WHERE cep = ?";
 						PreparedStatement stm = c.prepareStatement(query);
-						
+	
 						stm.setInt(1, s.getIdConsulta());
-						stm.setString(2, s.getNomeCompleto());
-						stm.setString(3, s.getContato());
 						stm.setDate(4, s.getData());	
-						stm.setTime(4, s.getHora());			
-						stm.setString(4, s.getTitulo());			
+						stm.setTime(4, s.getHora());					
 						stm.executeUpdate();
 						return true;
 					} catch (SQLException e) {
@@ -67,11 +61,8 @@ public class CDaoAgenda {
 						String query = "DELETE FROM agenda Where idConsulta = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
 						stm.setInt(1, s.getIdConsulta());
-						stm.setString(2, s.getNomeCompleto());
-						stm.setString(3, s.getContato());
 						stm.setDate(4, s.getData());	
-						stm.setTime(4, s.getHora());			
-						stm.setString(4, s.getTitulo());			
+						stm.setTime(4, s.getHora());						
 						stm.executeUpdate();
 						return true;
 					} catch (SQLException e) {
@@ -100,11 +91,8 @@ public class CDaoAgenda {
 		            String titulo = rs.getString("titulo");
 		            MAgenda s = new MAgenda();
 		            s.setIdConsulta(idConsulta);
-		            s.setNomeCompleto(nomeCompleto);
-		            s.setContato(contato);
 		            s.setData(data);
 		            s.setHora(hora);
-		            s.setTitulo(titulo);
 		            agenda.add(s);
 		        }
 		    } catch (SQLException e) {

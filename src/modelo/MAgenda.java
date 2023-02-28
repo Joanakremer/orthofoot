@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class MAgenda {
 	private  int idConsulta;
-	private String nome_Completo;
+	private String nomeCompleto;
 	private String contato;
 	private Date data;
 	private Time hora;
@@ -17,11 +17,11 @@ public class MAgenda {
 	public void setIdConsulta(int idConsulta) {
 		this.idConsulta = idConsulta;
 	}
-	public String getNome_Completo() {
-		return nome_Completo;
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
-	public void setNome_Completo(String nome_Completo) {
-		this.nome_Completo = nome_Completo;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
 	public String getContato() {
 		return contato;
