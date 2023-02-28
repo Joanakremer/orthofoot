@@ -4,7 +4,7 @@ public class MUsuario {
 	private int idUsuario;
 	private String login;
 	private String senha;
-	private int tipo_usuario;
+	private int tipoUsuario;
 	
 	public int getIdUsuario() {
 		return idUsuario;
@@ -24,10 +24,10 @@ public class MUsuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public int getTipo_usuario() {
-		return tipo_usuario;
+	public int getTipoUsuario() {
+		return tipoUsuario;
 	}
-	public void setTipo_usuario(int tipo_usuario) {
-		this.tipo_usuario = tipo_usuario;
+	public void setTipoUsuario(int tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 }
