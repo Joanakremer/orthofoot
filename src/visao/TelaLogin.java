@@ -72,7 +72,7 @@ public class TelaLogin extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/logo png.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/aviso.png")));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setBounds(84, 178, 500, 340);
 		panel.add(lblNewLabel_4);
@@ -228,7 +228,6 @@ public class TelaLogin extends JFrame {
 		sairbt.setBackground(Color.WHITE);
 		sairbt.setBounds(1249, 11, 47, 33);
 		contentPane.add(sairbt);
-
 	}
 	private boolean getValida(ArrayList<MUsuario> lista) {
 		boolean validando = false;
@@ -237,11 +236,7 @@ public class TelaLogin extends JFrame {
 				validando = true;
 				break;
 			}
-			if(validando) {
-				validando = true;
-			}else {
-				validando = false;
-			}
+			
 		}
 		return validando;
 	}

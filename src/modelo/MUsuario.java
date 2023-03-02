@@ -10,7 +10,6 @@ public class MUsuario {
 		return idUsuario;
 	}
 	public void setIdUsuario(int idUsuario) {
-		//String idUsuario=String.valueOf(idUsuario1);
 		this.idUsuario = idUsuario;
 	}
 	public String getLogin() {
