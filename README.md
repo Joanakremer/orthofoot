@@ -1,2 +1,2 @@
 # Clínica Ortopédica
-![Borcelle-removebg-preview](https://user-images.githubusercontent.com/111135808/218754535-aecb6af3-c656-44d6-9b5c-5c0239dab453.png)
+file:///C:/Users/Aluno/Documents/repositorio/orthofoot/src/imagens/Logo%202.png
