@@ -18,6 +18,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import net.miginfocom.swing.MigLayout;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 public class TelaLogin extends JFrame {
 	private JPanel contentPane;
@@ -49,34 +52,31 @@ public class TelaLogin extends JFrame {
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBackground(new Color(95, 158, 160));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout());
 
 		// Panel
 		// ----------------------------------------------------------------------------------------------------------------------
 
 		JPanel panel = new JPanel();
+		panel.setMinimumSize(new Dimension(200, 10));
 		panel.setBorder(null);
 		panel.setEnabled(false);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 663, 709);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/Logo 1.png")));
-		lblNewLabel_3.setBounds(72, 223, 475, 188);
-		panel.add(lblNewLabel_3);
+		contentPane.add(panel, BorderLayout.WEST);
+		panel.setLayout(new BorderLayout(500, 500));
 
+		JPanel panel2 = new JPanel();
+		panel2.setLayout(new MigLayout("", "[200.00px,grow][180.00px,grow][286.00px,grow][47px,grow]", "[44px][227px][45.00px][56px][45.00px][20px][67px][45.00px]"));
+		contentPane.add(panel2, BorderLayout.CENTER);
+		
 		JPanel Username = new JPanel();
 		Username.setBackground(Color.WHITE);
-		Username.setBounds(732, 271, 504, 40);
-		contentPane.add(Username);
+		panel2.add(Username, "cell 1 2 2 1,grow");
 		Username.setLayout(null);
 
 		JPanel senha = new JPanel();
 		senha.setBackground(Color.WHITE);
-		senha.setBounds(732, 367, 504, 40);
-		contentPane.add(senha);
+		panel2.add(senha, "cell 1 4 2 1,grow");
 		senha.setLayout(null);
 
 		// Text Field
@@ -139,18 +139,20 @@ public class TelaLogin extends JFrame {
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setBounds(732, 418, 249, 20);
-		contentPane.add(lblNewLabel);
+		panel2.add(lblNewLabel, "cell 1 5,alignx left,growy");
 		lblNewLabel.setVisible(false);
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/remover.png")));
-		lblNewLabel_2.setBounds(981, 418, 31, 20);
-		contentPane.add(lblNewLabel_2);
+		panel2.add(lblNewLabel_2, "cell 2 5,alignx left,growy");
 		setLocationRelativeTo(null);
 		lblNewLabel_2.setVisible(false);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/Logo 1.png")));
+		panel.add(lblNewLabel_3);
 		
 		// Button
 		// --------------------------------------------------------------------------------------------------------------------
@@ -181,10 +183,14 @@ public class TelaLogin extends JFrame {
 		loginbt.setForeground(Color.BLACK);
 		loginbt.setBackground(Color.WHITE);
 		loginbt.setFont(new Font("Arial", Font.BOLD, 18));
-		loginbt.setBounds(860, 505, 266, 40);
-		contentPane.add(loginbt);
+		panel2.add(loginbt, "cell 1 7 2 1,grow");
 
 		JButton sairbt = new JButton("");
+		sairbt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		sairbt.setFocusPainted(false);
 		sairbt.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -202,8 +208,7 @@ public class TelaLogin extends JFrame {
 		sairbt.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/sair-alt.png")));
 		sairbt.setBorder(null);
 		sairbt.setBackground(Color.WHITE);
-		sairbt.setBounds(1249, 11, 47, 33);
-		contentPane.add(sairbt);
+		panel2.add(sairbt, "cell 3 0,grow");
 		
 		
 	}
