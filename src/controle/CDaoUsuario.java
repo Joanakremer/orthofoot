@@ -74,7 +74,7 @@ public class CDaoUsuario {
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MUsuario> listarUsuario() {
-			ArrayList<MUsuario> usuario = new ArrayList<>();
+			ArrayList<MUsuario> usuarios = new ArrayList<>();
 			
 			con = CConexao.getInstancia();
 			Connection c = con.conectar();
@@ -93,7 +93,7 @@ public class CDaoUsuario {
 					u.setLogin(login);
 					u.setSenha(senha);
 					u.setTipoUsuario(tipoUsuario);
-					usuario.add(u);
+					usuarios.add(u);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -101,6 +101,6 @@ public class CDaoUsuario {
 
 			con.fecharConexao();
 
-			return usuario;
+			return usuarios;
 		}
 }
