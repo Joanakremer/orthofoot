@@ -98,8 +98,12 @@ public class TelaLogin extends JFrame {
 			public void focusGained(FocusEvent e) {
 				if (usertxt.getText().equals("Usuário")) {
 					usertxt.setText("");
-				} else {
-					usertxt.selectAll();
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (usertxt.getText().equals("")) {
+					usertxt.setText("Usuário");
 				}
 			}
 		});
@@ -115,10 +119,14 @@ public class TelaLogin extends JFrame {
 		senhatxt.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent e) {
 				if (senhatxt.getText().equals("Senha")) {
-					senhatxt.setEchoChar('●');
 					senhatxt.setText("");
-				} else {
-					senhatxt.selectAll();
+					senhatxt.setEchoChar('●');
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (senhatxt.getText().isEmpty()) {
+					senhatxt.setText("Senha");
 				}
 			}
 		});
@@ -169,21 +177,19 @@ public class TelaLogin extends JFrame {
 		loginbt.setFocusPainted(false);
 		loginbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaPrincipal telaPrincipal = new TelaPrincipal();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaPrincipal.setVisible(true);
-				lblNewLabel.setVisible(true);
-				lblNewLabel_2.setVisible(true);
-
 				// Login
 				// --------------------------------------------------------------------------------------------------------------------
-				
 				CDaoUsuario dao = new CDaoUsuario();
 				ArrayList<MUsuario> TMListarUsuario = dao.listarUsuario();
 				if (getValida(TMListarUsuario)) {
 					JOptionPane.showMessageDialog(null, "usuario encontrado");
+					dispose();
+					TelaPrincipal telaPrincipal = new TelaPrincipal();
+					telaPrincipal.setLocationRelativeTo(null);
+					telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telaPrincipal.setVisible(true);
+					lblNewLabel.setVisible(true);
+					lblNewLabel_2.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario não encontrado");
 
