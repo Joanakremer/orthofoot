@@ -73,7 +73,6 @@ public class TelaLogin extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/aviso.png")));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setBounds(84, 178, 500, 340);
 		panel.add(lblNewLabel_4);
