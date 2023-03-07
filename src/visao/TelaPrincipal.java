@@ -18,6 +18,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 
+import modelo.MUsuario;
+
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
@@ -46,7 +48,7 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaPrincipal() {
+	public TelaPrincipal(MUsuario usuario) {
 		setUndecorated(true);
 		setBackground(new Color(32, 178, 170));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -171,7 +173,7 @@ public class TelaPrincipal extends JFrame {
 		panel.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/logo pe png.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/aviso.png")));
 		lblNewLabel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);

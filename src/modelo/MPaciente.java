@@ -5,12 +5,12 @@ import java.sql.Date;
 public class MPaciente {
 	
 	private int prontuario;
-	private String nome_completo;
+	private String nomeCompleto;
 	private String contato;
 	private String convenio;
-	private String n_carteira;
+	private String nCarteira;
 	private String sexo;
-	private Date data_nasc;
+	private Date dataNasc;
 	
 	
 	
@@ -26,14 +26,14 @@ public class MPaciente {
 
 
 
-	public String getNome_completo() {
-		return nome_completo;
+	public String getnomeCompleto() {
+		return nomeCompleto;
 	}
 
 
 
-	public void setNome_completo(String nome_completo) {
-		this.nome_completo = nome_completo;
+	public void setnomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
 
 
@@ -62,14 +62,14 @@ public class MPaciente {
 
 
 
-	public String getN_carteira() {
-		return n_carteira;
+	public String getnCarteira() {
+		return nCarteira;
 	}
 
 
 
-	public void setN_carteira(String n_carteira) {
-		this.n_carteira = n_carteira;
+	public void setnCarteira(String nCarteira) {
+		this.nCarteira = nCarteira;
 	}
 
 
@@ -86,14 +86,14 @@ public class MPaciente {
 
 
 
-	public Date getData_nasc() {
-		return data_nasc;
+	public Date getdataNasc() {
+		return dataNasc;
 	}
 
 
 
-	public void setData_nasc(Date data_nasc) {
-		this.data_nasc = data_nasc;
+	public void setdataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
 	}
 
 

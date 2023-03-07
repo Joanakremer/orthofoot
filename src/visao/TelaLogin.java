@@ -1,28 +1,35 @@
 package visao;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Cursor;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import net.miginfocom.swing.MigLayout;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import controle.CDaoUsuario;
+import modelo.MUsuario;
 
 public class TelaLogin extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField usertxt;
 	private JPasswordField senhatxt;
@@ -62,13 +69,16 @@ public class TelaLogin extends JFrame {
 		panel.setBorder(null);
 		panel.setEnabled(false);
 		panel.setBackground(Color.WHITE);
-		contentPane.add(panel, BorderLayout.WEST);
-		panel.setLayout(new BorderLayout(500, 500));
+		panel.setBounds(0, 0, 663, 709);
+		contentPane.add(panel);
+		panel.setLayout(null);
 
-		JPanel panel2 = new JPanel();
-		panel2.setLayout(new MigLayout("", "[200.00px,grow][180.00px,grow][286.00px,grow][47px,grow]", "[44px][227px][45.00px][56px][45.00px][20px][67px][45.00px]"));
-		contentPane.add(panel2, BorderLayout.CENTER);
-		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/aviso.png")));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(84, 178, 500, 340);
+		panel.add(lblNewLabel_4);
+
 		JPanel Username = new JPanel();
 		Username.setBackground(Color.WHITE);
 		panel2.add(Username, "cell 1 2 2 1,grow");
@@ -88,8 +98,13 @@ public class TelaLogin extends JFrame {
 			public void focusGained(FocusEvent e) {
 				if (usertxt.getText().equals("Usuário")) {
 					usertxt.setText("");
-				} else {
-					usertxt.selectAll();
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (usertxt.getText().equals("")) {
+					usertxt.setText("Usuário");
 				}
 			}
 		});
@@ -105,10 +120,15 @@ public class TelaLogin extends JFrame {
 		senhatxt.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent e) {
 				if (senhatxt.getText().equals("Senha")) {
-					senhatxt.setEchoChar('●');
 					senhatxt.setText("");
-				} else {
-					senhatxt.selectAll();
+					senhatxt.setEchoChar('●');
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (senhatxt.getText().isEmpty()) {
+					senhatxt.setText("Senha");
 				}
 			}
 		});
@@ -134,7 +154,7 @@ public class TelaLogin extends JFrame {
 		senha.add(lblNewLabel_1);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/trancar (1).png")));
-		
+
 		JLabel lblNewLabel = new JLabel("Seu usuário ou senha estão incorretos.");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -149,11 +169,7 @@ public class TelaLogin extends JFrame {
 		panel2.add(lblNewLabel_2, "cell 2 5,alignx left,growy");
 		setLocationRelativeTo(null);
 		lblNewLabel_2.setVisible(false);
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/Logo 1.png")));
-		panel.add(lblNewLabel_3);
-		
+
 		// Button
 		// --------------------------------------------------------------------------------------------------------------------
 
@@ -161,15 +177,28 @@ public class TelaLogin extends JFrame {
 		loginbt.setFocusPainted(false);
 		loginbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaPrincipal telaPrincipal = new TelaPrincipal();
-				telaPrincipal.setLocationRelativeTo(null);
-				telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaPrincipal.setVisible(true);
-				lblNewLabel.setVisible(true);
-				lblNewLabel_2.setVisible(true);
+				// Login
+				// --------------------------------------------------------------------------------------------------------------------
+
+				String senha = senhatxt.getText();
+				String username = usertxt.getText();
+
+				CDaoUsuario dao = new CDaoUsuario();
+				MUsuario usuario = dao.efetuarLogin(username, senha);
+				if (usuario != null) {
+					if (usuario.getLogin().equals(username) && usuario.getSenha().equals(senha)) {
+						// sucesso
+						dispose();
+						TelaPrincipal telaPrincipal = new TelaPrincipal(usuario);
+						telaPrincipal.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao efetuar login");
+					}
+				}
+
 			}
 		});
+
 		loginbt.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -208,8 +237,8 @@ public class TelaLogin extends JFrame {
 		sairbt.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/sair-alt.png")));
 		sairbt.setBorder(null);
 		sairbt.setBackground(Color.WHITE);
-		panel2.add(sairbt, "cell 3 0,grow");
-		
-		
+		sairbt.setBounds(1249, 11, 47, 33);
+		contentPane.add(sairbt);
 	}
+
 }

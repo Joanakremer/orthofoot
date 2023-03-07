@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class MMedico {
 	private long crm;
-	private String nome_completo;
+	private String nomeCompleto;
 	private String sexo;
-	private Date data_nasc;
+	private Date dataNasc;
 	
 	public long getCrm() {
 		return crm;
@@ -14,11 +14,11 @@ public class MMedico {
 	public void setCrm(long crm) {
 		this.crm = crm;
 	}
-	public String getNome_completo() {
-		return nome_completo;
+	public String getnomeCompleto() {
+		return nomeCompleto;
 	}
-	public void setNome_completo(String nome_completo) {
-		this.nome_completo = nome_completo;
+	public void setnomeCompleto(String nomeCompleto) {
+		this.nomeCompleto= nomeCompleto;
 	}
 	public String getSexo() {
 		return sexo;
@@ -26,10 +26,10 @@ public class MMedico {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public Date getData_nasc() {
-		return data_nasc;
+	public Date getdataNasc() {
+		return dataNasc;
 	}
-	public void setData_nasc(Date data_nasc) {
-		this.data_nasc = data_nasc;
+	public void setdataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
 	}
 }
