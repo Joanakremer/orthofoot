@@ -100,6 +100,7 @@ public class TelaLogin extends JFrame {
 					usertxt.setText("");
 				}
 			}
+
 			@Override
 			public void focusLost(FocusEvent e) {
 				if (usertxt.getText().equals("")) {
@@ -123,6 +124,7 @@ public class TelaLogin extends JFrame {
 					senhatxt.setEchoChar('●');
 				}
 			}
+
 			@Override
 			public void focusLost(FocusEvent e) {
 				if (senhatxt.getText().isEmpty()) {
@@ -179,24 +181,25 @@ public class TelaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Login
 				// --------------------------------------------------------------------------------------------------------------------
-				CDaoUsuario dao = new CDaoUsuario();
-				ArrayList<MUsuario> TMListarUsuario = dao.listarUsuario();
-				if (getValida(TMListarUsuario)) {
-					JOptionPane.showMessageDialog(null, "usuario encontrado");
-					dispose();
-					TelaPrincipal telaPrincipal = new TelaPrincipal();
-					telaPrincipal.setLocationRelativeTo(null);
-					telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					telaPrincipal.setVisible(true);
-					lblNewLabel.setVisible(true);
-					lblNewLabel_2.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, "Usuario não encontrado");
 
+				String senha = senhatxt.getText();
+				String username = usertxt.getText();
+
+				CDaoUsuario dao = new CDaoUsuario();
+				MUsuario usuario = dao.efetuarLogin(username, senha);
+				if (usuario != null) {
+					if (usuario.getLogin().equals(username) && usuario.getSenha().equals(senha)) {
+						// sucesso
+						dispose();
+						TelaPrincipal telaPrincipal = new TelaPrincipal(usuario);
+						telaPrincipal.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao efetuar login");
+					}
 				}
+
 			}
 		});
-		
 
 		loginbt.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {
@@ -235,15 +238,5 @@ public class TelaLogin extends JFrame {
 		sairbt.setBounds(1249, 11, 47, 33);
 		contentPane.add(sairbt);
 	}
-	private boolean getValida(ArrayList<MUsuario> lista) {
-		boolean validando = false;
-		for(MUsuario cad : lista) {
-			if(cad.getLogin().equals(usertxt.getText()) && cad.getSenha().equals(senhatxt.getText())){
-				validando = true;
-				break;
-			}
-			
-		}
-		return validando;
-	}
+
 }

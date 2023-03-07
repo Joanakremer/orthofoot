@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class CConexao {
 	private static Connection conexao;
 	private static CConexao instancia;
-	private static final String DATABASE = "Adicionar";
+	private static final String DATABASE = "orthofoot";
 	private static final String USER = "root";
 	private static final String PSW = "aluno";
 	
