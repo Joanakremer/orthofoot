@@ -59,13 +59,12 @@ public class TelaLogin extends JFrame {
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBackground(new Color(95, 158, 160));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout());
+		contentPane.setLayout(null);
 
 		// Panel
 		// ----------------------------------------------------------------------------------------------------------------------
 
 		JPanel panel = new JPanel();
-		panel.setMinimumSize(new Dimension(200, 10));
 		panel.setBorder(null);
 		panel.setEnabled(false);
 		panel.setBackground(Color.WHITE);
@@ -81,12 +80,14 @@ public class TelaLogin extends JFrame {
 
 		JPanel Username = new JPanel();
 		Username.setBackground(Color.WHITE);
-		panel2.add(Username, "cell 1 2 2 1,grow");
+		Username.setBounds(736, 239, 504, 40);
+		contentPane.add(Username);
 		Username.setLayout(null);
 
 		JPanel senha = new JPanel();
 		senha.setBackground(Color.WHITE);
-		panel2.add(senha, "cell 1 4 2 1,grow");
+		senha.setBounds(736, 318, 504, 40);
+		contentPane.add(senha);
 		senha.setLayout(null);
 
 		// Text Field
@@ -159,14 +160,16 @@ public class TelaLogin extends JFrame {
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		panel2.add(lblNewLabel, "cell 1 5,alignx left,growy");
+		lblNewLabel.setBounds(736, 369, 249, 20);
+		contentPane.add(lblNewLabel);
 		lblNewLabel.setVisible(false);
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/remover.png")));
-		panel2.add(lblNewLabel_2, "cell 2 5,alignx left,growy");
+		lblNewLabel_2.setBounds(985, 369, 31, 20);
+		contentPane.add(lblNewLabel_2);
 		setLocationRelativeTo(null);
 		lblNewLabel_2.setVisible(false);
 
@@ -212,7 +215,8 @@ public class TelaLogin extends JFrame {
 		loginbt.setForeground(Color.BLACK);
 		loginbt.setBackground(Color.WHITE);
 		loginbt.setFont(new Font("Arial", Font.BOLD, 18));
-		panel2.add(loginbt, "cell 1 7 2 1,grow");
+		loginbt.setBounds(861, 437, 266, 40);
+		contentPane.add(loginbt);
 
 		JButton sairbt = new JButton("");
 		sairbt.addActionListener(new ActionListener() {
