@@ -104,9 +104,9 @@ public class TelaPrincipal extends JFrame {
 		});
 		agendamenu.setForeground(Color.BLACK);
 		agendamenu.setBorder(null);
-		agendamenu.setFont(new Font("Carlito", Font.PLAIN, 22));
+		agendamenu.setFont(new Font("Arial", Font.BOLD, 22));
 		agendamenu.setHorizontalAlignment(SwingConstants.CENTER);
-		agendamenu.setBounds(706, 29, 218, 33);
+		agendamenu.setBounds(706, 23, 218, 33);
 		panel.add(agendamenu);
 
 		JLabel pacientemenu = new JLabel("Paciente");
@@ -133,9 +133,9 @@ public class TelaPrincipal extends JFrame {
 		});
 		pacientemenu.setForeground(Color.BLACK);
 		pacientemenu.setHorizontalAlignment(SwingConstants.CENTER);
-		pacientemenu.setFont(new Font("Carlito", Font.PLAIN, 22));
+		pacientemenu.setFont(new Font("Arial", Font.BOLD, 22));
 		pacientemenu.setBorder(null);
-		pacientemenu.setBounds(895, 30, 218, 33);
+		pacientemenu.setBounds(895, 24, 218, 33);
 		panel.add(pacientemenu);
 
 		JLabel usuariomenu = new JLabel("Usuário");
@@ -162,22 +162,22 @@ public class TelaPrincipal extends JFrame {
 		});
 		usuariomenu.setForeground(Color.BLACK);
 		usuariomenu.setHorizontalAlignment(SwingConstants.CENTER);
-		usuariomenu.setFont(new Font("Carlito", Font.PLAIN, 22));
+		usuariomenu.setFont(new Font("Arial", Font.BOLD, 22));
 		usuariomenu.setBorder(null);
-		usuariomenu.setBounds(1088, 30, 218, 33);
+		usuariomenu.setBounds(1088, 24, 218, 33);
 		panel.add(usuariomenu);
-
-		JLabel lblNewLabel = new JLabel("logo");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(23, 10, 242, 63);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/Logo pequena.png")));
+		lblNewLabel.setBounds(10, 11, 204, 62);
 		panel.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/Logo 2.png")));
-		lblNewLabel_1.setBorder(new LineBorder(new Color(255, 255, 255)));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/Logo Gráfico.png")));
+		lblNewLabel_1.setBorder(null);
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(423, 259, 478, 255);
+		lblNewLabel_1.setBounds(422, 233, 478, 255);
 		contentPane.add(lblNewLabel_1);
 
 		lblclock = new JLabel("clock");
