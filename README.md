@@ -9,16 +9,14 @@
 
 <h2> 🖥️ Métodos </h2>
 
-+ Cadastrar
++ Cadastrar usuários
 + Login 
-+ Consultar corpo clinico
-+ Informações
-+ Contatos
 + Agendar consultas
 + Status das consultas
 + Agenda de consultas
-+ Cadastro dos prontuários
-+ Consultar os prontuários
++ Cadastro de paciente
++ Consulta de paciente
+
 
 <h2> 🚀 Tecnologia </h2>
  
