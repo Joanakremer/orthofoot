@@ -39,7 +39,6 @@ public class TelaLogin extends JFrame {
 			public void run() {
 				try {
 					TelaLogin frame = new TelaLogin();
-					frame.setExtendedState(MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,6 +72,7 @@ public class TelaLogin extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/Logo 1.png")));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setBounds(84, 178, 500, 340);
 		panel.add(lblNewLabel_4);

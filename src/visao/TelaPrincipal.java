@@ -169,15 +169,15 @@ public class TelaPrincipal extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("logo");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(47, 10, 218, 69);
+		lblNewLabel.setBounds(23, 10, 242, 63);
 		panel.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/aviso.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/Logo 2.png")));
 		lblNewLabel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(490, 259, 325, 238);
+		lblNewLabel_1.setBounds(423, 259, 478, 255);
 		contentPane.add(lblNewLabel_1);
 
 		lblclock = new JLabel("clock");
