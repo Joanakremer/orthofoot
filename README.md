@@ -21,7 +21,7 @@
 <h2> 🚀 Tecnologia </h2>
  
  + Java 
- + WindowBuilder
+ + Swing
  + MySQL
  
  <h2> 🔍 Banco de dados </h2>
