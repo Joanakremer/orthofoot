@@ -179,9 +179,6 @@ public class TelaLogin extends JFrame {
 		loginbt.setFocusPainted(false);
 		loginbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Login
-				// --------------------------------------------------------------------------------------------------------------------
-
 				String senha = senhatxt.getText();
 				String username = usertxt.getText();
 
@@ -193,11 +190,9 @@ public class TelaLogin extends JFrame {
 						dispose();
 						TelaPrincipal telaPrincipal = new TelaPrincipal(usuario);
 						telaPrincipal.setVisible(true);
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao efetuar login");
-					}
+					} 
 				}
-
+				lblNewLabel.setVisible(true);
 			}
 		});
 

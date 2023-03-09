@@ -32,7 +32,7 @@ public class TelaPrincipal extends JFrame {
 				try {
 					for (;;) {
 						LocalDateTime dataHora = LocalDateTime.now();
-						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" dd/MM/yyyy         HH:mm");
 						String horaFormatada = dataHora.format(formatter);
 						lblclock.setText(horaFormatada);
 						sleep(1000);
@@ -64,7 +64,7 @@ public class TelaPrincipal extends JFrame {
 		// -------------------------------------------------------------------------------------------------------------------------------
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel.setBorder(null);
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 1306, 84);
 		contentPane.add(panel);
@@ -174,17 +174,27 @@ public class TelaPrincipal extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/Logo 2.png")));
-		lblNewLabel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblNewLabel_1.setBorder(new LineBorder(new Color(255, 255, 255)));
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(423, 259, 478, 255);
 		contentPane.add(lblNewLabel_1);
 
 		lblclock = new JLabel("clock");
-		lblclock.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		lblclock.setBorder(null);
 		lblclock.setFont(new Font("Arial", Font.BOLD, 18));
-		lblclock.setBounds(10, 11, 316, 26);
+		lblclock.setBounds(36, 11, 195, 26);
 		panel_1.add(lblclock);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/calendario.png")));
+		lblNewLabel_2.setBounds(10, 11, 46, 26);
+		panel_1.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/relogio.png")));
+		lblNewLabel_3.setBounds(145, 11, 39, 26);
+		panel_1.add(lblNewLabel_3);
 		setLocationRelativeTo(null);
 		clock();
 	}
