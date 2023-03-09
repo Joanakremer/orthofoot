@@ -26,7 +26,8 @@
  
  <h2> 🔍 Banco de dados </h2>
  
- ![bd-removebg-preview (1)](https://user-images.githubusercontent.com/111135808/224034862-977c955a-6309-423b-a669-64b03ea63782.png)
+ ![diagrama](https://user-images.githubusercontent.com/111135808/224045736-566fde49-c493-4d79-9109-69df0a001b0d.png)
+
 
 
  <h2> 🧑‍🎓 Discentes: </h2>
