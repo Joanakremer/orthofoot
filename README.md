@@ -1,7 +1,6 @@
 # Clínica Ortopédica
 
-![Logo 2](https://user-images.githubusercontent.com/111135808/224034532-c135e2cb-9160-4914-9e18-f5193f0aaaa3.png)
-
+![Baner](https://user-images.githubusercontent.com/111136680/225655759-25216db6-fa78-44b6-a025-793989817888.png)
 
 <h2> 📈 Projeto </h2>
 
