@@ -23,7 +23,7 @@ import modelo.MUsuario;
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	private JLabel lblclock;
+	private JLabel lclock;
 
 	public void clock() {
 		Thread clock = new Thread() {
@@ -34,7 +34,7 @@ public class TelaPrincipal extends JFrame {
 						LocalDateTime dataHora = LocalDateTime.now();
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" dd/MM/yyyy         HH:mm");
 						String horaFormatada = dataHora.format(formatter);
-						lblclock.setText(horaFormatada);
+						lclock.setText(horaFormatada);
 						sleep(1000);
 					}
 				} catch (InterruptedException e) {
@@ -180,11 +180,11 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_1.setBounds(422, 233, 478, 255);
 		contentPane.add(lblNewLabel_1);
 
-		lblclock = new JLabel("clock");
-		lblclock.setBorder(null);
-		lblclock.setFont(new Font("Arial", Font.BOLD, 18));
-		lblclock.setBounds(36, 11, 195, 26);
-		panel_1.add(lblclock);
+		lclock = new JLabel("clock");
+		lclock.setBorder(null);
+		lclock.setFont(new Font("Arial", Font.BOLD, 18));
+		lclock.setBounds(36, 11, 195, 26);
+		panel_1.add(lclock);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/calendario.png")));
