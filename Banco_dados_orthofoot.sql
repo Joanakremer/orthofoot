@@ -12,24 +12,24 @@ CREATE table usuarios(
 idusuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 login VARCHAR (45) NOT NULL,
 senha VARCHAR(45) NOT NULL,
-tipo_usuario INT NOT NULL
+tipoUsuario INT NOT NULL
 );
 
 CREATE table medicos(
 crm INT NOT NULL PRIMARY KEY,
-nome_completo VARCHAR(100) NOT NULL,
-data_nasc DATE NOT NULL,
+nomeCompleto VARCHAR(100) NOT NULL,
+dataNasc DATE NOT NULL,
 sexo VARCHAR(20) 
 );
 
 CREATE table pacientes(
 prontuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-nome_completo VARCHAR(100) NOT NULL,
+nomeCompleto VARCHAR(100) NOT NULL,
 cpf VARCHAR(45) NOT NULL,
 contato VARCHAR(45) NOT NULL,
-data_nasc DATE NOT NULL,
+dataNasc DATE NOT NULL,
 convenio VARCHAR (45),
-n_carteira VARCHAR (45),
+nCarteira VARCHAR (45),
 sexo VARCHAR (45),
 cep INT NOT NULL,
 FOREIGN KEY (cep) REFERENCES enderecos(cep)
@@ -40,7 +40,7 @@ idconsulta INT NOT NULL PRIMARY KEY,
 data_cons DATE NOT NULL,
 hora TIME NOT NULL,
 titulo VARCHAR(45),
-n_cartao INT,
+nCartao INT,
 prontuario INT NOT NULL,
 crm INT NOT NULL,
 FOREIGN KEY(prontuario) REFERENCES pacientes(prontuario),
