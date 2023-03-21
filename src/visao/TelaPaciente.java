@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import controle.CDao;
 import modelo.MPaciente;
@@ -20,7 +21,8 @@ public class TelaPaciente extends JFrame {
 	private JPanel contentPane;
 	private JTable tablePacientes;
 	private MPaciente pacienteSelecionado;
-	private MPaciente listaMPaciente;
+	private ArrayList<MPaciente> listaPaciente;
+	private CDao dao; 
 
 	/**
 	 * Launch the application.
@@ -54,22 +56,41 @@ public class TelaPaciente extends JFrame {
 		scrollPane.setBounds(105, 91, 625, 244);
 		contentPane.add(scrollPane);
 		
+		atualizar();
 		
+		listaPaciente = dao.listarPaciente();
 		tablePacientes = new JTable();
 		
-	/*	tablePacientes.addMouseListener(new MouseAdapter() {
+		tablePacientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicaoPessoa = tablePacientes.getSelectedRow();
-				pessoaSelecionada = listaPokemon.get(posicaoPessoa);
-				pessoaSelecionada.getNomePoke();
-				pessoaSelecionada.getPeso();
-				pessoaSelecionada.getAltura();
-				pessoaSelecionada.getInsignia();
-				pessoaSelecionada.getDoce();
-				pessoaSelecionada.getId();
+				pacienteSelecionado = listaPaciente.get(posicaoPessoa);
+				pacienteSelecionado.getProntuario();
+				pacienteSelecionado.getnomeCompleto();
+				pacienteSelecionado.getdataNasc();
+				pacienteSelecionado.getCpf();
+				pacienteSelecionado.getnCarteira();
+				pacienteSelecionado.getContato();
+				pacienteSelecionado.getConvenio();
+				pacienteSelecionado.getSexo();
 			}
-		});*/
+		});
 		scrollPane.setViewportView(tablePacientes);
+		
+	}
+	public void atualizar() {
+
+		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {},
+				new String[] { "prontuario", "nomeCompleto", "dataNasc", "cpf", "nCarteira", "contato", "convenio", "sexo" });
+
+		if (listaPaciente.size() > 0 && listaPaciente != null) {
+			for (MPaciente paciente : listaPaciente) {
+				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(), paciente.getdataNasc(),
+						paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(), paciente.getConvenio(), paciente.getSexo() });
+			}
+		}
+
+		tablePacientes.setModel(modelo);
 	}
 }
