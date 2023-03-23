@@ -37,9 +37,9 @@ public class TelaLogin extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTextField usertxt;
 	private JPasswordField senhatxt;
+	private JPanel contentPane;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -216,6 +216,7 @@ public class TelaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
+			
 		});
 		sairbt.setFocusPainted(false);
 		sairbt.addMouseListener(new MouseAdapter() {
