@@ -196,13 +196,22 @@ public class TelaCadastroPaciente extends JFrame {
 					txtConvenio.setText(null);
 					txtSexo.setText(null);
 				}
-
+				dispose();
+				TelaPaciente frame = new TelaPaciente();
+				frame.setVisible(true);
 			}
 		});
 		btnCadastrar.setBounds(278, 88, 163, 37);
 		contentPane.add(btnCadastrar);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaPaciente frame = new TelaPaciente();
+				frame.setVisible(true);
+			}
+		});
 		btnVoltar.setBounds(321, 199, 89, 23);
 		contentPane.add(btnVoltar);
 	}
