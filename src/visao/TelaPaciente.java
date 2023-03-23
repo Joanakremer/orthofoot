@@ -15,6 +15,9 @@ import modelo.MPaciente;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPaciente extends JFrame {
 
@@ -22,7 +25,10 @@ public class TelaPaciente extends JFrame {
 	private JTable tablePacientes;
 	private MPaciente pacienteSelecionado;
 	private ArrayList<MPaciente> listaPaciente;
-	private CDao dao; 
+	private CDao dao;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
 
 	/**
 	 * Launch the application.
@@ -51,16 +57,14 @@ public class TelaPaciente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(105, 91, 625, 244);
+		scrollPane.setBounds(66, 91, 700, 244);
 		contentPane.add(scrollPane);
-		
-		atualizar();
-		
+
 		listaPaciente = dao.listarPaciente();
 		tablePacientes = new JTable();
-		
+
 		tablePacientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -78,19 +82,42 @@ public class TelaPaciente extends JFrame {
 		});
 		scrollPane.setViewportView(tablePacientes);
 		
+		btnNewButton = new JButton("Cadastrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaCadastroPaciente frame = new TelaCadastroPaciente();
+				frame.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(66, 57, 132, 23);
+		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Atualizar");
+		btnNewButton_1.setBounds(350, 57, 132, 23);
+		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("Deletar");
+		btnNewButton_2.setBounds(634, 57, 132, 23);
+		contentPane.add(btnNewButton_2);
+
+		atualizar();
+
 	}
+
 	public void atualizar() {
 
-		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {},
-				new String[] { "prontuario", "nomeCompleto", "dataNasc", "cpf", "nCarteira", "contato", "convenio", "sexo" });
+		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "prontuario", "nomeCompleto",
+				"dataNasc", "cpf", "nCarteira", "contato", "convenio", "sexo" });
+
+		tablePacientes.setModel(modelo);
 
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(), paciente.getdataNasc(),
-						paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(), paciente.getConvenio(), paciente.getSexo() });
+				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
+						paciente.getdataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
+						paciente.getConvenio(), paciente.getSexo() });
 			}
 		}
-
-		tablePacientes.setModel(modelo);
 	}
 }

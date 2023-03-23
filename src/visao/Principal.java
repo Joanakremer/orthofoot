@@ -1,18 +1,19 @@
 package visao;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
+
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
 public class Principal extends JFrame {
 
