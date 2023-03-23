@@ -28,6 +28,16 @@
  ![diagrama](https://user-images.githubusercontent.com/111135808/224045736-566fde49-c493-4d79-9109-69df0a001b0d.png)
 
 
+<h2> 📉 Diagrama de casos de uso </h2>
+
+
+![Captura de tela 2023-03-23 115135](https://user-images.githubusercontent.com/111135808/227242231-15ab4733-289e-4695-a653-d12b006fe627.png)
+
+
+
+
+
+<h2> 💡 Diagrama de classes </h2>
 
  <h2> 🧑‍🎓 Discentes: </h2>
  <div align="center">
