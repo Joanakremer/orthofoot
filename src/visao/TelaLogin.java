@@ -56,12 +56,10 @@ public class TelaLogin extends JFrame {
 	}
 
 	public TelaLogin() {
-		setUndecorated(true);
 		setBackground(new Color(32, 178, 170));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(90, 90, 469, 625);
 		contentPane = new JPanel();
-		contentPane.setBorder(null);
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBackground(new Color(255, 255, 255));
 		setContentPane(contentPane);
@@ -212,6 +210,7 @@ public class TelaLogin extends JFrame {
 		contentPane.add(loginbt);
 
 		JButton sairbt = new JButton("");
+		sairbt.setVisible(false);
 		sairbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -235,7 +234,7 @@ public class TelaLogin extends JFrame {
 		sairbt.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/sair-alt.png")));
 		sairbt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(64, 128, 128)));
 		sairbt.setBackground(Color.WHITE);
-		sairbt.setBounds(424, 11, 35, 33);
+		sairbt.setBounds(408, 11, 35, 33);
 		contentPane.add(sairbt);
 		
 	}

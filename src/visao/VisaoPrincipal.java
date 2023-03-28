@@ -22,6 +22,8 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.Component;
+import javax.swing.SwingConstants;
 
 public class VisaoPrincipal extends JFrame {
 
@@ -83,7 +85,17 @@ public class VisaoPrincipal extends JFrame {
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBackground(new Color(255, 255, 255));
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:100px,grow][50px:n:150px,grow][50px:n:100px,grow][50px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:60px,grow][20px:n:40px,grow]"));
+		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:60px,grow][20px:n:40px,grow]"));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel.add(panel_1, "cell 0 0 18 2,grow");
+		panel_1.setLayout(new MigLayout("", "[20px:n:2000px,grow]", "[20px:n:80px,grow]"));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_1.add(lblNewLabel, "cell 0 0,growx");
 		
 	}
 }
