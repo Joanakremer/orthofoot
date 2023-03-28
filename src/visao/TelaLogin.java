@@ -167,7 +167,7 @@ public class TelaLogin extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/logo media.png")));
-		lblNewLabel_3.setBounds(56, 77, 355, 112);
+		lblNewLabel_3.setBounds(56, 67, 355, 112);
 		contentPane.add(lblNewLabel_3);
 
 //Button --------------------------------------------------------------------------------------------------------------------
@@ -208,34 +208,6 @@ public class TelaLogin extends JFrame {
 		loginbt.setFont(new Font("Dialog", Font.BOLD, 19));
 		loginbt.setBounds(56, 477, 355, 40);
 		contentPane.add(loginbt);
-
-		JButton sairbt = new JButton("");
-		sairbt.setVisible(false);
-		sairbt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-			
-		});
-		sairbt.setFocusPainted(false);
-		sairbt.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				TelaLogin.this.dispose();
-			}
-
-			public void mouseEntered(MouseEvent e) {
-				setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-
-			public void mouseExited(MouseEvent e) {
-				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
-		});
-		sairbt.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/sair-alt.png")));
-		sairbt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(64, 128, 128)));
-		sairbt.setBackground(Color.WHITE);
-		sairbt.setBounds(408, 11, 35, 33);
-		contentPane.add(sairbt);
 		
 	}
 }
