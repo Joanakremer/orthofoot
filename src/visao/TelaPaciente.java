@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -103,6 +104,18 @@ public class TelaPaciente extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Deletar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(pacienteSelecionado != null) {
+					listaPaciente.remove(pacienteSelecionado);
+					
+					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
+					atualizar();
+				}else {
+					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
+				}
+			}
+		});
 		btnNewButton_2.setBounds(634, 57, 132, 23);
 		contentPane.add(btnNewButton_2);
 
