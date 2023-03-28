@@ -88,10 +88,10 @@ public class TelaAtualizarPaciente extends JFrame {
 		
 		if(this.pacienteSelecionado != null) {
 			
-			txtProntuario.setText(this.pacienteSelecionado.getProntuario());
+			txtProntuario.setText(String.valueOf(this.pacienteSelecionado.getProntuario()));
 			txtNome.setText(this.pacienteSelecionado.getnomeCompleto());
-			txtDMA.setText(this.pacienteSelecionado.getDataNasc());
-			txtCpf.setText(this.pacienteSelecionado.getCpf());
+			txtDMA.setText(String.valueOf(this.pacienteSelecionado.getdataNasc()));
+			txtCpf.setText(String.valueOf(this.pacienteSelecionado.getCpf()));
 			txtCarteira.setText(this.pacienteSelecionado.getnCarteira());
 			txtContato.setText(this.pacienteSelecionado.getContato());
 			txtConvenio.setText(this.pacienteSelecionado.getConvenio());
@@ -184,8 +184,8 @@ public class TelaAtualizarPaciente extends JFrame {
 				}
 
 				CDao tablePacientes = CDao.getInstancia();
-				boolean atualizar = tablePacientes.update.getPronturio;
-				if (atualizar == true) {
+				boolean update = tablePacientes.update(pacienteSelecionado);
+				if (update == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
 
 					txtProntuario.setText(null);
@@ -196,10 +196,13 @@ public class TelaAtualizarPaciente extends JFrame {
 					txtContato.setText(null);
 					txtConvenio.setText(null);
 					txtSexo.setText(null);
+					
+					dispose();
+					TelaPaciente frame = new TelaPaciente();
+					frame.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Erro inesperado");
 				}
-				dispose();
-				TelaPaciente frame = new TelaPaciente();
-				frame.setVisible(true);
 			}
 		});
 		btnAtualizar.setBounds(279, 86, 163, 37);

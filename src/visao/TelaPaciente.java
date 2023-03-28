@@ -94,6 +94,11 @@ public class TelaPaciente extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Atualizar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton_1.setBounds(350, 57, 132, 23);
 		contentPane.add(btnNewButton_1);
 		

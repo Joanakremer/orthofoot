@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.MPaciente;
+import visao.TelaPaciente;
 
 public class CDao {
 
