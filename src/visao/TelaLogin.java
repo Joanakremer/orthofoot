@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -47,6 +47,7 @@ public class TelaLogin extends JFrame {
 				try {
 					TelaLogin frame = new TelaLogin();
 					frame.setVisible(true);
+					frame.setExtendedState(MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
