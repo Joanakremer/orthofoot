@@ -28,10 +28,10 @@ public class CDaoEndereco {
 				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+				con.fecharConexao();
+				return false;
 			}
-			con.fecharConexao();
-			
-			return false;
 		}
 		//Update -------------------------------------------------------------------------------
 		public boolean update(MEndereco a) {
@@ -49,9 +49,10 @@ public class CDaoEndereco {
 						return true;
 					} catch (SQLException e) {
 						e.printStackTrace();
+					}finally {
+						con.fecharConexao();
+						return false;
 					}
-					con.fecharConexao();
-					return false;
 				}
 		//Delete -------------------------------------------------------------------------------
 		public boolean delete(MEndereco a) {
@@ -68,9 +69,10 @@ public class CDaoEndereco {
 						return true;
 					} catch (SQLException e) {
 						e.printStackTrace();
+					}finally {
+						con.fecharConexao();
+						return false;
 					}
-					con.fecharConexao();
-					return false;
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MEndereco> listarAgenda() {
@@ -97,10 +99,9 @@ public class CDaoEndereco {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+				con.fecharConexao();
+				return endereco;
 			}
-
-			con.fecharConexao();
-
-			return endereco;
 		}
 }

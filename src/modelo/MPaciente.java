@@ -77,4 +77,9 @@ public class MPaciente {
 		this.cpf = cpf;
 	}
 
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
