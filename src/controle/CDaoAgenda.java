@@ -17,6 +17,7 @@ public class CDaoAgenda {
 	//Insert -------------------------------------------------------------------------------
 		public boolean inserir(MAgenda s) {
 	con = CConexao.getInstancia();
+		int valida = 0;
 			Connection c = con.conectar();
 			try {
 				String query = "INSERT INTO agenda (idConsulta, data, hora) VALLUES (?, ?);";
@@ -25,19 +26,19 @@ public class CDaoAgenda {
 				stm.setInt(1, s.getIdConsulta());
 				stm.setDate(4, s.getData());
 				stm.setTime(5, s.getHora());
-				stm.executeUpdate();
-				return true;
+				valida = stm.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
 				con.fecharConexao();
 			}
-			return false;
+			return (valida == 0 ? false : true);
 		}
 		//Update -------------------------------------------------------------------------------
 		public boolean update(MAgenda s) {
 			con = CConexao.getInstancia();
 					Connection c = con.conectar();
+					int valida = 0;
 					try {
 						String query = "UPDATE agenda Set idConsulta = ?, set nomeCompleto = ?, set contato = ?, set data = ?, set hora = ?, set titulo = ? WHERE cep = ?";
 						PreparedStatement stm = c.prepareStatement(query);
@@ -45,33 +46,32 @@ public class CDaoAgenda {
 						stm.setInt(1, s.getIdConsulta());
 						stm.setDate(4, s.getData());	
 						stm.setTime(4, s.getHora());					
-						stm.executeUpdate();
-						return true;
+						valida = stm.executeUpdate();						
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
 					}
-					return false;
+					return (valida == 0 ? false : true);
 				}
 		//Delete -------------------------------------------------------------------------------
 		public boolean delete(MAgenda s) {
 			con = CConexao.getInstancia();
 					Connection c = con.conectar();
+					int valida = 0;
 					try {
 						String query = "DELETE FROM agenda Where idConsulta = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
 						stm.setInt(1, s.getIdConsulta());
 						stm.setDate(4, s.getData());	
 						stm.setTime(4, s.getHora());						
-						stm.executeUpdate();
-						return true;
+						valida = stm.executeUpdate();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
 					}
-					return false;
+					return (valida == 0 ? false : true);
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MAgenda> listarAgenda() {

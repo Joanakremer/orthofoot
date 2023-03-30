@@ -16,6 +16,7 @@ public class CDaoEndereco {
 		public boolean inserir(MEndereco a) {
 	con = CConexao.getInstancia();
 			Connection c = con.conectar();
+			int valida = 0;
 			try {
 				String query = "INSERT INTO endereco (cep, rua, cidade, estado) VALLUES (?, ?);";
 				PreparedStatement stm = c.prepareStatement(query);
@@ -24,19 +25,19 @@ public class CDaoEndereco {
 				stm.setString(2, a.getRua());
 				stm.setString(3, a.getCidade());
 				stm.setString(4, a.getEstado());				
-				stm.executeUpdate();
-				return true;
+				valida = stm.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
 				con.fecharConexao();
 			}
-			return false;
+			return (valida == 0 ? false : true);
 		}
 		//Update -------------------------------------------------------------------------------
 		public boolean update(MEndereco a) {
 			con = CConexao.getInstancia();
 					Connection c = con.conectar();
+					int valida = 0;
 					try {
 						String query = "UPDATE endereco Set cep = ?, set rua = ?, set cidade = ?, set estado = ? WHERE cep = ?";
 						PreparedStatement stm = c.prepareStatement(query);
@@ -45,19 +46,19 @@ public class CDaoEndereco {
 						stm.setString(2, a.getRua());
 						stm.setString(3, a.getCidade());
 						stm.setString(4, a.getEstado());				
-						stm.executeUpdate();
-						return true;
+						valida = stm.executeUpdate();					
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
 					}
-					return false;
+					return (valida == 0 ? false : true);
 				}
 		//Delete -------------------------------------------------------------------------------
 		public boolean delete(MEndereco a) {
 			con = CConexao.getInstancia();
 					Connection c = con.conectar();
+					int valida = 0;
 					try {
 						String query = "DELETE FROM endereco Where cep = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
@@ -65,14 +66,13 @@ public class CDaoEndereco {
 						stm.setString(2, a.getRua());
 						stm.setString(3, a.getCidade());
 						stm.setString(4, a.getEstado());				
-						stm.executeUpdate();
-						return true;
+						valida = stm.executeUpdate();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
 					}
-					return false;
+					return (valida == 0 ? false : true);
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MEndereco> listarAgenda() {

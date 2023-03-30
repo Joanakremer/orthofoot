@@ -17,6 +17,7 @@ public class CDaoUsuario {
 	public boolean inserir(MUsuario u) {
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "INSERT INTO medicos (idUsuario, login, senha, tipoUsuario) VALLUES (?, ?, ?, ?);";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -25,14 +26,13 @@ public class CDaoUsuario {
 			stm.setString(2, u.getLogin());
 			stm.setString(3, u.getSenha());
 			stm.setInt(4, u.getTipoUsuario());
-			stm.executeUpdate();
-			return true;
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
 		}
-		return false;
+		return (valida == 0 ? false : true);
 	}
 
 	// Update
@@ -40,6 +40,7 @@ public class CDaoUsuario {
 	public boolean update(MUsuario u) {
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "UPDATE usuarios Set idUsuario = ?, set login = ?, set senha = ?, set tipoUsuario = ? WHERE idUsuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -48,14 +49,13 @@ public class CDaoUsuario {
 			stm.setString(2, u.getLogin());
 			stm.setString(3, u.getSenha());
 			stm.setInt(4, u.getTipoUsuario());
-			stm.executeUpdate();
-			return true;
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
 		}
-		return false;
+		return (valida == 0 ? false : true);
 	}
 
 	// Delete
@@ -63,6 +63,7 @@ public class CDaoUsuario {
 	public boolean delete(MUsuario u) {
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "DELETE FROM usuarios Where idUsuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -70,14 +71,13 @@ public class CDaoUsuario {
 			stm.setString(2, u.getLogin());
 			stm.setString(3, u.getSenha());
 			stm.setInt(4, u.getTipoUsuario());
-			stm.executeUpdate();
-			return true;
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
 		}
-		return false;
+		return (valida == 0 ? false : true);
 	}
 
 	// List

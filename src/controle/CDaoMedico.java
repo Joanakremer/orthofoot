@@ -18,6 +18,7 @@ public class CDaoMedico {
 	public boolean inserir(MMedico m) {
 con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "INSERT INTO medico (crm ,nomeCompleto, dataNasc, sexo) VALLUES (?, ?, ?, ?);";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -26,19 +27,19 @@ con = CConexao.getInstancia();
 			stm.setString(2, m.getnomeCompleto());
 			stm.setDate(3, m.getdataNasc());
 			stm.setString(4, m.getSexo());				
-			stm.executeUpdate();
-			return true;
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
-			return false;
 		}
+		return (valida == 0 ? false : true);
 	}
 	//Update -------------------------------------------------------------------------------
 	public boolean update(MMedico m) {
 		con = CConexao.getInstancia();
 				Connection c = con.conectar();
+				int valida = 0;
 				try {
 					String query = "UPDATE medico Set nomeCompleto = ?, set dataNasc = ?, set sexo = ? WHERE crm = ?";
 					PreparedStatement stm = c.prepareStatement(query);
@@ -47,19 +48,19 @@ con = CConexao.getInstancia();
 					stm.setString(2, m.getnomeCompleto());
 					stm.setDate(3, m.getdataNasc());
 					stm.setString(4, m.getSexo());				
-					stm.executeUpdate();
-					return true;
+					valida = stm.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}finally {
 					con.fecharConexao();
 				}
-				return false;
+				return (valida == 0 ? false : true);
 			}
 	//Delete -------------------------------------------------------------------------------
 	public boolean delete(MMedico m) {
 		con = CConexao.getInstancia();
 				Connection c = con.conectar();
+				int valida = 0;
 				try {
 					String query = "DELETE FROM medico Where crm = ?"; 
 					PreparedStatement stm = c.prepareStatement(query);
@@ -67,14 +68,13 @@ con = CConexao.getInstancia();
 					stm.setString(2, m.getnomeCompleto());
 					stm.setDate(3, m.getdataNasc());
 					stm.setString(4, m.getSexo());				
-					stm.executeUpdate();
-					return true;
+					valida = stm.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}finally {
 					con.fecharConexao();
 				}
-				return false;
+				return (valida == 0 ? false : true);
 			}
 	//List -------------------------------------------------------------------------------
 	public ArrayList<MMedico> listarMedico() {

@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.MPaciente;
-import visao.TelaPaciente;
 
 public class CDao {
 
@@ -20,12 +19,9 @@ public class CDao {
 		if (instancia == null) {
 			instancia = new CDao();
 		}
-
 		return instancia;
 	}
-
 	private CDao() {
-
 	}
 
 	// Insert
@@ -33,6 +29,7 @@ public class CDao {
 	public boolean inserir(MPaciente p) {
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "INSERT INTO paciente (pronturaio, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALLUES (?, ?);";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -46,14 +43,13 @@ public class CDao {
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
 
-			stm.executeUpdate();
-			return true;
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			con.fecharConexao();
 		}
-		return false;
+		return (valida == 0 ? false : true); // if ternario
 	}
 
 	// Update
@@ -61,6 +57,7 @@ public class CDao {
 	public boolean update(MPaciente p) {
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "UPDATE pessoa Set nome = ?, Set cpf = ?, Set contato = ?, Set dataNasc = ?, Set convenio = ?, Set nCarteira = ?, Set sexo = ? WHERE prontuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -73,14 +70,13 @@ public class CDao {
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
-			stm.executeUpdate();
-			return true;
+			valida =stm.executeUpdate(); // TODO alterar
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			con.fecharConexao();
 		}
-		return false;
+		return (valida == 0 ? false : true);
 	}
 
 	// Delete
@@ -88,6 +84,7 @@ public class CDao {
 	public boolean delete(MPaciente p) {
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
+		int valida = 0;
 		try {
 			String query = "DELETE FROM paciente Where cpf = ?";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -99,14 +96,13 @@ public class CDao {
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
-			stm.executeUpdate();
-			return true;
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			con.fecharConexao();
 		}
-		return false;
+		 return (valida == 0 ? false : true);
 	}
 
 	// List
@@ -143,7 +139,7 @@ public class CDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			con.fecharConexao();
 		}
 		return paciente;

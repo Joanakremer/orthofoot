@@ -157,19 +157,19 @@ public class TelaCadastroPaciente extends JFrame {
 				MPaciente newPaciente = new MPaciente();
 
 				String prontuario = txtProntuario.getText().replace("", "");
-				if (prontuario == null || prontuario.isEmpty()) {
+				if (prontuario == null || prontuario.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
 				} else {
 					newPaciente.setProntuario(Integer.valueOf(prontuario));
 				}
 				String nome = txtNome.getText();
-				if (nome == null || nome.isEmpty()) {
+				if (nome == null || nome.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NOME está vazio");
 				} else {
 					newPaciente.setnomeCompleto(nome);
 				}
 				String dataNascimento = txtDMA.getText().replace("/", "");
-				if (dataNascimento == null || dataNascimento.isEmpty()) {
+				if (dataNascimento == null || dataNascimento.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
 				} else {
 					newPaciente.setdataNasc(Date.valueOf(dataNascimento));
@@ -178,11 +178,10 @@ public class TelaCadastroPaciente extends JFrame {
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
 				} else {
-					
 					newPaciente.setCpf(Long.valueOf(cpf));
 				}
 				String carteira = txtCarteira.getText();
-				if (carteira == null || carteira.isEmpty()) {
+				if (carteira == null || carteira.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
 				} else {
 					newPaciente.setnCarteira(carteira);
@@ -219,6 +218,8 @@ public class TelaCadastroPaciente extends JFrame {
 					txtContato.setText(null);
 					txtConvenio.setText(null);
 					txtSexo.setText(null);
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
 				dispose();
 				TelaPaciente frame = new TelaPaciente();

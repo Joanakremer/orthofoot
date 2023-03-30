@@ -203,7 +203,7 @@ public class TelaAtualizarPaciente extends JFrame {
 					TelaPaciente frame = new TelaPaciente();
 					frame.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "Erro inesperado");
+					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
 				}
 			}
 		});
