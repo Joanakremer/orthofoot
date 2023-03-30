@@ -29,10 +29,10 @@ public class CDaoAgenda {
 				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+				con.fecharConexao();
+				return false;
 			}
-			con.fecharConexao();
-			
-			return false;
 		}
 		//Update -------------------------------------------------------------------------------
 		public boolean update(MAgenda s) {
@@ -49,9 +49,10 @@ public class CDaoAgenda {
 						return true;
 					} catch (SQLException e) {
 						e.printStackTrace();
+					}finally {
+						con.fecharConexao();
+						return false;
 					}
-					con.fecharConexao();
-					return false;
 				}
 		//Delete -------------------------------------------------------------------------------
 		public boolean delete(MAgenda s) {
@@ -67,9 +68,10 @@ public class CDaoAgenda {
 						return true;
 					} catch (SQLException e) {
 						e.printStackTrace();
+					}finally {
+						con.fecharConexao();
+						return false;
 					}
-					con.fecharConexao();
-					return false;
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MAgenda> listarAgenda() {
@@ -97,10 +99,10 @@ public class CDaoAgenda {
 		        }
 		    } catch (SQLException e) {
 		        e.printStackTrace();
-		    }
+		    }finally {
+		    	con.fecharConexao();
+		    	return agenda;
+			}
 
-		    con.fecharConexao();
-
-		    return agenda;
 		}
 }
