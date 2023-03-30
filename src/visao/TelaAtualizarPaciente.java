@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
@@ -20,12 +22,12 @@ import controle.CDao;
 public class TelaAtualizarPaciente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtProntuario;
+	private JFormattedTextField txtProntuario;
 	private JTextField txtNome;
-	private JTextField txtDMA;
-	private JTextField txtCpf;
-	private JTextField txtCarteira;
-	private JTextField txtContato;
+	private JFormattedTextField txtDMA;
+	private JFormattedTextField txtCpf;
+	private JFormattedTextField txtCarteira;
+	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JTextField txtSexo;
 	private MPaciente pacienteSelecionado;
@@ -46,7 +48,7 @@ public class TelaAtualizarPaciente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtProntuario = new JTextField();
+		txtProntuario = new JFormattedTextField();
 		txtProntuario.setBounds(10, 23, 131, 20);
 		contentPane.add(txtProntuario);
 		txtProntuario.setColumns(10);
@@ -56,22 +58,22 @@ public class TelaAtualizarPaciente extends JFrame {
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
-		txtDMA = new JTextField();
+		txtDMA = new JFormattedTextField();
 		txtDMA.setBounds(10, 109, 131, 20);
 		contentPane.add(txtDMA);
 		txtDMA.setColumns(10);
 		
-		txtCpf = new JTextField();
+		txtCpf = new JFormattedTextField();
 		txtCpf.setBounds(10, 152, 131, 20);
 		contentPane.add(txtCpf);
 		txtCpf.setColumns(10);
 		
-		txtCarteira = new JTextField();
+		txtCarteira = new JFormattedTextField();
 		txtCarteira.setBounds(10, 195, 131, 20);
 		contentPane.add(txtCarteira);
 		txtCarteira.setColumns(10);
 		
-		txtContato = new JTextField();
+		txtContato = new JFormattedTextField();
 		txtContato.setBounds(10, 238, 131, 20);
 		contentPane.add(txtContato);
 		txtContato.setColumns(10);
@@ -134,7 +136,7 @@ public class TelaAtualizarPaciente extends JFrame {
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String prontuario = txtProntuario.getText();
+				String prontuario = txtProntuario.getText().replace("", "");
 				if (prontuario == null || prontuario.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
 				} else {
@@ -146,13 +148,13 @@ public class TelaAtualizarPaciente extends JFrame {
 				} else {
 					pacienteSelecionado.setnomeCompleto(nome);
 				}
-				String dataNascimento = txtDMA.getText();
+				String dataNascimento = txtDMA.getText().replace("/", "");
 				if (dataNascimento == null || dataNascimento.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
 				} else {
 					pacienteSelecionado.setdataNasc(Date.valueOf(dataNascimento));
 				}
-				String cpf = txtCpf.getText();
+				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
 				} else {
@@ -164,7 +166,7 @@ public class TelaAtualizarPaciente extends JFrame {
 				} else {
 					pacienteSelecionado.setnCarteira(carteira);
 				}
-				String contato = txtContato.getText();
+				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-", "");
 				if (contato == null || contato.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CONTATO está vazio");
 				} else {
@@ -201,7 +203,7 @@ public class TelaAtualizarPaciente extends JFrame {
 					TelaPaciente frame = new TelaPaciente();
 					frame.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "Erro inesperado");
+					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
 				}
 			}
 		});

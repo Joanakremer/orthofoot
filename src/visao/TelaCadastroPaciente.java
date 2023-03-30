@@ -4,14 +4,17 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import modelo.MPaciente;
@@ -19,12 +22,12 @@ import modelo.MPaciente;
 public class TelaCadastroPaciente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtProntuario;
+	private JFormattedTextField txtProntuario;
 	private JTextField txtNome;
-	private JTextField txtDMA;
-	private JTextField txtCpf;
-	private JTextField txtCarteira;
-	private JTextField txtContato;
+	private JFormattedTextField txtDMA;
+	private JFormattedTextField txtCpf;
+	private JFormattedTextField txtCarteira;
+	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JTextField txtSexo;
 
@@ -56,7 +59,11 @@ public class TelaCadastroPaciente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		txtProntuario = new JTextField();
+		try {
+			txtProntuario = new JFormattedTextField(new MaskFormatter("####"));
+		} catch (ParseException e3) {
+			e3.printStackTrace();
+		}
 		txtProntuario.setBounds(10, 24, 157, 20);
 		contentPane.add(txtProntuario);
 		txtProntuario.setColumns(10);
@@ -66,22 +73,38 @@ public class TelaCadastroPaciente extends JFrame {
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 
-		txtDMA = new JTextField();
+		try {
+			txtDMA = new JFormattedTextField(new MaskFormatter("##/##/##"));
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
 		txtDMA.setBounds(10, 112, 157, 20);
 		contentPane.add(txtDMA);
 		txtDMA.setColumns(10);
 
-		txtCpf = new JTextField();
+		try {
+			txtCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtCpf.setBounds(10, 156, 157, 20);
 		contentPane.add(txtCpf);
 		txtCpf.setColumns(10);
 
-		txtCarteira = new JTextField();
+		try {
+			txtCarteira = new JFormattedTextField(new MaskFormatter("#####################"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtCarteira.setBounds(10, 200, 157, 20);
 		contentPane.add(txtCarteira);
 		txtCarteira.setColumns(10);
 
-		txtContato = new JTextField();
+		try {
+			txtContato = new JFormattedTextField(new MaskFormatter("(+##)## #####-####"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtContato.setBounds(10, 244, 157, 20);
 		contentPane.add(txtContato);
 		txtContato.setColumns(10);
@@ -133,37 +156,37 @@ public class TelaCadastroPaciente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MPaciente newPaciente = new MPaciente();
 
-				String prontuario = txtProntuario.getText();
-				if (prontuario == null || prontuario.isEmpty()) {
+				String prontuario = txtProntuario.getText().replace("", "");
+				if (prontuario == null || prontuario.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
 				} else {
 					newPaciente.setProntuario(Integer.valueOf(prontuario));
 				}
 				String nome = txtNome.getText();
-				if (nome == null || nome.isEmpty()) {
+				if (nome == null || nome.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NOME está vazio");
 				} else {
 					newPaciente.setnomeCompleto(nome);
 				}
-				String dataNascimento = txtDMA.getText();
-				if (dataNascimento == null || dataNascimento.isEmpty()) {
+				String dataNascimento = txtDMA.getText().replace("/", "");
+				if (dataNascimento == null || dataNascimento.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
 				} else {
 					newPaciente.setdataNasc(Date.valueOf(dataNascimento));
 				}
-				String cpf = txtCpf.getText();
+				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
 				} else {
 					newPaciente.setCpf(Long.valueOf(cpf));
 				}
 				String carteira = txtCarteira.getText();
-				if (carteira == null || carteira.isEmpty()) {
+				if (carteira == null || carteira.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
 				} else {
 					newPaciente.setnCarteira(carteira);
 				}
-				String contato = txtContato.getText();
+				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-", "");
 				if (contato == null || contato.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CONTATO está vazio");
 				} else {
@@ -195,6 +218,8 @@ public class TelaCadastroPaciente extends JFrame {
 					txtContato.setText(null);
 					txtConvenio.setText(null);
 					txtSexo.setText(null);
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
 				dispose();
 				TelaPaciente frame = new TelaPaciente();
