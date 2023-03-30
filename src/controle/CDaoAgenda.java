@@ -31,8 +31,8 @@ public class CDaoAgenda {
 				e.printStackTrace();
 			}finally {
 				con.fecharConexao();
-				return false;
 			}
+			return false;
 		}
 		//Update -------------------------------------------------------------------------------
 		public boolean update(MAgenda s) {
@@ -51,8 +51,8 @@ public class CDaoAgenda {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
-						return false;
 					}
+					return false;
 				}
 		//Delete -------------------------------------------------------------------------------
 		public boolean delete(MAgenda s) {
@@ -70,8 +70,8 @@ public class CDaoAgenda {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
-						return false;
 					}
+					return false;
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MAgenda> listarAgenda() {
@@ -101,8 +101,8 @@ public class CDaoAgenda {
 		        e.printStackTrace();
 		    }finally {
 		    	con.fecharConexao();
-		    	return agenda;
 			}
+		    return agenda;
 
 		}
 }

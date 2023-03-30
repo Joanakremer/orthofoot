@@ -29,9 +29,9 @@ public class CDaoUsuario {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
 		}
-		con.fecharConexao();
-
 		return false;
 	}
 
@@ -52,8 +52,9 @@ public class CDaoUsuario {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
 		}
-		con.fecharConexao();
 		return false;
 	}
 
@@ -73,8 +74,9 @@ public class CDaoUsuario {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
 		}
-		con.fecharConexao();
 		return false;
 	}
 
@@ -104,10 +106,9 @@ public class CDaoUsuario {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
 		}
-
-		con.fecharConexao();
-
 		return usuarios;
 	}
 
@@ -135,11 +136,9 @@ public class CDaoUsuario {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
 		}
-
-		con.fecharConexao();
-
 		return u;
-
 	}
 }

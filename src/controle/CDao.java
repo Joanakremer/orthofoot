@@ -52,8 +52,8 @@ public class CDao {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
-			return false;
 		}
+		return false;
 	}
 
 	// Update
@@ -79,8 +79,8 @@ public class CDao {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
-			return false;
 		}
+		return false;
 	}
 
 	// Delete
@@ -105,8 +105,8 @@ public class CDao {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
-			return false;
 		}
+		return false;
 	}
 
 	// List
@@ -145,7 +145,7 @@ public class CDao {
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
-			return paciente;
 		}
+		return paciente;
 	}
 }

@@ -154,12 +154,16 @@ public class TelaPaciente extends JFrame {
 				"dataNasc", "cpf", "nCarteira", "contato", "convenio", "sexo" });
 
 		tablePacientes.setModel(modelo);
-
+		
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
-						paciente.getdataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
-						paciente.getConvenio(), paciente.getSexo() });
+				if(paciente == null) {
+					System.out.println("paciente está vazio");
+				}else {
+					modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
+							paciente.getdataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
+							paciente.getConvenio(), paciente.getSexo() });
+				}
 			}
 		}
 	}

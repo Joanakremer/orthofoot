@@ -30,8 +30,8 @@ public class CDaoEndereco {
 				e.printStackTrace();
 			}finally {
 				con.fecharConexao();
-				return false;
 			}
+			return false;
 		}
 		//Update -------------------------------------------------------------------------------
 		public boolean update(MEndereco a) {
@@ -51,8 +51,8 @@ public class CDaoEndereco {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
-						return false;
 					}
+					return false;
 				}
 		//Delete -------------------------------------------------------------------------------
 		public boolean delete(MEndereco a) {
@@ -71,8 +71,8 @@ public class CDaoEndereco {
 						e.printStackTrace();
 					}finally {
 						con.fecharConexao();
-						return false;
 					}
+					return false;
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MEndereco> listarAgenda() {
@@ -101,7 +101,7 @@ public class CDaoEndereco {
 				e.printStackTrace();
 			}finally {
 				con.fecharConexao();
-				return endereco;
 			}
+			return endereco;
 		}
 }

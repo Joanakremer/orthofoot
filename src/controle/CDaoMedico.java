@@ -53,8 +53,8 @@ con = CConexao.getInstancia();
 					e.printStackTrace();
 				}finally {
 					con.fecharConexao();
-					return false;
 				}
+				return false;
 			}
 	//Delete -------------------------------------------------------------------------------
 	public boolean delete(MMedico m) {
@@ -73,8 +73,8 @@ con = CConexao.getInstancia();
 					e.printStackTrace();
 				}finally {
 					con.fecharConexao();
-					return false;
 				}
+				return false;
 			}
 	//List -------------------------------------------------------------------------------
 	public ArrayList<MMedico> listarMedico() {
@@ -104,8 +104,8 @@ con = CConexao.getInstancia();
 			e.printStackTrace();
 		}finally {
 			con.fecharConexao();
-			return medico;
 		}
+		return medico;
 
 	}
 }
