@@ -50,10 +50,10 @@ public class CDao {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+			return false;
 		}
-		con.fecharConexao();
-
-		return false;
 	}
 
 	// Update
@@ -77,9 +77,10 @@ public class CDao {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+			return false;
 		}
-		con.fecharConexao();
-		return false;
 	}
 
 	// Delete
@@ -102,9 +103,10 @@ public class CDao {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+			return false;
 		}
-		con.fecharConexao();
-		return false;
 	}
 
 	// List
@@ -141,10 +143,9 @@ public class CDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+			return paciente;
 		}
-
-		con.fecharConexao();
-
-		return paciente;
 	}
 }

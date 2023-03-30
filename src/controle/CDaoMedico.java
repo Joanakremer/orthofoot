@@ -30,10 +30,10 @@ con = CConexao.getInstancia();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+			return false;
 		}
-		con.fecharConexao();
-		
-		return false;
 	}
 	//Update -------------------------------------------------------------------------------
 	public boolean update(MMedico m) {
@@ -51,9 +51,10 @@ con = CConexao.getInstancia();
 					return true;
 				} catch (SQLException e) {
 					e.printStackTrace();
+				}finally {
+					con.fecharConexao();
+					return false;
 				}
-				con.fecharConexao();
-				return false;
 			}
 	//Delete -------------------------------------------------------------------------------
 	public boolean delete(MMedico m) {
@@ -70,9 +71,10 @@ con = CConexao.getInstancia();
 					return true;
 				} catch (SQLException e) {
 					e.printStackTrace();
+				}finally {
+					con.fecharConexao();
+					return false;
 				}
-				con.fecharConexao();
-				return false;
 			}
 	//List -------------------------------------------------------------------------------
 	public ArrayList<MMedico> listarMedico() {
@@ -100,10 +102,10 @@ con = CConexao.getInstancia();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+			return medico;
 		}
 
-		con.fecharConexao();
-
-		return medico;
 	}
 }
