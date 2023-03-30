@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-<<<<<<< HEAD:src/visao/VisaoPrincipal.java
+
 import javax.imageio.ImageIO;
-=======
+
 import javax.swing.ImageIcon;
->>>>>>> Paciente:src/visao/Principal.java
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,14 +23,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import net.miginfocom.swing.MigLayout;
-<<<<<<< HEAD:src/visao/VisaoPrincipal.java
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Component;
 import javax.swing.SwingConstants;
-=======
->>>>>>> Paciente:src/visao/Principal.java
+
+
 import javax.swing.ImageIcon;
 
 public class VisaoPrincipal extends JFrame {

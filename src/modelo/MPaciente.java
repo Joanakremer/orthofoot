@@ -77,4 +77,8 @@ public class MPaciente {
 		this.cpf = cpf;
 	}
 
+	public boolean isEmpty() {
+		return false;
+	}
+
 }

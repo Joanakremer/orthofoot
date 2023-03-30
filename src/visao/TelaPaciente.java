@@ -9,14 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-<<<<<<< Updated upstream
+
 import javax.swing.border.LineBorder;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import net.miginfocom.swing.MigLayout;
-=======
+
 import javax.swing.table.DefaultTableModel;
 
 import controle.CDao;
@@ -27,7 +27,7 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
->>>>>>> Stashed changes
+
 
 public class TelaPaciente extends JFrame {
 
@@ -62,16 +62,16 @@ public class TelaPaciente extends JFrame {
 	 */
 	public TelaPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-<<<<<<< Updated upstream
+
 		setBounds(100, 100, 2000, 1050);
-=======
+
 		setBounds(100, 100, 849, 412);
->>>>>>> Stashed changes
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-<<<<<<< Updated upstream
+
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -80,7 +80,7 @@ public class TelaPaciente extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:60px,grow][20px:n:40px,grow]"));
 		
-=======
+
 		contentPane.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -145,7 +145,7 @@ public class TelaPaciente extends JFrame {
 
 		atualizar();
 
->>>>>>> Stashed changes
+
 	}
 
 	public void atualizar() {
@@ -154,12 +154,16 @@ public class TelaPaciente extends JFrame {
 				"dataNasc", "cpf", "nCarteira", "contato", "convenio", "sexo" });
 
 		tablePacientes.setModel(modelo);
-
+		
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
-						paciente.getdataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
-						paciente.getConvenio(), paciente.getSexo() });
+				if(paciente == null) {
+					System.out.println("paciente está vazio");
+				}else {
+					modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
+							paciente.getdataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
+							paciente.getConvenio(), paciente.getSexo() });
+				}
 			}
 		}
 	}
