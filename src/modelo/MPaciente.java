@@ -12,6 +12,32 @@ public class MPaciente {
 	private String sexo;
 	private Date dataNasc;
 	private Long cpf;
+	private MEndereco endereco;
+	private MAgenda agenda;
+
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public Date getDataNasc() {
+		return dataNasc;
+	}
+
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+
+	public MEndereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(MEndereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public int getProntuario() {
 		return prontuario;

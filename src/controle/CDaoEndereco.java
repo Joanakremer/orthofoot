@@ -11,7 +11,18 @@ import modelo.MEndereco;
 import modelo.MUsuario;
 
 public class CDaoEndereco {
+	private static CDaoEndereco instancia;
 	private CConexao con;
+	
+	
+	public static CDaoEndereco getInstancia() {
+		if (instancia == null) {
+			instancia = new CDaoEndereco();
+		}
+		return instancia;
+		}
+		private CDaoEndereco() {
+		}
 	//Insert -------------------------------------------------------------------------------
 		public boolean inserir(MEndereco a) {
 	con = CConexao.getInstancia();
@@ -75,7 +86,7 @@ public class CDaoEndereco {
 					return (valida == 0 ? false : true);
 				}
 		//List -------------------------------------------------------------------------------
-		public ArrayList<MEndereco> listarAgenda() {
+		public ArrayList<MEndereco> listarEndereco() {
 			ArrayList<MEndereco> endereco = new ArrayList<>();
 			
 			con = CConexao.getInstancia();
