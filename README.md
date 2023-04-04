@@ -39,6 +39,9 @@
 
 <h2> 💡 Diagrama de classes </h2>
 
+![diagrama de classes](https://user-images.githubusercontent.com/111135808/229806002-d13b5d65-6e05-4ad9-9ef8-f53ba9bb2d9f.png)
+
+
  <h2> 🧑‍🎓 Discentes: </h2>
  <div align="center">
   <a href="https://linktr.ee/orthofoot" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" target="_blank" widht="90" height="90"></a>
