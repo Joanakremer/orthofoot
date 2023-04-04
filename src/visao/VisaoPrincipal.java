@@ -27,10 +27,15 @@ import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Component;
+import java.awt.Cursor;
+
 import javax.swing.SwingConstants;
 
 
 import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VisaoPrincipal extends JFrame {
 
@@ -97,7 +102,7 @@ public class VisaoPrincipal extends JFrame {
 		panel_1.setBackground(new Color(95, 158, 160));
 		panel_1.setBorder(null);
 		panel.add(panel_1, "cell 0 0 18 2,grow");
-		panel_1.setLayout(new MigLayout("", "[20px:n:500px,grow][20px:n:300px,grow][20px:n:1200px,grow]", "[20px:n:90px,grow]"));
+		panel_1.setLayout(new MigLayout("", "[20px:n:400px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:90px,grow]"));
 		
 		JLabel lblNewLabel = new JLabel(" ");
 		lblNewLabel.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/Logo banner.png")));
@@ -107,10 +112,111 @@ public class VisaoPrincipal extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2, "cell 0 2 18 21,grow");
-		panel_2.setLayout(new MigLayout("", "[20px:n:2000px,grow]", "[20px:n:1200px,grow]"));
+		panel_2.setLayout(new MigLayout("", "[20px:n:250px,grow]", "[20px:n:1050px,grow]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		panel_2.add(lblNewLabel_1, "cell 0 0");
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(95, 158, 160));
+		panel_2.add(panel_3, "cell 0 0,grow");
+		panel_3.setLayout(new MigLayout("", "[20px:n:250px,grow]", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:30px,grow][20px:n:80px,grow]"));
+		
+		JLabel lblNewLabel_1 = new JLabel(" HOME");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_1.setForeground(Color.WHITE);
+				lblNewLabel_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_1.setForeground(Color.BLACK);
+				lblNewLabel_1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_1.setForeground(Color.BLACK);
+		lblNewLabel_1.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/casa32.png")));
+		lblNewLabel_1.setBorder(new LineBorder(new Color(255, 255, 255), 3, true));
+		panel_3.add(lblNewLabel_1, "cell 0 0,grow");
+		
+		JLabel lblNewLabel_2 = new JLabel(" AGENDA");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_2.setForeground(Color.WHITE);
+				lblNewLabel_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_2.setForeground(Color.BLACK);
+				lblNewLabel_2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_2.setForeground(Color.BLACK);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBorder(new LineBorder(new Color(255, 255, 255), 3, true));
+		lblNewLabel_2.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/agenda32.png")));
+		panel_3.add(lblNewLabel_2, "cell 0 1,grow");
+		
+		JLabel lblNewLabel_3 = new JLabel(" PACIENTE");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_3.setForeground(Color.WHITE);
+				lblNewLabel_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_3.setForeground(Color.BLACK);
+				lblNewLabel_3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_3.setForeground(Color.BLACK);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/paciente32.png")));
+		lblNewLabel_3.setBorder(new LineBorder(new Color(255, 255, 255), 3, true));
+		panel_3.add(lblNewLabel_3, "cell 0 2,grow");
+		
+		JLabel lblNewLabel_4 = new JLabel(" USUÁRIOS");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_4.setForeground(Color.WHITE);
+				lblNewLabel_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_4.setForeground(Color.BLACK);
+				lblNewLabel_4.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_4.setForeground(Color.BLACK);
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/usuarios32.png")));
+		lblNewLabel_4.setBorder(new LineBorder(new Color(255, 255, 255), 3, true));
+		panel_3.add(lblNewLabel_4, "cell 0 3,grow");
+		
+		JLabel lblNewLabel_5 = new JLabel(" LOGOUT");
+		lblNewLabel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_5.setForeground(Color.WHITE);
+				lblNewLabel_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_5.setForeground(Color.BLACK);
+				lblNewLabel_5.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_5.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/porta32.png")));
+		lblNewLabel_5.setBorder(new LineBorder(new Color(255, 255, 255), 3, true));
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblNewLabel_5, "cell 0 11,grow");
 		
 	}
 }
