@@ -2,47 +2,25 @@ package visao;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import net.miginfocom.swing.MigLayout;
 import java.awt.Cursor;
-import javax.swing.SwingConstants;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class VisaoPrincipal extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import net.miginfocom.swing.MigLayout;
+
+public class VisaoAgenda extends JFrame {
 
 	private JPanel contentPane;
-	private JLabel lblclock;
 
-	public void clock() {
-		Thread clock = new Thread() {
-			public void run() {
-
-				try {
-					for (;;) {
-						LocalDateTime dataHora = LocalDateTime.now();
-						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm");
-						String horaFormatada = dataHora.format(formatter);
-						lblclock.setText(horaFormatada);
-						sleep(1000);
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		clock.start();
-	}
-	
-	
-	
 	/**
 	 * Launch the application.
 	 */
@@ -50,8 +28,9 @@ public class VisaoPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisaoPrincipal frame = new VisaoPrincipal();
+					VisaoAgenda frame = new VisaoAgenda();
 					frame.setVisible(true);
+					frame.setUndecorated(true);
 					frame.setExtendedState(MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,12 +42,12 @@ public class VisaoPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VisaoPrincipal() {
+	public VisaoAgenda() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1050);
 		setExtendedState(MAXIMIZED_BOTH);
+		setBounds(100, 100, 2000, 1050);
 		contentPane = new JPanel();
-		contentPane.setBorder(null);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
@@ -76,13 +55,13 @@ public class VisaoPrincipal extends JFrame {
 		panel.setBorder(null);
 		panel.setBackground(new Color(95, 158, 160));
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:30px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:60px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(95, 158, 160));
 		panel_1.setBorder(null);
 		panel.add(panel_1, "cell 0 0 18 2,grow");
-		panel_1.setLayout(new MigLayout("", "[20px:n:400px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:250px,grow][20px:n:60px,grow]", "[20px:n:60px,grow]"));
+		panel_1.setLayout(new MigLayout("", "[20px:n:500px,grow][20px:n:300px,grow][20px:n:1200px,grow]", "[20px:n:90px,grow]"));
 		
 		JLabel lblNewLabel = new JLabel(" ");
 		lblNewLabel.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/Logo banner.png")));
@@ -107,7 +86,25 @@ public class VisaoPrincipal extends JFrame {
 		panel_3.add(lblNewLabel_1, "cell 1 0,grow");
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.WHITE);
+		panel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_4.setBackground(Color.WHITE);
+				panel_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_4.setBackground(new Color(95, 158, 160));
+				panel_4.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VisaoPrincipal visaoPrincipal = new VisaoPrincipal();
+				visaoPrincipal.setVisible(true);
+				dispose();
+			}
+		});
+		panel_4.setBackground(new Color(95, 158, 160));
 		panel_3.add(panel_4, "cell 0 1 2 1,grow");
 		panel_4.setLayout(new MigLayout("", "[20px:n:40px,grow][20px:n:200px,grow]", "[20px:n:50px,grow]"));
 		
@@ -121,25 +118,7 @@ public class VisaoPrincipal extends JFrame {
 		panel_4.add(lblNewLabel_3, "cell 1 0");
 		
 		JPanel panel_5 = new JPanel();
-		panel_5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panel_5.setBackground(Color.WHITE);
-				panel_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				panel_5.setBackground(new Color(95, 158, 160));
-				panel_5.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				VisaoAgenda visaoAgenda = new VisaoAgenda();
-				visaoAgenda.setVisible(true);
-				dispose();
-			}
-		});
-		panel_5.setBackground(new Color(95, 158, 160));
+		panel_5.setBackground(Color.WHITE);
 		panel_3.add(panel_5, "cell 0 3 2 1,grow");
 		panel_5.setLayout(new MigLayout("", "[20px:n:40px,grow][20px:n:200px,grow]", "[20px:n:50px,grow]"));
 		
@@ -190,10 +169,12 @@ public class VisaoPrincipal extends JFrame {
 				panel_7.setBackground(Color.WHITE);
 				panel_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
+			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_7.setBackground(new Color(95, 158, 160));
 				panel_7.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+			@Override
 			public void mouseClicked(MouseEvent e) {				
 				VisaoUsuario visaoUsuario = new VisaoUsuario();
 				visaoUsuario.setVisible(true);
@@ -247,27 +228,6 @@ public class VisaoPrincipal extends JFrame {
 		panel_2.add(panel_9, "cell 1 0 34 16,grow");
 		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:60px,grow][20px:n:100px,grow][20px:n:60px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
-		JPanel panel_11 = new JPanel();
-		panel_11.setBackground(new Color(95, 158, 160));
-		panel_9.add(panel_11, "cell 10 14,grow");
-		panel_11.setLayout(new MigLayout("", "[20px:n:100px,grow]", "[20px:n:50px,grow]"));
-		
-		JLabel lblNewLabel_15 = new JLabel("");
-		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_15.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/relogiocalendario24.png")));
-		panel_11.add(lblNewLabel_15, "cell 0 0,grow");
-		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBackground(new Color(95, 158, 160));
-		panel_9.add(panel_10, "cell 11 14 2 1,grow");
-		panel_10.setLayout(new MigLayout("", "[20px:n:250px,grow]", "[20px:n:40px,grow]"));
-		
-		lblclock = new JLabel("clock");
-		lblclock.setForeground(Color.BLACK);
-		lblclock.setHorizontalAlignment(SwingConstants.CENTER);
-		lblclock.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		panel_10.add(lblclock, "cell 0 0,grow");
-		clock();
-		
 	}
+
 }

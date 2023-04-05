@@ -9,8 +9,8 @@ import javax.swing.border.MatteBorder;
   
 public class HintTextField extends JTextField {  
   
-  Font gainFont = new Font("Dialog", Font.PLAIN, 24);  
-  Font lostFont = new Font("Dialog", Font.PLAIN, 24);  
+  Font gainFont = new Font("Yu Gothic UI", Font.PLAIN, 24);  
+  Font lostFont = new Font("Yu Gothic UI", Font.PLAIN, 24);  
   
   public HintTextField(final String hint) {  
   

@@ -9,8 +9,8 @@ import javax.swing.border.MatteBorder;
  
 
 public class HintPasswordField extends JPasswordField{
-	 Font gainFont = new Font("Dialog", Font.PLAIN, 20);  
-	  Font lostFont = new Font("Dialog", Font.PLAIN, 24);
+	 Font gainFont = new Font("Yu Gothic UI ", Font.PLAIN, 14);  
+	  Font lostFont = new Font("Yu Gothic UI ", Font.PLAIN, 24);
 	  
 	  public HintPasswordField(final String hint) {  
 		  

@@ -47,6 +47,7 @@ public class TelaLogin extends JFrame {
 					TelaLogin frame = new TelaLogin();
 					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setUndecorated(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,7 +69,7 @@ public class TelaLogin extends JFrame {
 //Text Field ------------------------------------------------------------------------------------------------------------------
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.BLACK));
+		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/trancar_32.png")));
 		lblNewLabel_1.setBounds(366, 357, 53, 48);
@@ -77,52 +78,54 @@ public class TelaLogin extends JFrame {
 		JLabel lblNewLabel_1_1 = new JLabel("");
 		lblNewLabel_1_1.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/usuario_24.png")));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.BLACK));
+		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		lblNewLabel_1_1.setBounds(366, 247, 53, 48);
 		contentPane.add(lblNewLabel_1_1);
 		
 		HintPasswordField senhatxt = new HintPasswordField("Senha"); 
+		senhatxt.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
 		senhatxt.setText("Senha");
 		senhatxt.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				senhatxt.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(95, 158, 160)));
-				lblNewLabel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(95, 158, 160)));
+				senhatxt.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(95, 158, 160)));
+				lblNewLabel_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(95, 158, 160)));
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				senhatxt.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.BLACK));
-				lblNewLabel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.BLACK));
+				senhatxt.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLACK));
+				lblNewLabel_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLACK));
 			}
 		});
-		senhatxt.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
+		senhatxt.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		senhatxt.setBounds(64, 357, 307, 48);
 		contentPane.add(senhatxt);
 		senhatxt.setColumns(10);
 		
 		HintTextField usertxt = new HintTextField("Usuário");
+		usertxt.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
 		usertxt.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				usertxt.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(95, 158, 160)));
-				lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(95, 158, 160)));
+				usertxt.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(95, 158, 160)));
+				lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(95, 158, 160)));
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				usertxt.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.BLACK));
-				lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.BLACK));
+				usertxt.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLACK));
+				lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) Color.BLACK));
 			}
 		});
-		usertxt.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
+		usertxt.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		usertxt.setColumns(10);
 		usertxt.setBounds(64, 247, 307, 48);
 		contentPane.add(usertxt);
 
 		JLabel lblNewLabel = new JLabel("Seu usuário ou senha estão incorretos.");
 		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setBounds(91, 416, 280, 16);
+		lblNewLabel.setBounds(86, 417, 280, 16);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setVisible(false);
 
@@ -130,7 +133,7 @@ public class TelaLogin extends JFrame {
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/imagens/remover.png")));
-		lblNewLabel_2.setBounds(64, 416, 21, 16);
+		lblNewLabel_2.setBounds(62, 417, 21, 16);
 		contentPane.add(lblNewLabel_2);
 		setLocationRelativeTo(null);
 		lblNewLabel_2.setVisible(false);
@@ -157,8 +160,8 @@ public class TelaLogin extends JFrame {
 				if (usuario != null) {
 					if (usuario.getLogin().equals(username) && usuario.getSenha().equals(senha)) {
 						dispose();
-						TelaPrincipal telaPrincipal = new TelaPrincipal(usuario);
-						telaPrincipal.setVisible(true);
+						TelaPrincipal VisaoPrincipal = new TelaPrincipal(usuario);
+						VisaoPrincipal.setVisible(true);
 					} 
 				}
 				lblNewLabel.setVisible(true);
@@ -178,8 +181,8 @@ public class TelaLogin extends JFrame {
 		loginbt.setBorder(null);
 		loginbt.setForeground(new Color(255, 255, 255));
 		loginbt.setBackground(new Color(95, 158, 160));
-		loginbt.setFont(new Font("Dialog", Font.BOLD, 19));
-		loginbt.setBounds(64, 496, 355, 40);
+		loginbt.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 27));
+		loginbt.setBounds(64, 505, 355, 48);
 		contentPane.add(loginbt);
 		
 		JPanel panel = new JPanel();
