@@ -147,7 +147,7 @@ public class TelaPaciente extends JFrame {
 	public void atualizar() {
 
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "prontuario", "nomeCompleto",
-				"dataNasc", "cpf", "nCarteira", "contato", "convenio", "sexo" });
+				"dataNasc", "cpf", "sexo", "contato", "convenio", "nCarteira" });
 
 		tablePacientes.setModel(modelo);
 		
