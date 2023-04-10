@@ -103,6 +103,7 @@ public class TelaLogin extends JFrame {
 		senhatxt.setColumns(10);
 		
 		HintTextField usertxt = new HintTextField("Usuário");
+		usertxt.setDragEnabled(true);
 		usertxt.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
 		usertxt.addFocusListener(new FocusAdapter() {
 			@Override

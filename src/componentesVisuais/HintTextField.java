@@ -4,8 +4,7 @@ import java.awt.Color;
 import java.awt.Font;  
 import java.awt.event.FocusAdapter;  
 import java.awt.event.FocusEvent;  
-import javax.swing.JTextField;
-import javax.swing.border.MatteBorder;  
+import javax.swing.JTextField;  
   
 public class HintTextField extends JTextField {  
   

@@ -23,17 +23,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.table.DefaultTableModel;
+
+import componentesVisuais.HintTextField;
 import controle.CDao;
 import modelo.MPaciente;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.ActionEvent;
+import java.awt.Frame;
+import javax.swing.JTextField;
 
 
 public class VisaoPaciente extends JFrame {
@@ -43,6 +51,7 @@ public class VisaoPaciente extends JFrame {
 	private MPaciente pacienteSelecionado;
 	private ArrayList<MPaciente> listaPaciente;
 	private CDao dao;
+	private JTextField textField;
 	/**
 	 * Launch the application.
 	 */
@@ -65,8 +74,8 @@ public class VisaoPaciente extends JFrame {
 	 * Create the frame.
 	 */
 	public VisaoPaciente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1050);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,12 +86,12 @@ public class VisaoPaciente extends JFrame {
 		panel.setBorder(null);
 		panel.setBackground(new Color(95, 158, 160));
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(95, 158, 160));
 		panel_1.setBorder(null);
-		panel.add(panel_1, "cell 0 0 18 2,grow");
+		panel.add(panel_1, "cell 0 0 17 2,grow");
 		panel_1.setLayout(new MigLayout("", "[20px:n:500px,grow][20px:n:300px,grow][20px:n:1200px,grow]", "[20px:n:90px,grow]"));
 		
 		JLabel lblNewLabel = new JLabel(" ");
@@ -93,8 +102,8 @@ public class VisaoPaciente extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
-		panel.add(panel_2, "cell 0 2 18 15,grow");
-		panel_2.setLayout(new MigLayout("", "[20px:n:240px,grow][grow][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel.add(panel_2, "cell 0 2 17 15,grow");
+		panel_2.setLayout(new MigLayout("", "[288.00px:n:240px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(95, 158, 160));
@@ -247,12 +256,48 @@ public class VisaoPaciente extends JFrame {
 		JPanel panel_9 = new JPanel();
 		panel_9.setBorder(null);
 		panel_9.setBackground(Color.WHITE);
-		panel_2.add(panel_9, "cell 1 0 34 16,grow");
-		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:60px,grow][20px:n:100px,grow][20px:n:60px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel_2.add(panel_9, "cell 1 0 25 16,grow");
+		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:45px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
-		/*JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(66, 91, 700, 244);
-		contentPane.add(scrollPane);
+		
+		HintTextField pesquisartxt = new HintTextField("Nº Prontuário");
+		pesquisartxt.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
+		pesquisartxt.setBounds(64, 247, 307, 48);
+		panel_9.add(pesquisartxt, "cell 0 1 3 1,grow");
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setFocusPainted(false);
+		btnNewButton.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar32.png")));
+		btnNewButton.setBackground(new Color(95, 158, 160));
+		panel_9.add(btnNewButton, "cell 3 1,grow");
+		
+		JButton btnNewButton_3 = new JButton(" Cadastrar");
+		btnNewButton_3.setFocusPainted(false);
+		btnNewButton_3.setHorizontalAlignment(SwingConstants.LEADING);
+		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
+		btnNewButton_3.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/adicionar32.png")));
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setBackground(new Color(95, 158, 160));
+		panel_9.add(btnNewButton_3, "cell 7 1 2 1,grow");
+		
+		JButton btnNewButton_2 = new JButton(" Excluir");
+		btnNewButton_2.setFocusPainted(false);
+		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEADING);
+		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
+		btnNewButton_2.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/excluir32.png")));
+		btnNewButton_2.setForeground(Color.WHITE);
+		btnNewButton_2.setBackground(new Color(95, 158, 160));
+		panel_9.add(btnNewButton_2, "cell 10 1 2 1,grow");
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setFocusPainted(false);
+		btnNewButton_1.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/atualizar32.png")));
+		btnNewButton_1.setBackground(new Color(95, 158, 160));
+		panel_9.add(btnNewButton_1, "cell 13 1,grow");
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panel_9.add(scrollPane, "cell 0 3 14 12,grow");
 
 		listaPaciente = dao.listarPaciente();
 		tablePacientes = new JTable();
@@ -294,6 +339,6 @@ public class VisaoPaciente extends JFrame {
 					}
 				}
 			}
-		}*/
+		}
 	}
-}
+
