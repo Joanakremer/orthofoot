@@ -28,6 +28,9 @@ import javax.swing.JFormattedTextField;
 
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class VisaoCadastroPaciente extends JFrame {
 
@@ -39,30 +42,13 @@ public class VisaoCadastroPaciente extends JFrame {
 	private JTextField txtContato;
 	private JTextField txtConvenio;
 	private JTextField txtCarteira;
+	private JTable table;
+	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VisaoCadastroPaciente frame = new VisaoCadastroPaciente();
-					frame.setVisible(true);
-					frame.setResizable(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public VisaoCadastroPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 910, 560);
+		setBounds(100, 100, 1060, 727);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,7 +68,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(95, 158, 160));
-		panel_1.setBounds(24, 81, 483, 419);
+		panel_1.setBounds(24, 81, 483, 357);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -109,7 +95,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		JLabel lblNewLabel_2_1 = new JLabel("* CPF");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		lblNewLabel_2_1.setBounds(21, 114, 437, 29);
+		lblNewLabel_2_1.setBounds(21, 107, 437, 29);
 		panel_1.add(lblNewLabel_2_1);
 		
 		new JTextField();
@@ -121,21 +107,21 @@ public class VisaoCadastroPaciente extends JFrame {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtCpf.setBounds(21, 142, 437, 29);
+		txtCpf.setBounds(21, 135, 437, 29);
 		panel_1.add(txtCpf);
 		txtCpf.setColumns(10);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("Sexo");
 		lblNewLabel_2_1_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		lblNewLabel_2_1_1.setBounds(21, 204, 203, 29);
+		lblNewLabel_2_1_1.setBounds(21, 184, 203, 29);
 		panel_1.add(lblNewLabel_2_1_1);
 		
 		txtSexo = new JTextField();
 		txtSexo.setForeground(Color.BLACK);
 		txtSexo.setBorder(new LineBorder(Color.WHITE, 4, true));
 		txtSexo.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		txtSexo.setBounds(21, 233, 203, 29);
+		txtSexo.setBounds(21, 213, 203, 29);
 		panel_1.add(txtSexo);
 		txtSexo.setColumns(10);
 		
@@ -148,14 +134,14 @@ public class VisaoCadastroPaciente extends JFrame {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		txtContato.setBounds(21, 326, 437, 29);
+		txtContato.setBounds(21, 291, 437, 29);
 		panel_1.add(txtContato);
 		txtContato.setColumns(10);
 		
 		JLabel lblNewLabel_2_1_3 = new JLabel("* Contato");
 		lblNewLabel_2_1_3.setForeground(Color.WHITE);
 		lblNewLabel_2_1_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		lblNewLabel_2_1_3.setBounds(21, 298, 437, 29);
+		lblNewLabel_2_1_3.setBounds(21, 263, 437, 29);
 		panel_1.add(lblNewLabel_2_1_3);
 		
 		new JTextField();
@@ -167,19 +153,19 @@ public class VisaoCadastroPaciente extends JFrame {
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		txtDMA.setBounds(258, 233, 200, 29);
+		txtDMA.setBounds(258, 213, 200, 29);
 		panel_1.add(txtDMA);
 		txtDMA.setColumns(10);
 		
 		JLabel lblNewLabel_2_1_2 = new JLabel("* Data Nascimento");
 		lblNewLabel_2_1_2.setForeground(Color.WHITE);
 		lblNewLabel_2_1_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		lblNewLabel_2_1_2.setBounds(258, 204, 200, 29);
+		lblNewLabel_2_1_2.setBounds(258, 184, 200, 29);
 		panel_1.add(lblNewLabel_2_1_2);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(95, 158, 160));
-		panel_2.setBounds(517, 81, 357, 230);
+		panel_2.setBounds(24, 447, 483, 230);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -194,7 +180,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		txtConvenio.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		txtConvenio.setBorder(new LineBorder(Color.WHITE, 4, true));
 		txtConvenio.setColumns(10);
-		txtConvenio.setBounds(23, 52, 315, 29);
+		txtConvenio.setBounds(23, 52, 433, 29);
 		panel_2.add(txtConvenio);
 		
 		JLabel lblNewLabel_2_1_2_2 = new JLabel("Nº Carteira");
@@ -208,7 +194,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		txtCarteira.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		txtCarteira.setBorder(new LineBorder(Color.WHITE, 4, true));
 		txtCarteira.setColumns(10);
-		txtCarteira.setBounds(23, 141, 315, 29);
+		txtCarteira.setBounds(23, 141, 433, 29);
 		panel_2.add(txtCarteira);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -220,7 +206,7 @@ public class VisaoCadastroPaciente extends JFrame {
 			}
 		});
 		btnVoltar.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		btnVoltar.setBounds(785, 465, 89, 35);
+		btnVoltar.setBounds(927, 642, 89, 35);
 		btnVoltar.setForeground(Color.WHITE);
 		btnVoltar.setBackground(new Color(95, 158, 160));
 		btnVoltar.setFocusPainted(false);
@@ -294,10 +280,61 @@ public class VisaoCadastroPaciente extends JFrame {
 			}
 		});
 		btnCadastrar.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		btnCadastrar.setBounds(517, 465, 224, 35);
+		btnCadastrar.setBounds(517, 642, 224, 35);
 		btnCadastrar.setForeground(Color.WHITE);
 		btnCadastrar.setBackground(new Color(95, 158, 160));
 		btnCadastrar.setFocusPainted(false);
 		contentPane.add(btnCadastrar);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(95, 158, 160));
+		panel_3.setBounds(517, 81, 499, 357);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 132, 479, 214);
+		panel_3.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"CEP", "Rua", "Cidade", "Estado"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(10, 46, 479, 45);
+		panel_3.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Atualizar");
+		btnNewButton.setBackground(new Color(95, 158, 160));
+		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 10));
+		btnNewButton.setBounds(394, 11, 75, 27);
+		btnCadastrar.setFocusPainted(false);
+		panel_4.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Deletar");
+		btnNewButton_1.setBackground(new Color(95, 158, 160));
+		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 10));
+		btnNewButton_1.setBounds(309, 11, 75, 27);
+		btnCadastrar.setFocusPainted(false);
+		panel_4.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Cadastrar");
+		btnNewButton_2.setBackground(new Color(95, 158, 160));
+		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 10));
+		btnCadastrar.setFocusPainted(false);
+		btnNewButton_2.setBounds(182, 10, 117, 28);
+		panel_4.add(btnNewButton_2);
+		
+		textField = new JTextField();
+		textField.setBounds(8, 9, 137, 29);
+		panel_4.add(textField);
+		textField.setColumns(10);
 	}
 }

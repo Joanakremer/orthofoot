@@ -52,27 +52,7 @@ public class VisaoPaciente extends JFrame {
 	private ArrayList<MPaciente> listaPaciente;
 	private CDao dao;
 	private JTextField textField;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VisaoPaciente frame = new VisaoPaciente();
-					frame.setVisible(true);
-					frame.setUndecorated(true);
-					frame.setExtendedState(MAXIMIZED_BOTH);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public VisaoPaciente() {
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,12 +66,12 @@ public class VisaoPaciente extends JFrame {
 		panel.setBorder(null);
 		panel.setBackground(new Color(95, 158, 160));
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(95, 158, 160));
 		panel_1.setBorder(null);
-		panel.add(panel_1, "cell 0 0 17 2,grow");
+		panel.add(panel_1, "cell 0 0 18 2,grow");
 		panel_1.setLayout(new MigLayout("", "[20px:n:500px,grow][20px:n:300px,grow][20px:n:1200px,grow]", "[20px:n:90px,grow]"));
 		
 		JLabel lblNewLabel = new JLabel(" ");
@@ -102,13 +82,13 @@ public class VisaoPaciente extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
-		panel.add(panel_2, "cell 0 2 17 15,grow");
-		panel_2.setLayout(new MigLayout("", "[288.00px:n:240px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel.add(panel_2, "cell 0 2 18 21,grow");
+		panel_2.setLayout(new MigLayout("", "[288.00px:n:240px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(95, 158, 160));
-		panel_2.add(panel_3, "cell 0 0 1 16,grow");
-		panel_3.setLayout(new MigLayout("", "[20px:n:200px,grow][20px:n:40px,grow]", "[20px:n:60px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:30px,grow][20px:n:50px,grow]"));
+		panel_2.add(panel_3, "cell 0 0 1 21,grow");
+		panel_3.setLayout(new MigLayout("", "[20px:n:200px,grow][20px:n:40px,grow]", "[20px:n:60px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:30px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow]"));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/menu32.png")));
@@ -226,7 +206,7 @@ public class VisaoPaciente extends JFrame {
 		panel_7.add(lblNewLabel_10, "cell 1 0");
 		
 		JPanel panel_8 = new JPanel();
-		panel_3.add(panel_8, "cell 0 13 2 1,grow");
+		panel_3.add(panel_8, "cell 0 16 2 1,grow");
 		panel_8.setLayout(new MigLayout("", "[20px:n:40px,grow][20px:n:150px,grow][20px:n:40px,grow]", "[20px:n:50px,grow]"));
 		
 		JLabel lblNewLabel_7 = new JLabel("");
@@ -260,17 +240,17 @@ public class VisaoPaciente extends JFrame {
 		JPanel panel_9 = new JPanel();
 		panel_9.setBorder(null);
 		panel_9.setBackground(Color.WHITE);
-		panel_2.add(panel_9, "cell 1 0 25 16,grow");
-		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:50px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel_2.add(panel_9, "cell 1 0 38 21,grow");
+		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:50px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		
 		JPanel panel_10 = new JPanel();
-		panel_9.add(panel_10, "cell 0 1 15 1,grow");
-		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[10px:n:50px,grow]"));
+		panel_9.add(panel_10, "cell 0 1 20 1,grow");
+		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[10px:n:50px,grow]"));
 		
 		
 		HintTextField pesquisartxt = new HintTextField("Pesquisar");
-		panel_10.add(pesquisartxt, "cell 0 0 3 1,grow");
+		panel_10.add(pesquisartxt, "cell 0 0 4 1,grow");
 		pesquisartxt.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
 		pesquisartxt.setBounds(64, 247, 307, 48);
 		
@@ -284,33 +264,25 @@ public class VisaoPaciente extends JFrame {
 				btnNewButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
-		panel_10.add(btnNewButton, "cell 3 0,grow");
+		panel_10.add(btnNewButton, "cell 4 0,grow");
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar24.png")));
 		btnNewButton.setBackground(new Color(95, 158, 160));
 		
-		JButton btnNewButton_3 = new JButton(" Cadastrar");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				btnNewButton_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton_3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				btnNewButton_1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VisaoCadastroPaciente frame = new VisaoCadastroPaciente();
-				frame.setVisible(true);
+				atualizar();
 			}
 		});
-		panel_10.add(btnNewButton_3, "cell 6 0 2 1,growx");
-		btnNewButton_3.setFocusPainted(false);
-		btnNewButton_3.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
-		btnNewButton_3.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/adicionar24.png")));
-		btnNewButton_3.setForeground(Color.WHITE);
-		btnNewButton_3.setBackground(new Color(95, 158, 160));
 		
 		JButton btnNewButton_2 = new JButton(" Excluir");
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
@@ -333,37 +305,45 @@ public class VisaoPaciente extends JFrame {
 				}
 			}
 		});
-		panel_10.add(btnNewButton_2, "cell 9 0 2 1,growx");
+		
+		JButton btnNewButton_3 = new JButton(" Cadastrar");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VisaoCadastroPaciente frame = new VisaoCadastroPaciente();
+				frame.setVisible(true);
+			}
+		});
+		panel_10.add(btnNewButton_3, "cell 10 0 2 1,growx");
+		btnNewButton_3.setFocusPainted(false);
+		btnNewButton_3.setHorizontalAlignment(SwingConstants.LEADING);
+		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
+		btnNewButton_3.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/adicionar24.png")));
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setBackground(new Color(95, 158, 160));
+		panel_10.add(btnNewButton_2, "cell 14 0 2 1,growx");
 		btnNewButton_2.setFocusPainted(false);
 		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEADING);
 		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
 		btnNewButton_2.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/excluir24.png")));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(new Color(95, 158, 160));
-		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent e) {
-				btnNewButton_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnNewButton_1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				atualizar();
-			}
-		});
-		panel_10.add(btnNewButton_1, "cell 12 0,grow");
+		panel_10.add(btnNewButton_1, "cell 18 0,grow");
 		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/atualizar24.png")));
 		btnNewButton_1.setBackground(new Color(95, 158, 160));
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel_9.add(scrollPane, "cell 0 3 15 11,grow");
-
+		panel_9.add(scrollPane, "cell 0 3 20 17,grow");
+		dao = CDao.getInstancia();
 		listaPaciente = dao.listarPaciente();
 		tablePacientes = new JTable();
 

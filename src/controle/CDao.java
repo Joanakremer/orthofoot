@@ -21,7 +21,7 @@ public class CDao {
 		}
 		return instancia;
 	}
-	private CDao() {
+	public CDao() {
 	}
 
 	// Insert
@@ -31,7 +31,7 @@ public class CDao {
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "INSERT INTO paciente (pronturaio, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALLUES (?, ?);";
+			String query = "INSERT INTO paciente (pronturaio, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALUES (?, ?,?,?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setInt(1, p.getProntuario());
@@ -59,7 +59,7 @@ public class CDao {
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "UPDATE pessoa Set nome = ?, Set cpf = ?, Set contato = ?, Set dataNasc = ?, Set convenio = ?, Set nCarteira = ?, Set sexo = ? WHERE prontuario = ?";
+			String query = "UPDATE paciente Set nomeCompleto = ?, Set cpf = ?, Set contato = ?, Set dataNasc = ?, Set convenio = ?, Set nCarteira = ?, Set sexo = ? WHERE prontuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setInt(1, p.getProntuario());
@@ -86,7 +86,7 @@ public class CDao {
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "DELETE FROM paciente Where cpf = ?";
+			String query = "DELETE FROM paciente Where prontuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 			stm.setInt(1, p.getProntuario());
 			stm.setString(2, p.getnomeCompleto());
@@ -115,7 +115,7 @@ public class CDao {
 
 		try {
 			Statement stm = c.createStatement();
-			String query = "SELECT * FROM pessoa";
+			String query = "SELECT * FROM paciente";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 				int prontuario = rs.getInt("prontuario");

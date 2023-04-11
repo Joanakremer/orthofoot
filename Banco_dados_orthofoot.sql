@@ -22,7 +22,7 @@ dataNasc DATE NOT NULL,
 sexo VARCHAR(20) 
 );
 
-CREATE table pacientes(
+CREATE table paciente(
 prontuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 nomeCompleto VARCHAR(100) NOT NULL,
 cpf VARCHAR(45) NOT NULL,
@@ -30,9 +30,7 @@ contato VARCHAR(45) NOT NULL,
 dataNasc DATE NOT NULL,
 convenio VARCHAR (45),
 nCarteira VARCHAR (45),
-sexo VARCHAR (45),
-cep INT NOT NULL,
-FOREIGN KEY (cep) REFERENCES endereco(cep)
+sexo VARCHAR (45)
 );
 
 CREATE table agendas(
@@ -43,7 +41,7 @@ titulo VARCHAR(45),
 nCartao INT,
 prontuario INT NOT NULL,
 crm INT NOT NULL,
-FOREIGN KEY(prontuario) REFERENCES pacientes(prontuario),
+FOREIGN KEY(prontuario) REFERENCES paciente(prontuario),
 FOREIGN KEY(crm) REFERENCES medicos(crm)
 );
 

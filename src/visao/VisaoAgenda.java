@@ -21,27 +21,7 @@ public class VisaoAgenda extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VisaoAgenda frame = new VisaoAgenda();
-					frame.setVisible(true);
-					frame.setUndecorated(true);
-					frame.setExtendedState(MAXIMIZED_BOTH);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public VisaoAgenda() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
@@ -72,12 +52,12 @@ public class VisaoAgenda extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		panel.add(panel_2, "cell 0 2 18 20,grow");
-		panel_2.setLayout(new MigLayout("", "[20px:n:240px,grow][grow][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel_2.setLayout(new MigLayout("", "[20px:n:240px,grow][grow][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(95, 158, 160));
-		panel_2.add(panel_3, "cell 0 0 1 16,grow");
-		panel_3.setLayout(new MigLayout("", "[20px:n:200px,grow][20px:n:40px,grow]", "[20px:n:60px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:30px,grow][20px:n:50px,grow]"));
+		panel_2.add(panel_3, "cell 0 0 1 21,grow");
+		panel_3.setLayout(new MigLayout("", "[20px:n:200px,grow][20px:n:40px,grow]", "[20px:n:60px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][10px:n:10px,grow][20px:n:50px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:30px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow]"));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/menu32.png")));
@@ -195,7 +175,7 @@ public class VisaoAgenda extends JFrame {
 		panel_7.add(lblNewLabel_10, "cell 1 0");
 		
 		JPanel panel_8 = new JPanel();
-		panel_3.add(panel_8, "cell 0 13 2 1,grow");
+		panel_3.add(panel_8, "cell 0 16 2 1,grow");
 		panel_8.setLayout(new MigLayout("", "[20px:n:40px,grow][20px:n:150px,grow][20px:n:40px,grow]", "[20px:n:50px,grow]"));
 		
 		JLabel lblNewLabel_7 = new JLabel("");
@@ -229,7 +209,7 @@ public class VisaoAgenda extends JFrame {
 		JPanel panel_9 = new JPanel();
 		panel_9.setBorder(null);
 		panel_9.setBackground(Color.WHITE);
-		panel_2.add(panel_9, "cell 1 0 34 16,grow");
+		panel_2.add(panel_9, "cell 1 0 34 21,grow");
 		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:60px,grow][20px:n:100px,grow][20px:n:60px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 	}
