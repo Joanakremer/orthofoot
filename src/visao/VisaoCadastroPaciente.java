@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -146,7 +148,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		
 		new JTextField();
 		try {
-			txtDMA = new JFormattedTextField(new MaskFormatter("##/##/##"));
+			txtDMA = new JFormattedTextField(new MaskFormatter("##/##/####"));
 			txtDMA.setForeground(Color.BLACK);
 			txtDMA.setBorder(new LineBorder(Color.WHITE, 4, true));
 			txtDMA.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
@@ -226,6 +228,8 @@ public class VisaoCadastroPaciente extends JFrame {
 				if (dataNascimento == null || dataNascimento.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
 				} else {
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate date = LocalDate.parse(dataNascimento,formatter);
 					newPaciente.setdataNasc(Date.valueOf(dataNascimento));
 				}
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
