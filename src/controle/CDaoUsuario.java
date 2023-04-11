@@ -125,7 +125,7 @@ public class CDaoUsuario {
 				int idUsuario = rs.getInt("idusuario");
 				String login = rs.getString("login");
 				String psw = rs.getString("senha");
-				int tipoUsuario = rs.getInt("tipo_usuario");
+				int tipoUsuario = rs.getInt("tipoUsuario");
 
 				u = new MUsuario();
 				u.setIdUsuario(idUsuario);

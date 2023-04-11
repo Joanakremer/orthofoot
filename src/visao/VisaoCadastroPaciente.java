@@ -32,18 +32,10 @@ import javax.swing.border.LineBorder;
 public class VisaoCadastroPaciente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
 	private JTextField txtNome;
-	private JTextField cpftxt;
 	private JTextField txtCpf;
 	private JTextField txtSexo;
-	private JTextField nasctxt;
 	private JTextField txtDMA;
-	private JTextField contatotxt;
 	private JTextField txtContato;
 	private JTextField txtConvenio;
 	private JTextField txtCarteira;
@@ -120,7 +112,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		lblNewLabel_2_1.setBounds(21, 114, 437, 29);
 		panel_1.add(lblNewLabel_2_1);
 		
-		cpftxt = new JTextField();
+		new JTextField();
 		try {
 			txtCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
 			txtCpf.setForeground(Color.BLACK);
@@ -147,7 +139,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		panel_1.add(txtSexo);
 		txtSexo.setColumns(10);
 		
-		contatotxt = new JTextField();
+		new JTextField();
 		try {
 			txtContato = new JFormattedTextField(new MaskFormatter("(+##)## #####-####"));
 			txtContato.setForeground(Color.BLACK);
@@ -166,7 +158,7 @@ public class VisaoCadastroPaciente extends JFrame {
 		lblNewLabel_2_1_3.setBounds(21, 298, 437, 29);
 		panel_1.add(lblNewLabel_2_1_3);
 		
-		nasctxt = new JTextField();
+		new JTextField();
 		try {
 			txtDMA = new JFormattedTextField(new MaskFormatter("##/##/##"));
 			txtDMA.setForeground(Color.BLACK);

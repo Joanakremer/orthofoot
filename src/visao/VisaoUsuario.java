@@ -323,7 +323,7 @@ public class VisaoUsuario extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nome", "CPF", "Tipo", "Status"
+				"ID Usuário", "Login", "Senha", "Tipo"
 			}
 		));
 		scrollPane.setViewportView(tableUsuarios);

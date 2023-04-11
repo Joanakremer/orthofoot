@@ -29,7 +29,7 @@ public class CDaoEndereco {
 			Connection c = con.conectar();
 			int valida = 0;
 			try {
-				String query = "INSERT INTO endereco (cep, rua, cidade, estado) VALLUES (?, ?);";
+				String query = "INSERT INTO endereco (cep, rua, cidade, estado) VALLUES (?, ?, ?, ?);";
 				PreparedStatement stm = c.prepareStatement(query);
 				
 				stm.setInt(1, a.getCep());

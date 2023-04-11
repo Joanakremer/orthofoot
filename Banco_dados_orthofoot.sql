@@ -1,7 +1,7 @@
 CREATE database orthofoot;
 USE orthofoot;
 
-CREATE table enderecos(
+CREATE table endereco(
 cep INT NOT NULL PRIMARY KEY,
 rua VARCHAR(100)NOT NULL,
 cidade VARCHAR(100)NOT NULL,
@@ -32,7 +32,7 @@ convenio VARCHAR (45),
 nCarteira VARCHAR (45),
 sexo VARCHAR (45),
 cep INT NOT NULL,
-FOREIGN KEY (cep) REFERENCES enderecos(cep)
+FOREIGN KEY (cep) REFERENCES endereco(cep)
 );
 
 CREATE table agendas(
@@ -48,14 +48,6 @@ FOREIGN KEY(crm) REFERENCES medicos(crm)
 );
 
 
-insert into enderecos(cep, rua, cidade, estado) values ('101', 'Pass', 'Staten Island', 'NY'),
-('500', 'Trail', 'Brooklyn', 'NY'),
-('1513', 'Hill', 'Staten Island', 'NY'),
-('4749', 'Drive', 'Rochester', 'NY'),
-('09794', 'Crossing', 'Jamaica', 'NY'),
-('246', 'Circle', 'New York City', 'NY'),
-('42', 'Terrace', 'New York City', 'NY'),
-('878', 'Parkway', 'Bronx', 'NY'),
-('9', 'Way', 'Brooklyn', 'NY');
+insert into usuarios(idusuario,login,senha,tipoUsuario ) values (1, 'Admin', 'Admin', 1);
 
-SELECT * FROM enderecos;
+SELECT * FROM usuarios;
