@@ -248,6 +248,10 @@ public class VisaoPaciente extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_11.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
 		});
 		lblNewLabel_11.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/porta28.png")));
 		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
@@ -257,47 +261,108 @@ public class VisaoPaciente extends JFrame {
 		panel_9.setBorder(null);
 		panel_9.setBackground(Color.WHITE);
 		panel_2.add(panel_9, "cell 1 0 25 16,grow");
-		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:45px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
+		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:40px,grow][20px:n:50px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		
-		HintTextField pesquisartxt = new HintTextField("Nº Prontuário");
+		JPanel panel_10 = new JPanel();
+		panel_9.add(panel_10, "cell 0 1 15 1,grow");
+		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[10px:n:50px,grow]"));
+		
+		
+		HintTextField pesquisartxt = new HintTextField("Pesquisar");
+		panel_10.add(pesquisartxt, "cell 0 0 3 1,grow");
 		pesquisartxt.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
 		pesquisartxt.setBounds(64, 247, 307, 48);
-		panel_9.add(pesquisartxt, "cell 0 1 3 1,grow");
 		
 		JButton btnNewButton = new JButton("");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		panel_10.add(btnNewButton, "cell 3 0,grow");
 		btnNewButton.setFocusPainted(false);
-		btnNewButton.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar32.png")));
+		btnNewButton.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar24.png")));
 		btnNewButton.setBackground(new Color(95, 158, 160));
-		panel_9.add(btnNewButton, "cell 3 1,grow");
 		
 		JButton btnNewButton_3 = new JButton(" Cadastrar");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VisaoCadastroPaciente frame = new VisaoCadastroPaciente();
+				frame.setVisible(true);
+			}
+		});
+		panel_10.add(btnNewButton_3, "cell 6 0 2 1,growx");
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setHorizontalAlignment(SwingConstants.LEADING);
 		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
-		btnNewButton_3.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/adicionar32.png")));
+		btnNewButton_3.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/adicionar24.png")));
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.setBackground(new Color(95, 158, 160));
-		panel_9.add(btnNewButton_3, "cell 7 1 2 1,grow");
 		
 		JButton btnNewButton_2 = new JButton(" Excluir");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(pacienteSelecionado != null) {
+					listaPaciente.remove(pacienteSelecionado);
+					
+					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
+					atualizar();
+				}else {
+					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
+				}
+			}
+		});
+		panel_10.add(btnNewButton_2, "cell 9 0 2 1,growx");
 		btnNewButton_2.setFocusPainted(false);
 		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEADING);
 		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
-		btnNewButton_2.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/excluir32.png")));
+		btnNewButton_2.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/excluir24.png")));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(new Color(95, 158, 160));
-		panel_9.add(btnNewButton_2, "cell 10 1 2 1,grow");
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				atualizar();
+			}
+		});
+		panel_10.add(btnNewButton_1, "cell 12 0,grow");
 		btnNewButton_1.setFocusPainted(false);
-		btnNewButton_1.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/atualizar32.png")));
+		btnNewButton_1.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/atualizar24.png")));
 		btnNewButton_1.setBackground(new Color(95, 158, 160));
-		panel_9.add(btnNewButton_1, "cell 13 1,grow");
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel_9.add(scrollPane, "cell 0 3 14 12,grow");
+		panel_9.add(scrollPane, "cell 0 3 15 11,grow");
 
 		listaPaciente = dao.listarPaciente();
 		tablePacientes = new JTable();
@@ -325,7 +390,6 @@ public class VisaoPaciente extends JFrame {
 
 			DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "prontuario", "nomeCompleto",
 					"dataNasc", "cpf", "sexo", "contato", "convenio", "nCarteira" });
-
 			tablePacientes.setModel(modelo);
 			
 			if (listaPaciente.size() > 0 && listaPaciente != null) {

@@ -217,6 +217,10 @@ public class VisaoAgenda extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_11.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
 		});
 		lblNewLabel_11.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/porta28.png")));
 		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);

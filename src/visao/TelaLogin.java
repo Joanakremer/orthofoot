@@ -47,7 +47,6 @@ public class TelaLogin extends JFrame {
 					TelaLogin frame = new TelaLogin();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.setUndecorated(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -161,8 +160,8 @@ public class TelaLogin extends JFrame {
 				if (usuario != null) {
 					if (usuario.getLogin().equals(username) && usuario.getSenha().equals(senha)) {
 						dispose();
-						TelaPrincipal VisaoPrincipal = new TelaPrincipal(usuario);
-						VisaoPrincipal.setVisible(true);
+						VisaoPrincipal visaoPrincipal = new VisaoPrincipal();
+						visaoPrincipal.setVisible(true);
 					} 
 				}
 				lblNewLabel.setVisible(true);
@@ -190,9 +189,6 @@ public class TelaLogin extends JFrame {
 		panel.setBackground(new Color(95, 158, 160));
 		panel.setBounds(0, 51, 66, 94);
 		contentPane.add(panel);
-		
-		
-
 		
 	}
 }
