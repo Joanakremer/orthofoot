@@ -131,7 +131,7 @@ public class CDao {
 				p.setnomeCompleto(nomeCompleto);
 				p.setCpf(cpf);
 				p.setContato(contato);
-				p.setdataNasc(dataNasc);
+				p.setDataNasc(dataNasc);
 				p.setConvenio(convenio);
 				p.setnCarteira(nCarteira);
 				p.setSexo(sexo);

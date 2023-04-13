@@ -230,7 +230,7 @@ public class VisaoCadastroPaciente extends JFrame {
 				} else {
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					LocalDate date = LocalDate.parse(dataNascimento,formatter);
-					newPaciente.setdataNasc(Date.valueOf(dataNascimento));
+					newPaciente.setDataNasc(Date.valueOf(date));
 				}
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {

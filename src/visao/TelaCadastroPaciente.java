@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.ParseException;
+import java.time.LocalDate;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -18,13 +19,13 @@ import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import modelo.MPaciente;
+import javax.swing.JComboBox;
 
 public class TelaCadastroPaciente extends JFrame {
 
 	private JPanel contentPane;
 	private JFormattedTextField txtProntuario;
 	private JTextField txtNome;
-	private JFormattedTextField txtDMA;
 	private JFormattedTextField txtCpf;
 	private JFormattedTextField txtCarteira;
 	private JFormattedTextField txtContato;
@@ -72,15 +73,6 @@ public class TelaCadastroPaciente extends JFrame {
 		txtNome.setBounds(10, 68, 157, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
-
-		try {
-			txtDMA = new JFormattedTextField(new MaskFormatter("##/##/##"));
-		} catch (ParseException e2) {
-			e2.printStackTrace();
-		}
-		txtDMA.setBounds(10, 112, 157, 20);
-		contentPane.add(txtDMA);
-		txtDMA.setColumns(10);
 
 		try {
 			txtCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
@@ -168,12 +160,17 @@ public class TelaCadastroPaciente extends JFrame {
 				} else {
 					newPaciente.setnomeCompleto(nome);
 				}
-				String dataNascimento = txtDMA.getText().replace("/", "");
-				if (dataNascimento == null || dataNascimento.trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
-				} else {
-					newPaciente.setdataNasc(Date.valueOf(dataNascimento));
-				}
+//				String dataNascimento = txtDia.getText().replace("/", "");
+//				if (dataNascimento == null || dataNascimento.trim().isEmpty()) {
+//					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
+//				} else {
+//					LocalDate datas = LocalDate.parse(dataNascimento);
+//					newPaciente.setDataNasc(Date.valueOf(datas));
+//					/*
+//					 * LocalDate data1 = LocalDate.parse(dataNascimento);
+//					 * newPaciente.setdataNasc(Date.valueOf(dataNascimento));
+//					 */
+//				}
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
@@ -186,7 +183,8 @@ public class TelaCadastroPaciente extends JFrame {
 				} else {
 					newPaciente.setnCarteira(carteira);
 				}
-				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-", "");
+				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-",
+						"");
 				if (contato == null || contato.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CONTATO está vazio");
 				} else {
@@ -212,7 +210,7 @@ public class TelaCadastroPaciente extends JFrame {
 
 					txtProntuario.setText(null);
 					txtNome.setText(null);
-					txtDMA.setText(null);
+//					txtDia.setText(null);
 					txtCpf.setText(null);
 					txtCarteira.setText(null);
 					txtContato.setText(null);
@@ -226,7 +224,7 @@ public class TelaCadastroPaciente extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnCadastrar.setBounds(279, 76, 163, 37);
+		btnCadastrar.setBounds(203, 24, 163, 37);
 		contentPane.add(btnCadastrar);
 
 		JButton btnVoltar = new JButton("Voltar");
@@ -239,5 +237,32 @@ public class TelaCadastroPaciente extends JFrame {
 		});
 		btnVoltar.setBounds(319, 199, 89, 23);
 		contentPane.add(btnVoltar);
+		
+		JComboBox<String> cbAno = new JComboBox<>();
+		int ano = LocalDate.now().getYear();
+		for (int i = 0; i < 110; i++) {
+			cbAno.addItem(String.valueOf(ano));
+			ano--;
+		}
+		cbAno.setBounds(144, 111, 51, 22);
+		contentPane.add(cbAno);
+		
+		JComboBox<String> cbMes = new JComboBox();
+		int mes = 1;
+		for (int i = 0; i < 12; i++) {
+			cbMes.addItem(String.valueOf(mes));
+			mes++;
+		}
+		cbMes.setBounds(71, 111, 63, 22);
+		contentPane.add(cbMes);
+		
+		JComboBox<String> cbDia = new JComboBox();
+		int dia = 1;
+		for (int i = 0; i < 31; i++) {
+			cbDia.addItem(String.valueOf(dia));
+			dia++;
+		}
+		cbDia.setBounds(10, 111, 51, 22);
+		contentPane.add(cbDia);
 	}
 }

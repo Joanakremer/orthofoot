@@ -91,10 +91,6 @@ public class MPaciente {
 		return dataNasc;
 	}
 
-	public void setdataNasc(Date dataNasc) {
-		this.dataNasc = dataNasc;
-	}
-
 	public Long getCpf() {
 		return cpf;
 	}
