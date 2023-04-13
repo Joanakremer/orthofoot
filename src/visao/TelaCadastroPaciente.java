@@ -28,18 +28,19 @@ import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import modelo.MPaciente;
+import javax.swing.JComboBox;
 
 public class TelaCadastroPaciente extends JFrame {
 
 	private JPanel contentPane;
 	private JFormattedTextField txtProntuario;
 	private JTextField txtNome;
-	private JFormattedTextField txtDMA;
 	private JFormattedTextField txtCpf;
 	private JFormattedTextField txtCarteira;
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JTextField txtSexo;
+	private JComboBox<String> cbDia, cbMes, cbAno;
 
 	/**
 	 * Launch the application.
@@ -258,7 +259,8 @@ public class TelaCadastroPaciente extends JFrame {
 				} else {
 					newPaciente.setnCarteira(carteira);
 				}
-				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-", "");
+				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-",
+						"");
 				if (contato == null || contato.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CONTATO está vazio");
 				} else {
@@ -283,7 +285,7 @@ public class TelaCadastroPaciente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
 
 					txtNome.setText(null);
-					txtDMA.setText(null);
+//					txtDia.setText(null);
 					txtCpf.setText(null);
 					txtCarteira.setText(null);
 					txtContato.setText(null);

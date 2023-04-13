@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import modelo.MPaciente;
@@ -21,6 +23,7 @@ public class CDao {
 		}
 		return instancia;
 	}
+
 	public CDao() {
 	}
 
@@ -38,7 +41,7 @@ public class CDao {
 			stm.setString(2, p.getnomeCompleto());
 			stm.setLong(3, p.getCpf());
 			stm.setString(4, p.getContato());
-			stm.setDate(5, p.getdataNasc());
+			stm.setDate(5, Date.valueOf(p.getdataNasc()));
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
@@ -66,11 +69,11 @@ public class CDao {
 			stm.setString(2, p.getnomeCompleto());
 			stm.setLong(3, p.getCpf());
 			stm.setString(4, p.getContato());
-			stm.setDate(5, p.getdataNasc());
+			stm.setDate(5, Date.valueOf(p.getdataNasc()));
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
-			valida =stm.executeUpdate(); // TODO alterar
+			valida = stm.executeUpdate(); // TODO alterar
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -92,7 +95,7 @@ public class CDao {
 			stm.setString(2, p.getnomeCompleto());
 			stm.setLong(3, p.getCpf());
 			stm.setString(4, p.getContato());
-			stm.setDate(5, p.getdataNasc());
+			stm.setDate(5, Date.valueOf(p.getdataNasc()));
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
@@ -102,7 +105,7 @@ public class CDao {
 		} finally {
 			con.fecharConexao();
 		}
-		 return (valida == 0 ? false : true);
+		return (valida == 0 ? false : true);
 	}
 
 	// List
@@ -131,7 +134,7 @@ public class CDao {
 				p.setnomeCompleto(nomeCompleto);
 				p.setCpf(cpf);
 				p.setContato(contato);
-				p.setdataNasc(dataNasc);
+				p.setDataNasc(dataNasc.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 				p.setConvenio(convenio);
 				p.setnCarteira(nCarteira);
 				p.setSexo(sexo);
