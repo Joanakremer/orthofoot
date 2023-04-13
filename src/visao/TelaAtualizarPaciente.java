@@ -152,7 +152,8 @@ public class TelaAtualizarPaciente extends JFrame {
 				if (dataNascimento == null || dataNascimento.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
 				} else {
-					pacienteSelecionado.setDataNasc(Date.valueOf(dataNascimento));
+					// TODO arrumar
+//					pacienteSelecionado.setDataNasc(Date.valueOf(dataNascimento));
 				}
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {

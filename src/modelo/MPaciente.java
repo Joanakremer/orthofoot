@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class MPaciente {
 
@@ -10,7 +11,7 @@ public class MPaciente {
 	private String convenio;
 	private String nCarteira;
 	private String sexo;
-	private Date dataNasc;
+	private LocalDate dataNasc;
 	private Long cpf;
 	private MEndereco endereco;
 	private MAgenda agenda;
@@ -23,11 +24,11 @@ public class MPaciente {
 		this.nomeCompleto = nomeCompleto;
 	}
 
-	public Date getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setDataNasc(Date dataNasc) {
+	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
@@ -87,7 +88,7 @@ public class MPaciente {
 		this.sexo = sexo;
 	}
 
-	public Date getdataNasc() {
+	public LocalDate getdataNasc() {
 		return dataNasc;
 	}
 

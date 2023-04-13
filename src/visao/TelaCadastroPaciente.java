@@ -31,6 +31,7 @@ public class TelaCadastroPaciente extends JFrame {
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JTextField txtSexo;
+	private JComboBox<String> cbDia, cbMes, cbAno;
 
 	/**
 	 * Launch the application.
@@ -160,17 +161,18 @@ public class TelaCadastroPaciente extends JFrame {
 				} else {
 					newPaciente.setnomeCompleto(nome);
 				}
-//				String dataNascimento = txtDia.getText().replace("/", "");
-//				if (dataNascimento == null || dataNascimento.trim().isEmpty()) {
-//					JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO está vazio");
-//				} else {
-//					LocalDate datas = LocalDate.parse(dataNascimento);
-//					newPaciente.setDataNasc(Date.valueOf(datas));
-//					/*
-//					 * LocalDate data1 = LocalDate.parse(dataNascimento);
-//					 * newPaciente.setdataNasc(Date.valueOf(dataNascimento));
-//					 */
-//				}
+
+				String dia = (String) cbDia.getSelectedItem();
+				String mes = (String) cbMes.getSelectedItem();
+				String ano = (String) cbAno.getSelectedItem();
+
+				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
+				newPaciente.setDataNasc(data);
+				/*
+				 * LocalDate data1 = LocalDate.parse(dataNascimento);
+				 * newPaciente.setdataNasc(Date.valueOf(dataNascimento));
+				 */
+
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
@@ -237,8 +239,8 @@ public class TelaCadastroPaciente extends JFrame {
 		});
 		btnVoltar.setBounds(319, 199, 89, 23);
 		contentPane.add(btnVoltar);
-		
-		JComboBox<String> cbAno = new JComboBox<>();
+
+		cbAno = new JComboBox<>();
 		int ano = LocalDate.now().getYear();
 		for (int i = 0; i < 110; i++) {
 			cbAno.addItem(String.valueOf(ano));
@@ -246,8 +248,8 @@ public class TelaCadastroPaciente extends JFrame {
 		}
 		cbAno.setBounds(144, 111, 51, 22);
 		contentPane.add(cbAno);
-		
-		JComboBox<String> cbMes = new JComboBox();
+
+		cbMes = new JComboBox<>();
 		int mes = 1;
 		for (int i = 0; i < 12; i++) {
 			cbMes.addItem(String.valueOf(mes));
@@ -255,8 +257,8 @@ public class TelaCadastroPaciente extends JFrame {
 		}
 		cbMes.setBounds(71, 111, 63, 22);
 		contentPane.add(cbMes);
-		
-		JComboBox<String> cbDia = new JComboBox();
+
+		cbDia = new JComboBox<>();
 		int dia = 1;
 		for (int i = 0; i < 31; i++) {
 			cbDia.addItem(String.valueOf(dia));
