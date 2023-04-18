@@ -12,8 +12,21 @@ import modelo.MMedico;
 
 
 public class CDaoMedico {
-
+	
+	private static CDaoMedico instancia;
 	private CConexao con;
+
+	public static CDaoMedico getInstancia() {
+		if (instancia == null) {
+			instancia = new CDaoMedico();
+		}
+		return instancia;
+	}
+
+	 public CDaoMedico() {
+	}
+
+
 	//Insert -------------------------------------------------------------------------------
 	public boolean inserir(MMedico m) {
 con = CConexao.getInstancia();
