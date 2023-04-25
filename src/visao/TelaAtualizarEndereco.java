@@ -1,10 +1,13 @@
 package visao;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.CDaoEndereco;
 import modelo.MEndereco;
@@ -13,8 +16,12 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class TelaAtualizarEndereco extends JFrame {
 
@@ -33,7 +40,7 @@ public class TelaAtualizarEndereco extends JFrame {
 			public void run() {
 				try {
 					TelaAtualizarEndereco frame = new TelaAtualizarEndereco();
-					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,30 +53,36 @@ public class TelaAtualizarEndereco extends JFrame {
 	 */
 	public TelaAtualizarEndereco() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 534, 416);
+		setBounds(100, 100, 439, 495);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtCep = new JTextField();
-		txtCep.setBounds(10, 54, 86, 20);
+		try {
+			txtCep = new JFormattedTextField(new MaskFormatter("#####-###-##"));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		txtCep.setBounds(20, 111, 383, 31);
 		contentPane.add(txtCep);
 		txtCep.setColumns(10);
 		
 		txtRua = new JTextField();
-		txtRua.setBounds(10, 114, 86, 20);
+		txtRua.setBounds(20, 184, 383, 31);
 		contentPane.add(txtRua);
 		txtRua.setColumns(10);
 		
 		txtCidade = new JTextField();
-		txtCidade.setBounds(10, 181, 86, 20);
+		txtCidade.setBounds(20, 256, 383, 31);
 		contentPane.add(txtCidade);
 		txtCidade.setColumns(10);
 		
 		txtEstado = new JTextField();
-		txtEstado.setBounds(10, 251, 86, 20);
+		txtEstado.setBounds(20, 329, 383, 31);
 		contentPane.add(txtEstado);
 		txtEstado.setColumns(10);
 		
@@ -81,22 +94,26 @@ public class TelaAtualizarEndereco extends JFrame {
 		}
 		
 		JLabel Cep = new JLabel("Cep");
-		Cep.setBounds(10, 40, 46, 14);
+		Cep.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		Cep.setBounds(20, 79, 383, 32);
 		contentPane.add(Cep);
 		
 		JLabel Rua = new JLabel("Rua");
-		Rua.setBounds(10, 99, 46, 14);
+		Rua.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		Rua.setBounds(20, 153, 383, 31);
 		contentPane.add(Rua);
 		
 		JLabel Cidade = new JLabel("Cidade");
-		Cidade.setBounds(10, 167, 46, 14);
+		Cidade.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		Cidade.setBounds(20, 225, 383, 31);
 		contentPane.add(Cidade);
 		
 		JLabel Estado = new JLabel("Estado");
-		Estado.setBounds(10, 238, 46, 14);
+		Estado.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		Estado.setBounds(20, 298, 383, 31);
 		contentPane.add(Estado);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Atualizar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MEndereco newEndereco = new MEndereco();
@@ -142,8 +159,33 @@ public class TelaAtualizarEndereco extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(271, 113, 89, 23);
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setFocusPainted(false);
+		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton.setBounds(147, 400, 157, 31);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Voltar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_1.setFocusPainted(false);
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setBounds(324, 400, 89, 31);
+		contentPane.add(btnNewButton_1);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBounds(10, 11, 403, 45);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("ATUALIZAR ENDEREÇO");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+		lblNewLabel_1.setBounds(50, 8, 285, 27);
+		panel.add(lblNewLabel_1);
 	}
-
 }

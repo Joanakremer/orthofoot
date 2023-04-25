@@ -221,7 +221,7 @@ public class VisaoUsuario extends JFrame {
 		
 		JPanel panel_10 = new JPanel();
 		panel_9.add(panel_10, "cell 0 1 20 1,grow");
-		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[10px:n:50px,grow]"));
+		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:60px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:60px,grow][20px:n:80px,grow]", "[10px:n:50px,grow]"));
 		
 		
 		HintTextField pesquisartxt = new HintTextField("Pesquisar");
@@ -254,7 +254,7 @@ public class VisaoUsuario extends JFrame {
 				btnNewButton_3.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
-		panel_10.add(btnNewButton_3, "cell 11 0 2 1,growx");
+		panel_10.add(btnNewButton_3, "cell 13 0 2 1,growx");
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setHorizontalAlignment(SwingConstants.LEADING);
 		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
@@ -272,7 +272,7 @@ public class VisaoUsuario extends JFrame {
 				btnNewButton_2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
-		panel_10.add(btnNewButton_2, "cell 15 0 2 1,growx");
+		panel_10.add(btnNewButton_2, "cell 16 0 2 1,growx");
 		btnNewButton_2.setFocusPainted(false);
 		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEADING);
 		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 24));
@@ -290,7 +290,7 @@ public class VisaoUsuario extends JFrame {
 				btnNewButton_1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
-		panel_10.add(btnNewButton_1, "cell 18 0,grow");
+		panel_10.add(btnNewButton_1, "cell 19 0,grow");
 		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/atualizar24.png")));
 		btnNewButton_1.setBackground(new Color(95, 158, 160));

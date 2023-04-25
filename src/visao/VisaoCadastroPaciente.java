@@ -57,20 +57,6 @@ public class VisaoCadastroPaciente extends JFrame {
 	private JTextField textField_5;
 
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VisaoCadastroPaciente frame = new VisaoCadastroPaciente();
-					frame.setVisible(true);
-					frame.setResizable(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			}
-		});
-	}
 	public VisaoCadastroPaciente() {
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,7 +74,6 @@ public class VisaoCadastroPaciente extends JFrame {
 		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:30px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow]"));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
 		panel_1.setBorder(null);
 		panel.add(panel_1, "cell 0 0 18 2,grow");
 		panel_1.setLayout(new MigLayout("", "[20px:n:160px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:40px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:40px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:160px,grow]", "[10px:n:10px,grow][20px:n:40px,grow][10px:n:10px,grow]"));
@@ -141,18 +126,27 @@ public class VisaoCadastroPaciente extends JFrame {
 		lblNewLabel_4_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
 		panel_7.add(lblNewLabel_4_1, "flowx,cell 0 4");
 		
+		JLabel lblNewLabel_4_2_1 = new JLabel("Sexo *");
+		lblNewLabel_4_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+		panel_7.add(lblNewLabel_4_2_1, "cell 5 4,grow");
+		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
 		panel_7.add(textField_2, "cell 0 5 4 1,grow");
 		textField_2.setColumns(10);
 		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Maculino");
+		rdbtnNewRadioButton.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		panel_7.add(rdbtnNewRadioButton, "cell 5 5,grow");
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Feminino");
+		rdbtnNewRadioButton_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_7.add(rdbtnNewRadioButton_1, "cell 6 5 2 1,grow");
+		
 		JLabel lblNewLabel_4_2 = new JLabel("Data de Nascimento *");
 		lblNewLabel_4_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
 		panel_7.add(lblNewLabel_4_2, "cell 0 7 4 1,grow");
-		
-		JLabel lblNewLabel_4_2_1 = new JLabel("Sexo *");
-		lblNewLabel_4_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
-		panel_7.add(lblNewLabel_4_2_1, "cell 5 7,grow");
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
@@ -165,15 +159,6 @@ public class VisaoCadastroPaciente extends JFrame {
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
 		panel_7.add(comboBox_2, "cell 3 8,grow");
-		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Maculino");
-		rdbtnNewRadioButton.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
-		panel_7.add(rdbtnNewRadioButton, "cell 5 8,grow");
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Feminino");
-		rdbtnNewRadioButton_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
-		rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_7.add(rdbtnNewRadioButton_1, "cell 6 8 2 1,grow");
 		
 		JLabel lblNewLabel_4_3 = new JLabel("Contato *");
 		lblNewLabel_4_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
