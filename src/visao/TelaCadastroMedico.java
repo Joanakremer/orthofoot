@@ -41,6 +41,7 @@ public class TelaCadastroMedico extends JFrame {
 	private ArrayList<MMedico> listarMedico;
 	private MMedico medicoSelecionado;
 	private JTextField txtSexo;
+	private JTable table;
 	
 	/**
 	 * Launch the application.
@@ -112,7 +113,7 @@ public class TelaCadastroMedico extends JFrame {
 		
 		cbMes = new JComboBox<>();
 		int mes = 0;
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 13; i++) {
 			cbMes.addItem(String.valueOf(mes));
 			mes++;
 		}
@@ -126,6 +127,7 @@ public class TelaCadastroMedico extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(64, 304, 429, 224);
 		contentPane.add(scrollPane);
+		
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
@@ -161,10 +163,8 @@ public class TelaCadastroMedico extends JFrame {
 				boolean insert = tableMedico.inserir(newMedico);
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
-					//txtCrm.setText(null);
-					//txtNomeCompleto.setText(null);
-					//txt da data aqui
-					//txtSexo.setText();
+					atualizar();
+					limparCampos();
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
@@ -195,10 +195,12 @@ public class TelaCadastroMedico extends JFrame {
 		contentPane.add(txtSexo);
 		
 		daoMedico = CDaoMedico.getInstancia();
-		listarMedico = daoMedico.listarMedico();
 		
 		tableMedico = new JTable();
+		scrollPane.setViewportView(tableMedico);
+
 		
+		atualizar();
 		tableMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -209,7 +211,28 @@ public class TelaCadastroMedico extends JFrame {
 				medicoSelecionado.getdataNasc();
 				medicoSelecionado.getSexo();
 			}
-		});
+		});	
+		
+	}
+	protected void limparCampos() {
+		txtNomeCompleto.setText(null);
+		txtCrm.setText(null);
+		txtSexo.setText(null);
+	}
+
+	public void atualizar() {
+		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {},
+				new String[] {"crm", "nomeCompleto", "dataNasc", "sexo"});
+		listarMedico = daoMedico.listarMedico();
+
+		if (listarMedico.size() > 0 && listarMedico != null) {
+			for (MMedico medico : listarMedico) {
+				modelo.addRow(new Object[] { medico.getCrm(), medico.getnomeCompleto(), medico.getdataNasc(),
+						medico.getSexo()});
+			}
+		}
+
+		tableMedico.setModel(modelo);
 		
 	}
 }
