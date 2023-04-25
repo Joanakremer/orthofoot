@@ -1,12 +1,12 @@
 package modelo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class MMedico {
 	private long crm;
 	private String nomeCompleto;
 	private String sexo;
-	private Date dataNasc;
+	private LocalDate dataNasc;
 	private MAgenda agenda;
 	private MPaciente paciente;
 	
@@ -28,10 +28,10 @@ public class MMedico {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public Date getdataNasc() {
+	public LocalDate getdataNasc() {
 		return dataNasc;
 	}
-	public void setdataNasc(Date dataNasc) {
-		this.dataNasc = dataNasc;
+	public void setdataNasc(LocalDate data) {
+		this.dataNasc = data;
 	}
 }
