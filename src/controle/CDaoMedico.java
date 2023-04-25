@@ -33,13 +33,14 @@ con = CConexao.getInstancia();
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "INSERT INTO medico (crm ,nomeCompleto, dataNasc, sexo) VALLUES (?, ?, ?, ?);";
+			String query = "INSERT INTO medicos (crm ,nomeCompleto, dataNasc, sexo) VALUES (?, ?, ?, ?);";
 			PreparedStatement stm = c.prepareStatement(query);
 			
 			stm.setLong(1, m.getCrm());
 			stm.setString(2, m.getnomeCompleto());
-			stm.setDate(3, m.getdataNasc());
-			stm.setString(4, m.getSexo());				
+			stm.setDate(3, Date.valueOf(m.getdataNasc()));
+			stm.setString(4, m.getSexo());		
+			System.out.println(stm);
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,12 +55,12 @@ con = CConexao.getInstancia();
 				Connection c = con.conectar();
 				int valida = 0;
 				try {
-					String query = "UPDATE medico Set nomeCompleto = ?, set dataNasc = ?, set sexo = ? WHERE crm = ?";
+					String query = "UPDATE medicos Set nomeCompleto = ?, set dataNasc = ?, set sexo = ? WHERE crm = ?";
 					PreparedStatement stm = c.prepareStatement(query);
 					
 					stm.setLong(1, m.getCrm());
 					stm.setString(2, m.getnomeCompleto());
-					stm.setDate(3, m.getdataNasc());
+					stm.setDate(3, Date.valueOf(m.getdataNasc()));
 					stm.setString(4, m.getSexo());				
 					valida = stm.executeUpdate();
 				} catch (SQLException e) {
@@ -75,11 +76,11 @@ con = CConexao.getInstancia();
 				Connection c = con.conectar();
 				int valida = 0;
 				try {
-					String query = "DELETE FROM medico Where crm = ?"; 
+					String query = "DELETE FROM medicos Where crm = ?"; 
 					PreparedStatement stm = c.prepareStatement(query);
 					stm.setLong(1, m.getCrm());
 					stm.setString(2, m.getnomeCompleto());
-					stm.setDate(3, m.getdataNasc());
+					stm.setDate(3, Date.valueOf(m.getdataNasc()));
 					stm.setString(4, m.getSexo());				
 					valida = stm.executeUpdate();
 				} catch (SQLException e) {
@@ -98,7 +99,7 @@ con = CConexao.getInstancia();
 		
 		try {
 			Statement stm = c.createStatement();
-			String query = "SELECT * FROM medico";
+			String query = "SELECT * FROM medicos";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 				Long crm = rs.getLong("crm");
@@ -109,7 +110,7 @@ con = CConexao.getInstancia();
 				MMedico m = new MMedico();
 				m.setCrm(crm);
 				m.setnomeCompleto(nomeCompleto);
-				m.setdataNasc(dataNasc);
+				m.setdataNasc(dataNasc.toLocalDate());
 				m.setSexo(sexo);
 				medico.add(m);
 			}

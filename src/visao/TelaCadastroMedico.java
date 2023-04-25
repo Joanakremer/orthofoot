@@ -3,6 +3,9 @@ package visao;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -10,11 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.CDao;
 import controle.CDaoMedico;
 import modelo.MMedico;
+import modelo.MPaciente;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -31,9 +37,10 @@ public class TelaCadastroMedico extends JFrame {
 	private JLabel lblNewLabel_3;
 	private JTable tableMedico;
 	private CDaoMedico daoMedico;
-	private JComboBox<String> txtDia,txtMes,txtAno;
+	private JComboBox<String> cbDia,cbMes,cbAno;
 	private ArrayList<MMedico> listarMedico;
 	private MMedico medicoSelecionado;
+	private JTextField txtSexo;
 	
 	/**
 	 * Launch the application.
@@ -85,24 +92,35 @@ public class TelaCadastroMedico extends JFrame {
 		lblNewLabel_2.setBounds(10, 174, 107, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JComboBox txtSexo = new JComboBox();
-		txtSexo.setBounds(143, 228, 53, 22);
-		contentPane.add(txtSexo);
+		cbAno = new JComboBox<>();
+		int ano = LocalDate.now().getYear();
+		for (int i = 0; i < 110; i++) {
+			cbAno.addItem(String.valueOf(ano));
+			ano--;
+		}
+		cbAno.setBounds(281, 170, 77, 22);
+		contentPane.add(cbAno);
 		
-		txtAno = new JComboBox();
-		txtAno.setBounds(281, 170, 46, 22);
-		contentPane.add(txtAno);
+		cbDia = new JComboBox<>();
+		int dia = 0;
+		for (int i = 0; i < 31; i++) {
+			cbDia.addItem(String.valueOf(dia));
+			dia++;
+		}
+		cbDia.setBounds(127, 170, 62, 22);
+		contentPane.add(cbDia);
 		
-		txtDia = new JComboBox();
-		txtDia.setBounds(143, 170, 46, 22);
-		contentPane.add(txtDia);
-		
-		txtMes = new JComboBox();
-		txtMes.setBounds(199, 170, 46, 22);
-		contentPane.add(txtMes);
+		cbMes = new JComboBox<>();
+		int mes = 0;
+		for (int i = 0; i < 12; i++) {
+			cbMes.addItem(String.valueOf(mes));
+			mes++;
+		}
+		cbMes.setBounds(199, 170, 60, 22);
+		contentPane.add(cbMes);
 		
 		lblNewLabel_3 = new JLabel("Sexo");
-		lblNewLabel_3.setBounds(33, 232, 46, 14);
+		lblNewLabel_3.setBounds(298, 43, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -112,6 +130,44 @@ public class TelaCadastroMedico extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MMedico newMedico = new MMedico();
+				String crm = txtCrm.getText();
+				if (crm == null || crm.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CRM está vazio");
+				} else {
+					newMedico.setCrm(Long.valueOf(crm));
+				}
+				String nomeCompleto = txtNomeCompleto.getText();
+				if (nomeCompleto == null || nomeCompleto.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo NOME COMPLETO está vazio");
+				} else {
+					newMedico.setnomeCompleto(nomeCompleto);
+				}
+				String dia = (String) cbDia.getSelectedItem();
+				String mes = (String) cbMes.getSelectedItem();
+				String ano = (String) cbAno.getSelectedItem();
+				
+				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
+				newMedico.setdataNasc(data);
+			
+				
+				String sexo = (String) txtSexo.getText();
+				if (sexo == null || sexo.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo SEXO está vazio");
+				} else {
+					newMedico.setSexo(sexo);
+				}
+				CDaoMedico tableMedico = CDaoMedico.getInstancia();
+				boolean insert = tableMedico.inserir(newMedico);
+				if (insert == true) {
+					JOptionPane.showMessageDialog(null, "Cadastro realizado");
+					//txtCrm.setText(null);
+					//txtNomeCompleto.setText(null);
+					//txt da data aqui
+					//txtSexo.setText();
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
+				}
 			}
 		});
 		btnCadastrar.setBounds(206, 228, 89, 23);
@@ -133,6 +189,11 @@ public class TelaCadastroMedico extends JFrame {
 		btnDeletar.setBounds(404, 228, 89, 23);
 		contentPane.add(btnDeletar);
 		
+		txtSexo = new JTextField();
+		txtSexo.setColumns(10);
+		txtSexo.setBounds(334, 40, 86, 20);
+		contentPane.add(txtSexo);
+		
 		daoMedico = CDaoMedico.getInstancia();
 		listarMedico = daoMedico.listarMedico();
 		
@@ -149,22 +210,6 @@ public class TelaCadastroMedico extends JFrame {
 				medicoSelecionado.getSexo();
 			}
 		});
-		/*
-		public void atualizar () {
-			DefaultTableModel modelo = new DeufaltTableModel (new Object[][] {}, new String [] 
-					{"crm","nomeCompleto","dataNasc","sexo"} );
-			
-			table.setModel(modelo);
-			
-			if (listaMedico.size() > 0 && listaMedico != null) {
-				for (MMedico medico : listaMedico) {
-					if (medico == null) {
-						System.out.println("medico esta vazio");
-					} else {
-						modelo.addRow(new Objetc[] {medico.getcrm(),medico.getnomeCompleto(),medico.getdataNasc(),medico.getsexo()});
-					}
-				}
-			}
-		}*/
+		
 	}
 }
