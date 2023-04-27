@@ -48,7 +48,7 @@ public class TelaPaciente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaEndereco frame = new TelaEndereco();
+					TelaPaciente frame = new TelaPaciente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class TelaPaciente extends JFrame {
 
 	public TelaPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 757, 540);
+		setBounds(100, 100, 993, 540);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,24 +68,24 @@ public class TelaPaciente extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(192, 192, 192));
-		panel_1.setBounds(10, 11, 721, 53);
+		panel_1.setBounds(10, 11, 957, 53);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		lblNewLabel = new JLabel("PACIENTE");
 		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(230, 11, 304, 31);
+		lblNewLabel.setBounds(316, 11, 304, 31);
 		panel_1.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(192, 192, 192));
-		panel.setBounds(10, 84, 721, 53);
+		panel.setBounds(10, 84, 957, 53);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 154, 721, 294);
+		scrollPane.setBounds(10, 154, 957, 294);
 		contentPane.add(scrollPane);
 
 		listaPaciente = dao.listarPaciente();
@@ -112,13 +112,12 @@ public class TelaPaciente extends JFrame {
 		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-		btnNewButton_3.setBounds(634, 459, 97, 31);
+		btnNewButton_3.setBounds(870, 459, 97, 31);
 		contentPane.add(btnNewButton_3);
 		
 		btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				TelaCadastroPaciente frame = new TelaCadastroPaciente();
 				frame.setVisible(true);
 			}
@@ -138,7 +137,7 @@ public class TelaPaciente extends JFrame {
 		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-		btnNewButton_1.setBounds(466, 11, 119, 31);
+		btnNewButton_1.setBounds(699, 11, 119, 31);
 		panel.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Deletar");
@@ -157,7 +156,7 @@ public class TelaPaciente extends JFrame {
 		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.setFocusPainted(false);
 		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-		btnNewButton_2.setBounds(592, 11, 119, 31);
+		btnNewButton_2.setBounds(828, 11, 119, 31);
 		panel.add(btnNewButton_2);
 		atualizar();
 

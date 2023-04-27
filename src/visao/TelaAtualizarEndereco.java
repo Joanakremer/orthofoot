@@ -64,7 +64,7 @@ public class TelaAtualizarEndereco extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 60, 403, 263);
+		panel_1.setBounds(10, 67, 403, 263);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		

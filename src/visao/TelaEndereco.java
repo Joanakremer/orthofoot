@@ -129,9 +129,9 @@ public class TelaEndereco extends JFrame {
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				TelaAtualizarEndereco frame = new TelaAtualizarEndereco();
 				frame.setVisible(true);
 			}

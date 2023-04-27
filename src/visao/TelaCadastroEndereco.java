@@ -121,7 +121,7 @@ public class TelaCadastroEndereco extends JFrame {
 		lblNewLabel_1 = new JLabel("CADASTRAR ENDEREÇO");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(50, 8, 285, 27);
+		lblNewLabel_1.setBounds(63, 11, 285, 27);
 		panel.add(lblNewLabel_1);
 		
 		btnNewButton_1 = new JButton("Voltar");
@@ -132,12 +132,12 @@ public class TelaCadastroEndereco extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-		btnNewButton_1.setBounds(325, 349, 89, 31);
+		btnNewButton_1.setBounds(324, 349, 89, 31);
 		btnNewButton_1.setFocusPainted(false);
 		contentPane.add(btnNewButton_1);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 60, 403, 263);
+		panel_1.setBounds(10, 67, 403, 263);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		

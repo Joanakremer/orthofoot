@@ -64,14 +64,13 @@ public class VisaoCadastroPaciente extends JFrame {
 
 	
 	public VisaoCadastroPaciente() {
-		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1050);
+		setBounds(100, 100, 439, 444);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(null);
