@@ -1,6 +1,7 @@
 package visao;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 
 public class TelaPaciente extends JFrame {
@@ -39,28 +42,50 @@ public class TelaPaciente extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
+	private JLabel lblNewLabel;
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TelaEndereco frame = new TelaEndereco();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	public TelaPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1050);
+		setBounds(100, 100, 757, 540);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
-
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(192, 192, 192));
+		panel_1.setBounds(10, 11, 721, 53);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		lblNewLabel = new JLabel("PACIENTE");
+		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(230, 11, 304, 31);
+		panel_1.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBackground(new Color(95, 158, 160));
-		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:100px,grow][20px:n:150px,grow][20px:n:100px,grow][20px:n:100px,grow]", "[20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:40px,grow][20px:n:60px,grow][20px:n:40px,grow]"));
-		
-
-		contentPane.setLayout(null);
+		panel.setBackground(new Color(192, 192, 192));
+		panel.setBounds(10, 84, 721, 53);
+		contentPane.add(panel);
+		panel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(66, 91, 700, 244);
+		scrollPane.setBounds(10, 154, 721, 294);
 		contentPane.add(scrollPane);
 
 		listaPaciente = dao.listarPaciente();
@@ -83,6 +108,13 @@ public class TelaPaciente extends JFrame {
 		});
 		scrollPane.setViewportView(tablePacientes);
 		
+		JButton btnNewButton_3 = new JButton("Voltar");
+		btnNewButton_3.setBackground(Color.WHITE);
+		btnNewButton_3.setFocusPainted(false);
+		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_3.setBounds(634, 459, 97, 31);
+		contentPane.add(btnNewButton_3);
+		
 		btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,8 +123,11 @@ public class TelaPaciente extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(66, 57, 132, 23);
-		contentPane.add(btnNewButton, BorderLayout.NORTH);
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setFocusPainted(false);
+		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton.setBounds(10, 11, 175, 31);
+		panel.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Atualizar");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -100,8 +135,11 @@ public class TelaPaciente extends JFrame {
 				
 			}
 		});
-		btnNewButton_1.setBounds(350, 57, 132, 23);
-		contentPane.add(btnNewButton_1);
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setFocusPainted(false);
+		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_1.setBounds(466, 11, 119, 31);
+		panel.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Deletar");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -116,13 +154,16 @@ public class TelaPaciente extends JFrame {
 				}
 			}
 		});
-		btnNewButton_2.setBounds(634, 57, 132, 23);
-		contentPane.add(btnNewButton_2);
-
+		btnNewButton_2.setBackground(Color.WHITE);
+		btnNewButton_2.setFocusPainted(false);
+		btnNewButton_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_2.setBounds(592, 11, 119, 31);
+		panel.add(btnNewButton_2);
 		atualizar();
 
-
 	}
+	
+	
 
 	public void atualizar() {
 

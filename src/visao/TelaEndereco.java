@@ -3,6 +3,7 @@ package visao;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -59,7 +60,6 @@ public class TelaEndereco extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -92,6 +92,7 @@ public class TelaEndereco extends JFrame {
 		contentPane.add(btnNewButton_3);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(192, 192, 192));
 		panel.setBounds(10, 84, 656, 53);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -118,6 +119,7 @@ public class TelaEndereco extends JFrame {
 		panel.add(btnNewButton_1);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(192, 192, 192));
 		panel_1.setBounds(10, 11, 656, 53);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -148,7 +150,13 @@ public class TelaEndereco extends JFrame {
 		});
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroEndereco frame = new TelaCadastroEndereco();
+				TelaCadastroEndereco frame = null;
+				try {
+					frame = new TelaCadastroEndereco();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				frame.setVisible(true);
 			}
 		});
