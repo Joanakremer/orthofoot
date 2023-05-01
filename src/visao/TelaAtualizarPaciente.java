@@ -1,6 +1,8 @@
 package visao;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import controle.CDao;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -19,17 +22,16 @@ import java.sql.Date;
 import java.awt.event.ActionEvent;
 import modelo.MPaciente;
 import controle.CDao;
+import javax.swing.JComboBox;
 public class TelaAtualizarPaciente extends JFrame {
 
 	private JPanel contentPane;
 	private JFormattedTextField txtProntuario;
 	private JTextField txtNome;
-	private JFormattedTextField txtDMA;
 	private JFormattedTextField txtCpf;
 	private JFormattedTextField txtCarteira;
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
-	private JTextField txtSexo;
 	private MPaciente pacienteSelecionado;
 	
 	/**
@@ -41,52 +43,36 @@ public class TelaAtualizarPaciente extends JFrame {
 	
 	public TelaAtualizarPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 537, 413);
+		setBounds(100, 100, 543, 640);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(10, 11, 507, 45);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("ATUALIZAR PACIENTE");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 17));
+		lblNewLabel_1.setBounds(102, 11, 285, 27);
+		panel.add(lblNewLabel_1);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 67, 507, 293);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+		
 		txtProntuario = new JFormattedTextField();
-		txtProntuario.setBounds(10, 23, 131, 20);
-		contentPane.add(txtProntuario);
+		txtProntuario.setBounds(10, 40, 265, 29);
+		panel_3.add(txtProntuario);
+		txtProntuario.setForeground(Color.BLACK);
+		txtProntuario.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		txtProntuario.setColumns(10);
-		
-		txtNome = new JTextField();
-		txtNome.setBounds(10, 66, 131, 20);
-		contentPane.add(txtNome);
-		txtNome.setColumns(10);
-		
-		txtDMA = new JFormattedTextField();
-		txtDMA.setBounds(10, 109, 131, 20);
-		contentPane.add(txtDMA);
-		txtDMA.setColumns(10);
-		
-		txtCpf = new JFormattedTextField();
-		txtCpf.setBounds(10, 152, 131, 20);
-		contentPane.add(txtCpf);
-		txtCpf.setColumns(10);
-		
-		txtCarteira = new JFormattedTextField();
-		txtCarteira.setBounds(10, 195, 131, 20);
-		contentPane.add(txtCarteira);
-		txtCarteira.setColumns(10);
-		
-		txtContato = new JFormattedTextField();
-		txtContato.setBounds(10, 238, 131, 20);
-		contentPane.add(txtContato);
-		txtContato.setColumns(10);
-		
-		txtConvenio = new JTextField();
-		txtConvenio.setBounds(10, 281, 131, 20);
-		contentPane.add(txtConvenio);
-		txtConvenio.setColumns(10);
-		
-		txtSexo = new JTextField();
-		txtSexo.setBounds(10, 324, 131, 20);
-		contentPane.add(txtSexo);
-		txtSexo.setColumns(10);
 		
 		if(this.pacienteSelecionado != null) {
 			
@@ -100,37 +86,103 @@ public class TelaAtualizarPaciente extends JFrame {
 			txtSexo.setText(this.pacienteSelecionado.getSexo());
 		}
 		
-		JLabel lblNewLabel = new JLabel("Prontuario");
-		lblNewLabel.setBounds(10, 11, 106, 14);
-		contentPane.add(lblNewLabel);
+		JLabel lblNewLabel = new JLabel("Prontuario *");
+		lblNewLabel.setBounds(10, 11, 351, 29);
+		panel_3.add(lblNewLabel);
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		
-		JLabel lblNomeCompleto = new JLabel("Nome completo");
-		lblNomeCompleto.setBounds(10, 52, 106, 14);
-		contentPane.add(lblNomeCompleto);
+		JLabel lblNomeCompleto = new JLabel("Nome completo *");
+		lblNomeCompleto.setBounds(10, 80, 127, 29);
+		panel_3.add(lblNomeCompleto);
+		lblNomeCompleto.setForeground(Color.BLACK);
+		lblNomeCompleto.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		
-		JLabel lblDataDeNascimento = new JLabel("Data de nascimento");
-		lblDataDeNascimento.setBounds(10, 97, 106, 14);
-		contentPane.add(lblDataDeNascimento);
+		txtNome = new JTextField();
+		txtNome.setBounds(10, 110, 476, 29);
+		panel_3.add(txtNome);
+		txtNome.setColumns(10);
 		
-		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(10, 140, 106, 14);
-		contentPane.add(lblCpf);
+		JLabel lblCpf = new JLabel("CPF *");
+		lblCpf.setForeground(Color.BLACK);
+		lblCpf.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblCpf.setBounds(304, 11, 182, 29);
+		panel_3.add(lblCpf);
 		
-		JLabel lblNumeroCarteira = new JLabel("Numero carteira");
-		lblNumeroCarteira.setBounds(10, 183, 106, 14);
-		contentPane.add(lblNumeroCarteira);
+		txtCpf = new JFormattedTextField();
+		txtCpf.setBounds(304, 39, 181, 29);
+		panel_3.add(txtCpf);
+		txtCpf.setColumns(10);
 		
-		JLabel lblContato = new JLabel("Contato");
-		lblContato.setBounds(10, 226, 106, 14);
-		contentPane.add(lblContato);
+		JLabel lblDataDeNascimento = new JLabel("Data Nascimento *");
+		lblDataDeNascimento.setBounds(174, 150, 312, 29);
+		lblDataDeNascimento.setForeground(Color.BLACK);
+		lblDataDeNascimento.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		panel_3.add(lblDataDeNascimento);
 		
-		JLabel lblConvenio = new JLabel("Convenio");
-		lblConvenio.setBounds(10, 269, 106, 14);
-		contentPane.add(lblConvenio);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		comboBox.setBounds(172, 178, 59, 29);
+		panel_3.add(comboBox);
 		
-		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(10, 312, 106, 14);
-		contentPane.add(lblSexo);
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		comboBox_1.setBounds(232, 178, 152, 29);
+		panel_3.add(comboBox_1);
+		
+		JComboBox comboBox_1_1 = new JComboBox();
+		comboBox_1_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		comboBox_1_1.setBounds(386, 178, 100, 29);
+		panel_3.add(comboBox_1_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		comboBox_2.setBounds(10, 179, 134, 29);
+		panel_3.add(comboBox_2);
+		
+		JLabel lblNewLabel_2_1_4 = new JLabel("Sexo *");
+		lblNewLabel_2_1_4.setForeground(Color.BLACK);
+		lblNewLabel_2_1_4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_4.setBounds(10, 150, 127, 29);
+		panel_3.add(lblNewLabel_2_1_4);
+		
+		JLabel lblNewLabel_2_1_3 = new JLabel("Contato *");
+		lblNewLabel_2_1_3.setForeground(Color.BLACK);
+		lblNewLabel_2_1_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_3.setBounds(10, 218, 313, 29);
+		panel_3.add(lblNewLabel_2_1_3);
+		
+		txtCarteira = new JFormattedTextField();
+		txtCarteira.setBounds(9, 246, 477, 29);
+		panel_3.add(txtCarteira);
+		txtCarteira.setColumns(10);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(10, 371, 507, 155);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewLabel_2_1_2_1 = new JLabel("Convênio");
+		lblNewLabel_2_1_2_1.setForeground(Color.BLACK);
+		lblNewLabel_2_1_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_2_1.setBounds(10, 11, 315, 29);
+		panel_1.add(lblNewLabel_2_1_2_1);
+		
+		txtConvenio = new JTextField();
+		txtConvenio.setBounds(10, 41, 487, 29);
+		panel_1.add(txtConvenio);
+		txtConvenio.setColumns(10);
+		
+		JLabel lblNewLabel_2_1_2_2 = new JLabel("Nº Carteira");
+		lblNewLabel_2_1_2_2.setForeground(Color.BLACK);
+		lblNewLabel_2_1_2_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_2_2.setBounds(10, 81, 315, 29);
+		panel_1.add(lblNewLabel_2_1_2_2);
+		
+		txtContato = new JFormattedTextField();
+		txtContato.setBounds(10, 112, 487, 29);
+		panel_1.add(txtContato);
+		txtContato.setColumns(10);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
@@ -208,11 +260,11 @@ public class TelaAtualizarPaciente extends JFrame {
 				}
 			}
 		});
-		btnAtualizar.setBounds(279, 86, 163, 37);
+		btnAtualizar.setBounds(10, 544, 163, 37);
 		contentPane.add(btnAtualizar);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(316, 194, 89, 23);
+		btnVoltar.setBounds(428, 544, 89, 37);
 		contentPane.add(btnVoltar);
 	}
 }
