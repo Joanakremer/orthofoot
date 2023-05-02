@@ -140,7 +140,6 @@ public class TelaEndereco extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(enderecoSelecionado != null) {
 					listaEndereco.remove(enderecoSelecionado);
-					
 					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
 					atualizar();
 				}else {
@@ -166,9 +165,7 @@ public class TelaEndereco extends JFrame {
 
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "cep", "rua",
 				"cidade", "estado"});
-
 		tableEndereco.setModel(modelo);
-		
 		if (listaEndereco.size() > 0 && listaEndereco != null) {
 			for (MEndereco endereco : listaEndereco) {
 				if(endereco == null) {

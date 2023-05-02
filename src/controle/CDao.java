@@ -34,7 +34,7 @@ public class CDao {
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "INSERT INTO paciente (pronturaio, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALUES (?, ?,?,?,?,?,?,?);";
+			String query = "INSERT INTO paciente (prontuario, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALUES (?, ?,?,?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setInt(1, p.getProntuario());
@@ -134,7 +134,8 @@ public class CDao {
 				p.setnomeCompleto(nomeCompleto);
 				p.setCpf(cpf);
 				p.setContato(contato);
-				p.setDataNasc(dataNasc.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+				p.setDataNasc(dataNasc.toLocalDate());
+				//p.setDataNasc(dataNasc.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 				p.setConvenio(convenio);
 				p.setnCarteira(nCarteira);
 				p.setSexo(sexo);

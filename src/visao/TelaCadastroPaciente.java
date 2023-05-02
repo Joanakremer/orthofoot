@@ -8,28 +8,22 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
-import javax.swing.ImageIcon;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import modelo.MPaciente;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class TelaCadastroPaciente extends JFrame {
 
@@ -37,7 +31,7 @@ public class TelaCadastroPaciente extends JFrame {
 	private JFormattedTextField txtProntuario;
 	private JTextField txtNome;
 	private JFormattedTextField txtCpf;
-	private JTextField txtCarteira;
+	private JFormattedTextField txtCarteira;
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JComboBox<String> cbDia, cbMes, cbAno;
@@ -60,23 +54,26 @@ public class TelaCadastroPaciente extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @throws ParseException 
 	 */
-	public TelaCadastroPaciente() throws ParseException {	
+	public TelaCadastroPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 543, 570);
+		setBounds(100, 100, 543, 640);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(10, 11, 507, 45);
 		contentPane.add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(10, 371, 507, 155);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("CADASTRAR PACIENTE");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -85,129 +82,236 @@ public class TelaCadastroPaciente extends JFrame {
 		panel.add(lblNewLabel_1);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 67, 507, 225);
+		panel_3.setBounds(10, 67, 507, 293);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Nome Completo *");
-		lblNewLabel_2.setBounds(10, 11, 351, 29);
-		panel_3.add(lblNewLabel_2);
-		lblNewLabel_2.setForeground(Color.BLACK);
-		lblNewLabel_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		
+		try {
+			txtProntuario = new JFormattedTextField(new MaskFormatter("####"));
+		} catch (ParseException e3) {
+			e3.printStackTrace();
+		}
+		txtProntuario.setBounds(10, 40, 265, 29);
+		panel_3.add(txtProntuario);
+		txtProntuario.setForeground(Color.BLACK);
+		txtProntuario.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtProntuario.setColumns(10);
+
 		txtNome = new JTextField();
-		txtNome.setBounds(10, 40, 476, 29);
+		txtNome.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtNome.setBounds(10, 110, 476, 29);
 		panel_3.add(txtNome);
-		txtNome.setForeground(Color.BLACK);
-		txtNome.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		txtNome.setColumns(10);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("CPF *");
-		lblNewLabel_2_1.setBounds(10, 80, 127, 29);
-		panel_3.add(lblNewLabel_2_1);
-		lblNewLabel_2_1.setForeground(Color.BLACK);
-		lblNewLabel_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		
-		txtCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
-		txtCpf.setBounds(10, 109, 127, 29);
+
+		try {
+			txtCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtCpf.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtCpf.setBounds(304, 39, 181, 29);
 		panel_3.add(txtCpf);
-		txtCpf.setText("         .        .     -  ");
-		txtCpf.setForeground(Color.BLACK);
-		txtCpf.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		txtCpf.setColumns(10);
+
+		try {
+			txtCarteira = new JFormattedTextField(new MaskFormatter("#####################"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtCarteira.setBounds(10, 115, 477, 29);
+		panel_1.add(txtCarteira);
+		txtCarteira.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtCarteira.setColumns(10);
+
+		try {
+			txtContato = new JFormattedTextField(new MaskFormatter("(+##)## #####-####"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtContato.setBounds(10, 245, 487, 29);
+		panel_3.add(txtContato);
+		txtContato.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtContato.setColumns(10);
+
+		txtConvenio = new JTextField();
+		txtConvenio.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtConvenio.setBounds(10, 41, 487, 29);
+		panel_1.add(txtConvenio);
+		txtConvenio.setColumns(10);
 		
-		JLabel lblNewLabel_2_1_2 = new JLabel("Data Nascimento *");
-		lblNewLabel_2_1_2.setBounds(173, 80, 222, 29);
-		panel_3.add(lblNewLabel_2_1_2);
-		lblNewLabel_2_1_2.setForeground(Color.BLACK);
-		lblNewLabel_2_1_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		JComboBox sexoBox = new JComboBox();
+		sexoBox.setModel(new DefaultComboBoxModel(new String[] {"Masculino", "Feminino"}));
+		sexoBox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		sexoBox.setBounds(10, 179, 181, 29);
+		panel_3.add(sexoBox);
+
+		JLabel lblNewLabel = new JLabel("Prontuario *");
+		lblNewLabel.setBounds(10, 11, 351, 29);
+		panel_3.add(lblNewLabel);
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));	
 		
+		JLabel lblNomeCompleto = new JLabel("Nome completo *");
+		lblNomeCompleto.setBounds(10, 80, 127, 29);
+		panel_3.add(lblNomeCompleto);
+		lblNomeCompleto.setForeground(Color.BLACK);
+		lblNomeCompleto.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+
+		JLabel lblDataDeNascimento = new JLabel("Data Nascimento *");
+		lblDataDeNascimento.setBounds(262, 150, 224, 29);
+		lblDataDeNascimento.setForeground(Color.BLACK);
+		lblDataDeNascimento.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		panel_3.add(lblDataDeNascimento);
+
+		JLabel lblCpf = new JLabel("CPF *");
+		lblCpf.setForeground(Color.BLACK);
+		lblCpf.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblCpf.setBounds(304, 11, 182, 29);
+		panel_3.add(lblCpf);
+
+		JLabel lblNewLabel_2_1_2_2 = new JLabel("Nº Carteira");
+		lblNewLabel_2_1_2_2.setForeground(Color.BLACK);
+		lblNewLabel_2_1_2_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_2_2.setBounds(10, 81, 315, 29);
+		panel_1.add(lblNewLabel_2_1_2_2);
+
+		JLabel lblNewLabel_2_1_3 = new JLabel("Contato *");
+		lblNewLabel_2_1_3.setForeground(Color.BLACK);
+		lblNewLabel_2_1_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_3.setBounds(10, 218, 313, 29);
+		panel_3.add(lblNewLabel_2_1_3);
+
+		JLabel lblNewLabel_2_1_2_1 = new JLabel("Convênio");
+		lblNewLabel_2_1_2_1.setForeground(Color.BLACK);
+		lblNewLabel_2_1_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2_1_2_1.setBounds(10, 11, 315, 29);
+		panel_1.add(lblNewLabel_2_1_2_1);
+
 		JLabel lblNewLabel_2_1_4 = new JLabel("Sexo *");
 		lblNewLabel_2_1_4.setForeground(Color.BLACK);
 		lblNewLabel_2_1_4.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		lblNewLabel_2_1_4.setBounds(10, 149, 127, 29);
+		lblNewLabel_2_1_4.setBounds(10, 150, 181, 29);
 		panel_3.add(lblNewLabel_2_1_4);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		comboBox.setBounds(172, 109, 59, 29);
-		panel_3.add(comboBox);
+				cbDia = new JComboBox<>();
+				cbDia.setBounds(262, 182, 68, 29);
+				panel_3.add(cbDia);
+				
+						cbMes = new JComboBox<>();
+						cbMes.setBounds(340, 182, 68, 28);
+						panel_3.add(cbMes);
+						
+								cbAno = new JComboBox<>();
+								cbAno.setBounds(418, 182, 68, 29);
+								panel_3.add(cbAno);
+
+		JButton btnCadastrar = new JButton("Cadastar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MPaciente newPaciente = new MPaciente();
+
+				String prontuario = txtProntuario.getText().replace("", "");
+				if (prontuario == null || prontuario.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
+				} else {
+					newPaciente.setProntuario(Integer.valueOf(prontuario));
+				}
+				String nome = txtNome.getText();
+				if (nome == null || nome.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo NOME está vazio");
+				} else {
+					newPaciente.setnomeCompleto(nome);
+				}
+
+				String dia = (String) cbDia.getSelectedItem();
+				String mes = (String) cbMes.getSelectedItem();
+				String ano = (String) cbAno.getSelectedItem();
+
+				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
+				newPaciente.setDataNasc(data);
+				/*
+				 * LocalDate data1 = LocalDate.parse(dataNascimento);
+				 * newPaciente.setdataNasc(Date.valueOf(dataNascimento));
+				 */
+
+				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
+				if (cpf == null || cpf.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
+				} else {
+					newPaciente.setCpf(Long.valueOf(cpf));
+				}
+				String carteira = txtCarteira.getText();
+				if (carteira == null || carteira.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
+				} else {
+					newPaciente.setnCarteira(carteira);
+				}
+				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-",
+						"");
+				if (contato == null || contato.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CONTATO está vazio");
+				} else {
+					newPaciente.setContato(contato);
+				}
+				String convenio = txtConvenio.getText();
+				if (convenio == null || convenio.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CONVENIO está vazio");
+				} else {
+					newPaciente.setConvenio(convenio);
+				}
+				String sexo = sexoBox.getSelectedItem().toString();
+				newPaciente.setSexo(sexo);
+
+				CDao tablePacientes = CDao.getInstancia();
+				boolean insert = tablePacientes.inserir(newPaciente);
+				if (insert == true) {
+					JOptionPane.showMessageDialog(null, "Cadastro realizado");
+
+					txtProntuario.setText(null);
+					txtNome.setText(null);
+					//txtDia.setText(null);
+					txtCpf.setText(null);
+					txtCarteira.setText(null);
+					txtContato.setText(null);
+					txtConvenio.setText(null);
+					sexoBox.setSelectedItem("Masculino");
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
+				}
+				dispose();
+				TelaPaciente frame = new TelaPaciente();
+				frame.setVisible(true);
+			}
+		});
+		btnCadastrar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		btnCadastrar.setBounds(10, 544, 163, 37);
+		contentPane.add(btnCadastrar);
+
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+		});
+		btnVoltar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		btnVoltar.setBounds(428, 544, 89, 37);
+		contentPane.add(btnVoltar);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
-		comboBox_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		comboBox_1.setBounds(232, 109, 152, 29);
-		panel_3.add(comboBox_1);
-		
-		JComboBox comboBox_1_1 = new JComboBox();
-		comboBox_1_1.setModel(new DefaultComboBoxModel(new String[] {"Ano", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"}));
-		comboBox_1_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		comboBox_1_1.setBounds(386, 109, 100, 29);
-		panel_3.add(comboBox_1_1);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Masculino", "Feminino"}));
-		comboBox_2.setBounds(10, 178, 127, 29);
-		panel_3.add(comboBox_2);
-		
-		JLabel lblNewLabel_2_1_3 = new JLabel("Contato *");
-		lblNewLabel_2_1_3.setBounds(173, 149, 313, 29);
-		panel_3.add(lblNewLabel_2_1_3);
-		lblNewLabel_2_1_3.setForeground(Color.BLACK);
-		lblNewLabel_2_1_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		txtContato = new JFormattedTextField(new MaskFormatter("(+##)## #####-####"));
-		txtContato.setBounds(173, 178, 313, 29);
-		panel_3.add(txtContato);
-		txtContato.setForeground(Color.BLACK);
-		txtContato.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		txtContato.setColumns(10);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 303, 507, 155);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel lblNewLabel_2_1_2_1 = new JLabel("Convênio");
-		lblNewLabel_2_1_2_1.setBounds(10, 11, 315, 29);
-		panel_1.add(lblNewLabel_2_1_2_1);
-		lblNewLabel_2_1_2_1.setForeground(Color.BLACK);
-		lblNewLabel_2_1_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		
-		txtConvenio = new JTextField();
-		txtConvenio.setBounds(10, 40, 473, 29);
-		panel_1.add(txtConvenio);
-		txtConvenio.setForeground(Color.BLACK);
-		txtConvenio.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		txtConvenio.setColumns(10);
-		
-		JLabel lblNewLabel_2_1_2_2 = new JLabel("Nº Carteira");
-		lblNewLabel_2_1_2_2.setBounds(10, 80, 315, 29);
-		panel_1.add(lblNewLabel_2_1_2_2);
-		lblNewLabel_2_1_2_2.setForeground(Color.BLACK);
-		lblNewLabel_2_1_2_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		
-		txtCarteira = new JTextField();
-		txtCarteira.setBounds(10, 111, 473, 29);
-		panel_1.add(txtCarteira);
-		txtCarteira.setForeground(Color.BLACK);
-		txtCarteira.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		txtCarteira.setColumns(10);
-		
-		JButton btnNewButton_1 = new JButton("Voltar");
-		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnNewButton_1.setFocusPainted(false);
-		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_1.setBounds(428, 482, 89, 31);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton = new JButton("Cadastrar Endereço *");
-		btnNewButton.setBounds(10, 482, 189, 31);
-		contentPane.add(btnNewButton);
-		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnNewButton.setFocusPainted(false);
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		
+		int ano = LocalDate.now().getYear();
+		for (int i = 0; i < 110; i++) {
+			cbAno.addItem(String.valueOf(ano));
+			ano--;
+		}
+		int mes = 1;
+		for (int i = 0; i < 12; i++) {
+			cbMes.addItem(String.valueOf(mes));
+			mes++;
+		}
+		int dia = 1;
+		for (int i = 0; i < 31; i++) {
+			cbDia.addItem(String.valueOf(dia));
+			dia++;
+		}
 	}
 }
