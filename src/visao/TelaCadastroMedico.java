@@ -40,8 +40,9 @@ public class TelaCadastroMedico extends JFrame {
 	private JComboBox<String> cbDia,cbMes,cbAno;
 	private ArrayList<MMedico> listarMedico;
 	private MMedico medicoSelecionado;
-	private JTextField txtSexo;
 	private JTable table;
+	private JComboBox comboSexo;
+	private String crm;
 	
 	/**
 	 * Launch the application.
@@ -153,12 +154,9 @@ public class TelaCadastroMedico extends JFrame {
 				newMedico.setdataNasc(data);
 			
 				
-				String sexo = (String) txtSexo.getText();
-				if (sexo == null || sexo.trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O campo SEXO está vazio");
-				} else {
-					newMedico.setSexo(sexo);
-				}
+				String sexo =String.valueOf(comboSexo.getSelectedItem().toString());
+				newMedico.setSexo(sexo);
+				
 				CDaoMedico tableMedico = CDaoMedico.getInstancia();
 				boolean insert = tableMedico.inserir(newMedico);
 				if (insert == true) {
@@ -176,6 +174,45 @@ public class TelaCadastroMedico extends JFrame {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				crm = txtCrm.getText().replace("", "");
+				if (crm == null || crm.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
+				} else {
+					medicoSelecionado.setCrm(Long.valueOf(crm));
+				}
+				String nomeCompleto = txtNomeCompleto.getText();
+				if (nomeCompleto == null || nomeCompleto.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo NOME está vazio");
+				} else {
+					medicoSelecionado.setnomeCompleto(nomeCompleto);
+				}
+				String dia = (String) cbDia.getSelectedItem();
+				String mes = (String) cbMes.getSelectedItem();
+				String ano = (String) cbAno.getSelectedItem();
+
+				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
+				medicoSelecionado.setdataNasc(data);
+				
+				String sexo =String.valueOf(comboSexo.getSelectedItem().toString());
+					medicoSelecionado.setSexo(sexo);
+
+				CDaoMedico tableMedico = CDaoMedico.getInstancia();
+				boolean update = tableMedico.update(medicoSelecionado);
+				if (update == true) {
+					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
+
+					txtCrm.setText(null);
+					txtNomeCompleto.setText(null);
+					
+					
+					dispose();
+					TelaPaciente frame = new TelaPaciente();
+					frame.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
+				}
 			}
 		});
 		btnAtualizar.setBounds(305, 228, 89, 23);
@@ -189,15 +226,16 @@ public class TelaCadastroMedico extends JFrame {
 		btnDeletar.setBounds(404, 228, 89, 23);
 		contentPane.add(btnDeletar);
 		
-		txtSexo = new JTextField();
-		txtSexo.setColumns(10);
-		txtSexo.setBounds(334, 40, 86, 20);
-		contentPane.add(txtSexo);
-		
 		daoMedico = CDaoMedico.getInstancia();
 		
 		tableMedico = new JTable();
 		scrollPane.setViewportView(tableMedico);
+		
+		comboSexo = new JComboBox();
+		comboSexo.addItem("Masculino");
+		comboSexo.addItem("Feminino");
+		comboSexo.setBounds(328, 39, 86, 20);
+		contentPane.add(comboSexo);
 
 		
 		atualizar();
@@ -206,10 +244,9 @@ public class TelaCadastroMedico extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int posicaoPessoa = tableMedico.getSelectedRow();
 				medicoSelecionado = listarMedico.get(posicaoPessoa);
-				medicoSelecionado.getCrm();
-				medicoSelecionado.getnomeCompleto();
-				medicoSelecionado.getdataNasc();
-				medicoSelecionado.getSexo();
+				txtNomeCompleto.setText(medicoSelecionado.getnomeCompleto());
+				txtCrm.setText(String.valueOf(medicoSelecionado.getCrm()));
+				//cbDia.addItem(LocalDate.parse(medicoSelecionado.getdataNasc()));
 			}
 		});	
 		
@@ -217,7 +254,7 @@ public class TelaCadastroMedico extends JFrame {
 	protected void limparCampos() {
 		txtNomeCompleto.setText(null);
 		txtCrm.setText(null);
-		txtSexo.setText(null);
+		comboSexo.setSelectedItem(null);
 	}
 
 	public void atualizar() {
