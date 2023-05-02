@@ -60,8 +60,9 @@ public class TelaCadastroPaciente extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws ParseException 
 	 */
-	public TelaCadastroPaciente() {	
+	public TelaCadastroPaciente() throws ParseException {	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 543, 570);
 		contentPane = new JPanel();
@@ -70,25 +71,6 @@ public class TelaCadastroPaciente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		try {
-			txtDMA = new JFormattedTextField(new MaskFormatter("##/##/####"));
-			txtDMA.setForeground(Color.BLACK);
-			txtDMA.setBorder(new LineBorder(Color.WHITE, 4, true));
-			txtDMA.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		} catch (ParseException e2) {
-			e2.printStackTrace();
-		}
-		txtDMA.setBounds(258, 213, 200, 29);
-		txtDMA.setColumns(10);
-		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"CEP", "Rua", "Cidade", "Estado"
-			}
-		));
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -153,7 +135,7 @@ public class TelaCadastroPaciente extends JFrame {
 		panel_3.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro", "", "", "", ""}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
 		comboBox_1.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		comboBox_1.setBounds(232, 109, 152, 29);
 		panel_3.add(comboBox_1);
@@ -214,7 +196,7 @@ public class TelaCadastroPaciente extends JFrame {
 		txtCarteira.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Voltar");
-		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.setBounds(428, 482, 89, 31);
@@ -223,14 +205,9 @@ public class TelaCadastroPaciente extends JFrame {
 		JButton btnNewButton = new JButton("Cadastrar Endereço *");
 		btnNewButton.setBounds(10, 482, 189, 31);
 		contentPane.add(btnNewButton);
-		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		
-		
-		
-		textField = new JTextField();
-		textField.setBounds(8, 9, 137, 29);
-		textField.setColumns(10);
 	}
 }
