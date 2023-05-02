@@ -28,8 +28,8 @@ public class MPaciente {
 		return dataNasc;
 	}
 
-	public void setDataNasc(LocalDate dataNasc) {
-		this.dataNasc = dataNasc;
+	public void setDataNasc(LocalDate data) {
+		this.dataNasc = data;
 	}
 
 	public MEndereco getEndereco() {

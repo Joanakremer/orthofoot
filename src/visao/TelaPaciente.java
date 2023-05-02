@@ -88,7 +88,9 @@ public class TelaPaciente extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 154, 957, 294);
 		contentPane.add(scrollPane);
-
+		
+		
+		dao = CDao.getInstancia();
 		listaPaciente = dao.listarPaciente();
 		tablePacientes = new JTable();
 
@@ -120,12 +122,7 @@ public class TelaPaciente extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroPaciente frame = null;
-				try {
-					frame = new TelaCadastroPaciente();
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				frame = new TelaCadastroPaciente();
 				frame.setVisible(true);
 			}
 		});
@@ -138,7 +135,9 @@ public class TelaPaciente extends JFrame {
 		btnNewButton_1 = new JButton("Atualizar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				TelaAtualizarPaciente frame = null;
+				frame = new TelaAtualizarPaciente();
+				frame.setVisible(true);
 			}
 		});
 		btnNewButton_1.setBackground(Color.WHITE);
@@ -173,8 +172,8 @@ public class TelaPaciente extends JFrame {
 
 	public void atualizar() {
 
-		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "prontuario", "nomeCompleto",
-				"dataNasc", "cpf", "sexo", "contato", "convenio", "nCarteira" });
+		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "Prontuario", "Nome",
+				"Data Nascimento", "CPF", "Sexo", "Contato", "Convenio", "N° Carteira" });
 
 		tablePacientes.setModel(modelo);
 		

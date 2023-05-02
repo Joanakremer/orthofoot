@@ -122,7 +122,7 @@ public class TelaAtualizarEndereco extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MEndereco newEndereco = new MEndereco();
 
-				String cep= txtCep.getText().replace("-", "");
+				String cep = txtCep.getText().replace("-", "");
 				if (cep == null || cep.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CEP está vazio");
 				} else {
