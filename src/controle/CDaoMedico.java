@@ -55,13 +55,14 @@ con = CConexao.getInstancia();
 				Connection c = con.conectar();
 				int valida = 0;
 				try {
-					String query = "UPDATE medicos Set nomeCompleto = ?, set dataNasc = ?, set sexo = ? WHERE crm = ?";
+					String query = "UPDATE medicos set nomeCompleto = ?, set dataNasc = ?, set sexo = ? WHERE crm = ?";
 					PreparedStatement stm = c.prepareStatement(query);
 					
-					stm.setLong(1, m.getCrm());
-					stm.setString(2, m.getnomeCompleto());
-					stm.setDate(3, Date.valueOf(m.getdataNasc()));
-					stm.setString(4, m.getSexo());				
+					stm.setString(1, m.getnomeCompleto());
+					stm.setDate(2, Date.valueOf(m.getdataNasc()));
+					stm.setString(3, m.getSexo());
+					stm.setLong(4, m.getCrm());		
+					System.out.println(stm);
 					valida = stm.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
