@@ -246,7 +246,10 @@ public class TelaCadastroMedico extends JFrame {
 				medicoSelecionado = listarMedico.get(posicaoPessoa);
 				txtNomeCompleto.setText(medicoSelecionado.getnomeCompleto());
 				txtCrm.setText(String.valueOf(medicoSelecionado.getCrm()));
-				//cbDia.addItem(LocalDate.parse(medicoSelecionado.getdataNasc()));
+				cbDia.setSelectedIndex(medicoSelecionado.getdataNasc().getDayOfMonth());
+				cbMes.setSelectedIndex(medicoSelecionado.getdataNasc().getMonthValue());
+				
+				cbAno.setSelectedItem(e);
 			}
 		});	
 		
