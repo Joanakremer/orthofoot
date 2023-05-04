@@ -45,7 +45,7 @@ public class CDao {
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
-
+			System.out.println(stm);
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class CDao {
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "UPDATE paciente Set nomeCompleto = ?, Set cpf = ?, Set contato = ?, Set dataNasc = ?, Set convenio = ?, Set nCarteira = ?, Set sexo = ? WHERE prontuario = ?";
+			String query = "UPDATE paciente Set nomeCompleto = ?,cpf = ?, contato = ?, dataNasc = ?, convenio = ?, nCarteira = ?, sexo = ? WHERE prontuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setInt(1, p.getProntuario());
@@ -135,7 +135,6 @@ public class CDao {
 				p.setCpf(cpf);
 				p.setContato(contato);
 				p.setDataNasc(dataNasc.toLocalDate());
-				//p.setDataNasc(dataNasc.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 				p.setConvenio(convenio);
 				p.setnCarteira(nCarteira);
 				p.setSexo(sexo);

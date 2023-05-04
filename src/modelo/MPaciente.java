@@ -14,8 +14,7 @@ public class MPaciente {
 	private LocalDate dataNasc;
 	private Long cpf;
 	private MEndereco endereco;
-	private MAgenda agenda;
-
+	
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}

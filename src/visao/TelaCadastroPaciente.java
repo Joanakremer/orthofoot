@@ -209,7 +209,6 @@ public class TelaCadastroPaciente extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MPaciente newPaciente = new MPaciente();
-
 				String prontuario = txtProntuario.getText().replace("", "");
 				if (prontuario == null || prontuario.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
