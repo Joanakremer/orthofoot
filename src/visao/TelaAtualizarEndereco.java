@@ -76,7 +76,6 @@ public class TelaAtualizarEndereco extends JFrame {
 		try {
 			txtCep = new JFormattedTextField(new MaskFormatter("#####-###-##"));
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		txtCep.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
@@ -144,6 +143,9 @@ public class TelaAtualizarEndereco extends JFrame {
 				newEndereco.setEstado(estado);
 				CDaoEndereco tableEndereco = CDaoEndereco.getInstancia();
 				boolean insert = tableEndereco.inserir(newEndereco);
+				txtCep.disable();
+				txtCep.enable(false);
+				txtCep.setText(String.valueOf(enderecoSelecionado.getCep()));
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
 

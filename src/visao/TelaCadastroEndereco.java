@@ -149,7 +149,6 @@ public class TelaCadastroEndereco extends JFrame {
 		try {
 			txtCep = new JFormattedTextField(new MaskFormatter("#####-###-##"));
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		txtCep.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));

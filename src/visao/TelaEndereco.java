@@ -154,7 +154,6 @@ public class TelaEndereco extends JFrame {
 				try {
 					frame = new TelaCadastroEndereco();
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				frame.setVisible(true);

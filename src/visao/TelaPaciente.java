@@ -123,7 +123,6 @@ public class TelaPaciente extends JFrame {
 				try {
 					frame = new TelaCadastroPaciente();
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				frame.setVisible(true);

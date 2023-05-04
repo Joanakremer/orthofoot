@@ -73,7 +73,7 @@ public class CDao {
 			stm.setString(6, p.getConvenio());
 			stm.setString(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
-			valida = stm.executeUpdate(); // TODO alterar
+			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -41,7 +41,7 @@ public class TelaCadastroMedico extends JFrame {
 	private ArrayList<MMedico> listarMedico;
 	private MMedico medicoSelecionado;
 	private JTable table;
-	private JComboBox comboSexo;
+	private JComboBox cbSexo;
 	private String crm;
 	
 	/**
@@ -105,9 +105,10 @@ public class TelaCadastroMedico extends JFrame {
 		
 		cbDia = new JComboBox<>();
 		int dia = 0;
-		for (int i = 0; i < 31; i++) {
+		for (int i = 0; i < 110; i++) {
 			cbDia.addItem(String.valueOf(dia));
 			dia++;
+			//TODO cbDia
 		}
 		cbDia.setBounds(127, 170, 62, 22);
 		contentPane.add(cbDia);
@@ -154,7 +155,7 @@ public class TelaCadastroMedico extends JFrame {
 				newMedico.setdataNasc(data);
 			
 				
-				String sexo =String.valueOf(comboSexo.getSelectedItem().toString());
+				String sexo =String.valueOf(cbSexo.getSelectedItem().toString());
 				newMedico.setSexo(sexo);
 				
 				CDaoMedico tableMedico = CDaoMedico.getInstancia();
@@ -195,7 +196,7 @@ public class TelaCadastroMedico extends JFrame {
 				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				medicoSelecionado.setdataNasc(data);
 				
-				String sexo =String.valueOf(comboSexo.getSelectedItem().toString());
+				String sexo =String.valueOf(cbSexo.getSelectedItem().toString());
 					medicoSelecionado.setSexo(sexo);
 
 				CDaoMedico tableMedico = CDaoMedico.getInstancia();
@@ -231,11 +232,11 @@ public class TelaCadastroMedico extends JFrame {
 		tableMedico = new JTable();
 		scrollPane.setViewportView(tableMedico);
 		
-		comboSexo = new JComboBox();
-		comboSexo.addItem("Masculino");
-		comboSexo.addItem("Feminino");
-		comboSexo.setBounds(328, 39, 86, 20);
-		contentPane.add(comboSexo);
+		cbSexo = new JComboBox();
+		cbSexo.addItem("Masculino");
+		cbSexo.addItem("Feminino");
+		cbSexo.setBounds(328, 39, 86, 20);
+		contentPane.add(cbSexo);
 
 		
 		atualizar();
@@ -246,15 +247,18 @@ public class TelaCadastroMedico extends JFrame {
 				medicoSelecionado = listarMedico.get(posicaoPessoa);
 				txtNomeCompleto.setText(medicoSelecionado.getnomeCompleto());
 				txtCrm.setText(String.valueOf(medicoSelecionado.getCrm()));
-				//cbDia.addItem(LocalDate.parse(medicoSelecionado.getdataNasc()));
-			}
+				cbDia.setSelectedIndex(medicoSelecionado.getdataNasc().getDayOfMonth());
+				cbMes.setSelectedIndex(medicoSelecionado.getdataNasc().getMonthValue());
+				cbAno.setSelectedItem(medicoSelecionado.getdataNasc().getYear()+"");
+				cbSexo.setSelectedItem(medicoSelecionado.getSexo());
+			}//TODO cbBox de ano e sexo não estão sendo consultados da maneira correta.
 		});	
 		
 	}
 	protected void limparCampos() {
 		txtNomeCompleto.setText(null);
 		txtCrm.setText(null);
-		comboSexo.setSelectedItem(null);
+		cbSexo.setSelectedItem(null);
 	}
 
 	public void atualizar() {
