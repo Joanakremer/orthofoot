@@ -112,6 +112,13 @@ public class TelaPaciente extends JFrame {
 		scrollPane.setViewportView(tablePacientes);
 		
 		JButton btnNewButton_3 = new JButton("Voltar");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VisaoPrincipal frame = new VisaoPrincipal();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));

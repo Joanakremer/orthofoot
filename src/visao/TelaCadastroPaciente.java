@@ -57,7 +57,7 @@ public class TelaCadastroPaciente extends JFrame {
 	 */
 	public TelaCadastroPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 543, 640);
+		setBounds(100, 100, 543, 650);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -99,7 +99,7 @@ public class TelaCadastroPaciente extends JFrame {
 
 		txtNome = new JTextField();
 		txtNome.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		txtNome.setBounds(10, 110, 476, 29);
+		txtNome.setBounds(10, 110, 487, 29);
 		panel_3.add(txtNome);
 		txtNome.setColumns(10);
 
@@ -109,7 +109,7 @@ public class TelaCadastroPaciente extends JFrame {
 			e1.printStackTrace();
 		}
 		txtCpf.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		txtCpf.setBounds(304, 39, 181, 29);
+		txtCpf.setBounds(304, 39, 193, 29);
 		panel_3.add(txtCpf);
 		txtCpf.setColumns(10);
 
@@ -146,7 +146,7 @@ public class TelaCadastroPaciente extends JFrame {
 		panel_3.add(sexoBox);
 
 		JLabel lblNewLabel = new JLabel("Prontuario *");
-		lblNewLabel.setBounds(10, 11, 351, 29);
+		lblNewLabel.setBounds(10, 11, 265, 29);
 		panel_3.add(lblNewLabel);
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));	
@@ -202,10 +202,10 @@ public class TelaCadastroPaciente extends JFrame {
 						panel_3.add(cbMes);
 						
 								cbAno = new JComboBox<>();
-								cbAno.setBounds(418, 182, 68, 29);
+								cbAno.setBounds(418, 182, 79, 29);
 								panel_3.add(cbAno);
 
-		JButton btnCadastrar = new JButton("Cadastar");
+		JButton btnCadastrar = new JButton("Confirmar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MPaciente newPaciente = new MPaciente();
@@ -284,18 +284,25 @@ public class TelaCadastroPaciente extends JFrame {
 			}
 		});
 		btnCadastrar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnCadastrar.setBounds(10, 544, 163, 37);
+		btnCadastrar.setBounds(395, 553, 122, 37);
 		contentPane.add(btnCadastrar);
 
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new JButton("Cadastrar Endereço *");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				TelaCadastroEndereco frame = null;
+				try {
+					frame = new TelaCadastroEndereco();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				frame.setVisible(true);
 				
 			}
 		});
 		btnVoltar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnVoltar.setBounds(428, 544, 89, 37);
+		btnVoltar.setBounds(10, 553, 211, 37);
 		contentPane.add(btnVoltar);
 		
 		int ano = LocalDate.now().getYear();
