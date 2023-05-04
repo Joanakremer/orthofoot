@@ -55,7 +55,7 @@ con = CConexao.getInstancia();
 				Connection c = con.conectar();
 				int valida = 0;
 				try {
-					String query = "UPDATE medicos set nomeCompleto = ?, set dataNasc = ?, set sexo = ? WHERE crm = ?";
+					String query = "UPDATE medicos set nomeCompleto = ?, dataNasc = ?, sexo = ? WHERE crm = ?";
 					PreparedStatement stm = c.prepareStatement(query);
 					
 					stm.setString(1, m.getnomeCompleto());
