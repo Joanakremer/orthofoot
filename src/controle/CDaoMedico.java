@@ -80,10 +80,9 @@ con = CConexao.getInstancia();
 					String query = "DELETE FROM medicos Where crm = ?"; 
 					PreparedStatement stm = c.prepareStatement(query);
 					stm.setLong(1, m.getCrm());
-					stm.setString(2, m.getnomeCompleto());
-					stm.setDate(3, Date.valueOf(m.getdataNasc()));
-					stm.setString(4, m.getSexo());				
-					valida = stm.executeUpdate();
+					
+					stm.executeUpdate();
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}finally {

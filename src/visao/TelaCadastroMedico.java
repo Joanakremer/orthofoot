@@ -274,8 +274,11 @@ public class TelaCadastroMedico extends JFrame {
 		btnDeletar.setBounds(378, 7, 119, 31);
 		panel_1.add(btnDeletar);
 		btnDeletar.addActionListener(new ActionListener() {
+			CDaoMedico c = new CDaoMedico();
 			public void actionPerformed(ActionEvent e) {
 				if(medicoSelecionado != null) {
+
+					c.delete(medicoSelecionado);
 					listarMedico.remove(medicoSelecionado);
 					
 					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
@@ -283,6 +286,7 @@ public class TelaCadastroMedico extends JFrame {
 				}else {
 					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
 				}
+				
 			}
 		});
 		btnDeletar.setBackground(Color.WHITE);
@@ -321,9 +325,8 @@ public class TelaCadastroMedico extends JFrame {
 				cbMes.setSelectedIndex(medicoSelecionado.getdataNasc().getMonthValue());
 				cbAno.setSelectedItem(medicoSelecionado.getdataNasc().getYear()+"");
 				cbSexo.setSelectedItem(medicoSelecionado.getSexo());
-			}//TODO cbBox de ano e sexo não estão sendo consultados da maneira correta.
+			}
 		});	
-		
 	}
 	protected void limparCampos() {
 		txtNomeCompleto.setText(null);
