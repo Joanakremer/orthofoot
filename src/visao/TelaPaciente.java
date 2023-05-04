@@ -129,7 +129,11 @@ public class TelaPaciente extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroPaciente frame = null;
-				frame = new TelaCadastroPaciente();
+				try {
+					frame = new TelaCadastroPaciente();
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
 				frame.setVisible(true);
 			}
 		});
