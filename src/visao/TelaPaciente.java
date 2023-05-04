@@ -75,7 +75,7 @@ public class TelaPaciente extends JFrame {
 
 	public TelaPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1010, 800);
+		setBounds(100, 100, 1010, 850);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -233,20 +233,15 @@ public class TelaPaciente extends JFrame {
 		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-		btnNewButton_3.setBounds(887, 459, 97, 31);
+		btnNewButton_3.setBounds(887, 769, 97, 31);
 		contentPane.add(btnNewButton_3);
 		
 		btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
 				TelaCadastroPaciente frame = null;
-				try {
-					frame = new TelaCadastroPaciente();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
-=======
+				frame = new TelaCadastroPaciente();
+
 				MPaciente newPaciente = new MPaciente();
 				String prontuario = txtProntuario.getText().replace("", "");
 				if (prontuario == null || prontuario.trim().isEmpty()) {
@@ -317,9 +312,8 @@ public class TelaPaciente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
 				dispose();
-				TelaPaciente frame = new TelaPaciente();
->>>>>>> Stashed changes
-				frame.setVisible(true);
+				TelaPaciente frame1 = new TelaPaciente();
+				frame1.setVisible(true);
 			}
 		});
 		btnNewButton.setBackground(Color.WHITE);

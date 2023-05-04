@@ -174,8 +174,8 @@ public class VisaoPrincipal extends JFrame {
 				panel_7.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 			public void mouseClicked(MouseEvent e) {				
-				VisaoUsuario visaoUsuario = new VisaoUsuario();
-				visaoUsuario.setVisible(true);
+				TelaCadastroMedico frame = new TelaCadastroMedico();
+				frame.setVisible(true);
 				dispose();
 			}
 		});
@@ -187,7 +187,7 @@ public class VisaoPrincipal extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/usuarios32.png")));
 		panel_7.add(lblNewLabel_6, "cell 0 0,growx");
 		
-		JLabel lblNewLabel_10 = new JLabel("Usuário");
+		JLabel lblNewLabel_10 = new JLabel("Médico");
 		lblNewLabel_10.setForeground(Color.BLACK);
 		lblNewLabel_10.setFont(new Font("Yu Gothic UI", Font.BOLD, 24));
 		panel_7.add(lblNewLabel_10, "cell 1 0");

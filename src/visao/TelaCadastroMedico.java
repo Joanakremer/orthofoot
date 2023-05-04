@@ -162,11 +162,12 @@ public class TelaCadastroMedico extends JFrame {
 		lblNewLabel_3.setBounds(10, 150, 181, 29);
 		panel_3.add(lblNewLabel_3);
 		
-		comboSexo = new JComboBox();
-		comboSexo.setModel(new DefaultComboBoxModel(new String[] {"Masculino", "Feminino"}));
-		comboSexo.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		comboSexo.setBounds(10, 179, 181, 29);
-		panel_3.add(comboSexo);
+		cbSexo = new JComboBox();
+		cbSexo.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		cbSexo.setBounds(10, 179, 181, 29);
+		panel_3.add(cbSexo);
+		cbSexo.addItem("Masculino");
+		cbSexo.addItem("Feminino");
 		
 		daoMedico = CDaoMedico.getInstancia();
 		
@@ -289,11 +290,19 @@ public class TelaCadastroMedico extends JFrame {
 		tableMedico = new JTable();
 		scrollPane.setViewportView(tableMedico);
 		
-		cbSexo = new JComboBox();
-		cbSexo.addItem("Masculino");
-		cbSexo.addItem("Feminino");
-		cbSexo.setBounds(328, 39, 86, 20);
-		contentPane.add(cbSexo);
+		JButton btnNewButton_3 = new JButton("Voltar");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VisaoPrincipal frame = new VisaoPrincipal();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_3.setFocusPainted(false);
+		btnNewButton_3.setBackground(Color.WHITE);
+		btnNewButton_3.setBounds(420, 589, 97, 31);
+		contentPane.add(btnNewButton_3);
 
 		
 		atualizar();
