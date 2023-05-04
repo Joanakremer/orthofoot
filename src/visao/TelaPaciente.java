@@ -210,14 +210,16 @@ public class TelaPaciente extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int posicaoPessoa = tablePacientes.getSelectedRow();
 				pacienteSelecionado = listaPaciente.get(posicaoPessoa);
-				pacienteSelecionado.getProntuario();
-				pacienteSelecionado.getnomeCompleto();
-				pacienteSelecionado.getdataNasc();
-				pacienteSelecionado.getCpf();
-				pacienteSelecionado.getnCarteira();
-				pacienteSelecionado.getContato();
-				pacienteSelecionado.getConvenio();
-				pacienteSelecionado.getSexo();
+				txtProntuario.setText(String.valueOf(pacienteSelecionado.getProntuario()));
+				txtCpf.setText(String.valueOf(pacienteSelecionado.getCpf()));
+				txtNome.setText(pacienteSelecionado.getnomeCompleto());
+				txtContato.setText(String.valueOf(pacienteSelecionado.getContato()));
+				txtConvenio.setText(pacienteSelecionado.getConvenio());
+				txtCarteira.setText(String.valueOf(pacienteSelecionado.getnCarteira()));
+				cbDia.setSelectedIndex(pacienteSelecionado.getdataNasc().getDayOfMonth());
+				cbMes.setSelectedIndex(pacienteSelecionado.getdataNasc().getMonthValue());
+				cbAno.setSelectedItem(pacienteSelecionado.getdataNasc().getYear()+"");
+				sexoBox.setSelectedItem(pacienteSelecionado.getSexo());
 			}
 		});
 		scrollPane.setViewportView(tablePacientes);

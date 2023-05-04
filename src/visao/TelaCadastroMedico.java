@@ -260,11 +260,7 @@ public class TelaCadastroMedico extends JFrame {
 
 					txtCrm.setText(null);
 					txtNomeCompleto.setText(null);
-					
-					
-					dispose();
-					TelaPaciente frame = new TelaPaciente();
-					frame.setVisible(true);
+					atualizar();
 				}else {
 					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
 				}
@@ -279,6 +275,14 @@ public class TelaCadastroMedico extends JFrame {
 		panel_1.add(btnDeletar);
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(medicoSelecionado != null) {
+					listarMedico.remove(medicoSelecionado);
+					
+					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
+					atualizar();
+				}else {
+					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
+				}
 			}
 		});
 		btnDeletar.setBackground(Color.WHITE);
