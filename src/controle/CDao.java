@@ -34,7 +34,7 @@ public class CDao {
 		Connection c = con.conectar();
 		int valida = 0;
 		try {
-			String query = "INSERT INTO paciente (prontuario, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALUES (?, ?,?,?,?,?,?,?);";
+			String query = "INSERT INTO paciente (prontuario, nomeCompleto, cpf, contato, dataNasc, convenio, nCarteira, sexo) VALUES (?,?,?,?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setInt(1, p.getProntuario());
@@ -65,14 +65,14 @@ public class CDao {
 			String query = "UPDATE paciente Set nomeCompleto = ?,cpf = ?, contato = ?, dataNasc = ?, convenio = ?, nCarteira = ?, sexo = ? WHERE prontuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
-			stm.setInt(1, p.getProntuario());
-			stm.setString(2, p.getnomeCompleto());
-			stm.setLong(3, p.getCpf());
-			stm.setString(4, p.getContato());
-			stm.setDate(5, Date.valueOf(p.getdataNasc()));
-			stm.setString(6, p.getConvenio());
-			stm.setString(7, p.getnCarteira());
-			stm.setString(8, p.getSexo());
+			stm.setString(1, p.getnomeCompleto());
+			stm.setLong(2, p.getCpf());
+			stm.setString(3, p.getContato());
+			stm.setDate(4, Date.valueOf(p.getdataNasc()));
+			stm.setString(5, p.getConvenio());
+			stm.setString(6, p.getnCarteira());
+			stm.setString(7, p.getSexo());
+			stm.setInt(8, p.getProntuario());
 			valida = stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
