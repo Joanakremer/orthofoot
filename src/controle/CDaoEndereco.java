@@ -37,6 +37,7 @@ public class CDaoEndereco {
 				stm.setString(3, a.getCidade());
 				stm.setString(4, a.getEstado());				
 				valida = stm.executeUpdate();
+				System.out.println(stm);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {

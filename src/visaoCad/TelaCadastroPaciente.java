@@ -230,10 +230,7 @@ public class TelaCadastroPaciente extends JFrame {
 
 				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				newPaciente.setDataNasc(data);
-				/*
-				 * LocalDate data1 = LocalDate.parse(dataNascimento);
-				 * newPaciente.setdataNasc(Date.valueOf(dataNascimento));
-				 */
+			
 
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
@@ -295,7 +292,6 @@ public class TelaCadastroPaciente extends JFrame {
 				try {
 					frame = new TelaCadastroEndereco();
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				frame.setVisible(true);

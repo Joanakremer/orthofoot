@@ -326,6 +326,9 @@ public class TelaCadastroMedico extends JFrame {
 				cbMes.setSelectedIndex(medicoSelecionado.getdataNasc().getMonthValue());
 				cbAno.setSelectedItem(medicoSelecionado.getdataNasc().getYear()+"");
 				cbSexo.setSelectedItem(medicoSelecionado.getSexo());
+				if(medicoSelecionado != null) {
+					txtCrm.disable();
+				}
 			}
 		});	
 	}
