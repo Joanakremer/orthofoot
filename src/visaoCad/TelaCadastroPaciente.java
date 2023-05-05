@@ -1,4 +1,4 @@
-package visao;
+package visaoCad;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -23,6 +23,8 @@ import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import modelo.MPaciente;
+import visao.TelaPaciente;
+
 import javax.swing.JComboBox;
 
 public class TelaCadastroPaciente extends JFrame {

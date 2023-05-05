@@ -1,4 +1,4 @@
-package visao;
+package visaoCad;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import controle.CDaoMedico;
 import modelo.MMedico;
 import modelo.MPaciente;
+import visao.VisaoPrincipal;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;

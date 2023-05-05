@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
+import visaoCad.TelaCadastroMedico;
+
 import java.awt.Cursor;
 import javax.swing.SwingConstants;
 import java.awt.Font;

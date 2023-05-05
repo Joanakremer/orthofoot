@@ -19,6 +19,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import net.miginfocom.swing.MigLayout;
+import visaoCad.TelaCadastroMedico;
 
 public class TelaUsuario extends JFrame {
 

@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.CDaoEndereco;
 import modelo.MEndereco;
+import visaoAtualizar.TelaAtualizarEndereco;
+import visaoCad.TelaCadastroEndereco;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;

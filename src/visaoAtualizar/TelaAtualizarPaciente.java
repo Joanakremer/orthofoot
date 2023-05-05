@@ -1,4 +1,4 @@
-package visao;
+package visaoAtualizar;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -24,6 +24,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 import modelo.MPaciente;
+import visao.TelaPaciente;
 import controle.CDao;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;

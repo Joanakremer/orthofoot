@@ -21,6 +21,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import net.miginfocom.swing.MigLayout;
+import visaoCad.TelaCadastroPaciente;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;

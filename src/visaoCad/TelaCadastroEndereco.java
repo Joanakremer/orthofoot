@@ -1,4 +1,4 @@
-package visao;
+package visaoCad;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 import controle.CDaoEndereco;
 import modelo.MEndereco;
+import visao.TelaEndereco;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
