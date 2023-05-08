@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import controle.CDaoEndereco;
 import modelo.MEndereco;
@@ -19,6 +20,7 @@ import visaoCad.TelaCadastroEndereco;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,7 +28,10 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.border.LineBorder;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFormattedTextField.AbstractFormatter;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 
 
@@ -37,6 +42,10 @@ public class TelaEndereco extends JFrame {
 	private ArrayList<MEndereco> listaEndereco;
 	private MEndereco enderecoSelecionado;
 	private CDaoEndereco daoEndereco;
+	private JFormattedTextField txtCep;
+	private JTextField txtCidade;
+	private JTextField txtRua;
+	private JComboBox estadoBox;
 
 	/**
 	 * Launch the application.
@@ -59,7 +68,7 @@ public class TelaEndereco extends JFrame {
 	 */
 	public TelaEndereco() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 690, 540);
+		setBounds(100, 100, 690, 850);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,7 +76,7 @@ public class TelaEndereco extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 148, 656, 300);
+		scrollPane.setBounds(10, 397, 656, 302);
 		contentPane.add(scrollPane);
 		
 		daoEndereco = CDaoEndereco.getInstancia();
@@ -91,14 +100,70 @@ public class TelaEndereco extends JFrame {
 		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
-		btnNewButton_3.setBounds(569, 459, 97, 31);
+		btnNewButton_3.setBounds(569, 718, 97, 31);
 		contentPane.add(btnNewButton_3);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(192, 192, 192));
-		panel.setBounds(10, 84, 656, 53);
+		panel.setBounds(10, 333, 654, 53);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 75, 656, 247);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cep *");
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(10, 11, 96, 32);
+		panel_3.add(lblNewLabel_1);
+		
+		try {
+			txtCep = new JFormattedTextField(new MaskFormatter("#####-###-##"));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtCep.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtCep.setBounds(10, 52, 109, 31);
+		panel_3.add(txtCep);
+		txtCep.setColumns(10);
+		
+		JLabel lblEstado = new JLabel("Estado *");
+		lblEstado.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblEstado.setBounds(137, 21, 256, 31);
+		panel_3.add(lblEstado);
+		
+		estadoBox = new JComboBox();
+		estadoBox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		estadoBox.setModel(new DefaultComboBoxModel(new String[] {"Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal",
+				"Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná",
+				"Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina",
+				"São Paulo", "Sergipe"}));
+		estadoBox.setBounds(137, 52, 256, 31);
+		panel_3.add(estadoBox);
+		
+		JLabel lblCidade = new JLabel("Cidade *");
+		lblCidade.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblCidade.setBounds(10, 94, 383, 31);
+		panel_3.add(lblCidade);
+		
+		txtCidade = new JTextField();
+		txtCidade.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtCidade.setColumns(10);
+		txtCidade.setBounds(10, 125, 636, 31);
+		panel_3.add(txtCidade);
+		
+		JLabel lblRua = new JLabel("Rua *");
+		lblRua.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblRua.setBounds(10, 157, 383, 31);
+		panel_3.add(lblRua);
+		
+		txtRua = new JTextField();
+		txtRua.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtRua.setColumns(10);
+		txtRua.setBounds(10, 187, 636, 31);
+		panel_3.add(txtRua);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.setBackground(Color.WHITE);
@@ -135,8 +200,43 @@ public class TelaEndereco extends JFrame {
 		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaAtualizarEndereco frame = new TelaAtualizarEndereco();
-				frame.setVisible(true);
+				MEndereco newEndereco = new MEndereco();
+
+				String cep = txtCep.getText().replace("-", "");
+				if (cep == null || cep.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CEP está vazio");
+				} else {
+					newEndereco.setCep(Integer.valueOf(cep));
+				}
+				String rua = txtRua.getText();
+				if (rua == null || rua.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo RUA está vazio");
+				} else {
+					newEndereco.setRua(rua);
+				}
+				String cidade = txtCidade.getText();
+				if (cidade == null || cidade.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CIDADE está vazio");
+				} else {
+					newEndereco.setCidade(cidade);
+				}
+				String estado = estadoBox.getSelectedItem().toString();
+				newEndereco.setEstado(estado);
+				CDaoEndereco tableEndereco = CDaoEndereco.getInstancia();
+				boolean insert = tableEndereco.inserir(newEndereco);
+				txtCep.disable();
+				txtCep.enable(false);
+				txtCep.setText(String.valueOf(enderecoSelecionado.getCep()));
+				if (insert == true) {
+					JOptionPane.showMessageDialog(null, "Cadastro realizado");
+
+					txtCep.setText(null);
+					txtRua.setText(null);
+					txtCidade.setText(null);
+					estadoBox.setSelectedItem("Acre");
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
+				}
 			}
 		});
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -152,13 +252,40 @@ public class TelaEndereco extends JFrame {
 		});
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroEndereco frame = null;
-				try {
-					frame = new TelaCadastroEndereco();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
+				MEndereco newEndereco = new MEndereco();
+
+				String cep= txtCep.getText().replace("-", "");
+				if (cep == null || cep.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CEP está vazio");
+				} else {
+					newEndereco.setCep(Integer.valueOf(cep));
 				}
-				frame.setVisible(true);
+				String rua = txtRua.getText();
+				if (rua == null || rua.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo RUA está vazio");
+				} else {
+					newEndereco.setRua(rua);
+				}
+				String cidade = txtCidade.getText();
+				if (cidade == null || cidade.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CIDADE está vazio");
+				} else {
+					newEndereco.setCidade(cidade);
+				}
+				String estado = estadoBox.getSelectedItem().toString();
+				newEndereco.setEstado(estado);
+				CDaoEndereco tableEndereco = CDaoEndereco.getInstancia();
+				boolean insert = tableEndereco.inserir(newEndereco);
+				if (insert == true) {
+					JOptionPane.showMessageDialog(null, "Cadastro realizado");
+
+					txtCep.setText(null);
+					txtRua.setText(null);
+					txtCidade.setText(null);
+					estadoBox.setSelectedItem("Acre");
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
+				}
 			}
 		});
 	atualizar();

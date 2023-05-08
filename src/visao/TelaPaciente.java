@@ -463,6 +463,31 @@ public class TelaPaciente extends JFrame {
 		lblNewLabel_2_1_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		lblNewLabel_2_1_2_1.setBounds(10, 11, 315, 29);
 		panel_1_1.add(lblNewLabel_2_1_2_1);
+		
+		JButton btnNewButton_1_1 = new JButton("+");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaEndereco frame = new TelaEndereco();
+				frame.setVisible(true);
+			}
+		});
+		btnNewButton_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 14));
+		btnNewButton_1_1.setFocusPainted(false);
+		btnNewButton_1_1.setBackground(Color.WHITE);
+		btnNewButton_1_1.setBounds(527, 288, 457, 31);
+		contentPane.add(btnNewButton_1_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBounds(527, 254, 457, 31);
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Adicionar Endereço *");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(10, 0, 437, 31);
+		panel_2.add(lblNewLabel_2);
 		atualizar();
 		
 		int ano = LocalDate.now().getYear();
