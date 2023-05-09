@@ -32,6 +32,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import java.awt.SystemColor;
 
 
 
@@ -68,7 +69,7 @@ public class TelaEndereco extends JFrame {
 	 */
 	public TelaEndereco() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 690, 850);
+		setBounds(100, 100, 690, 800);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -114,6 +115,7 @@ public class TelaEndereco extends JFrame {
 		panel.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(220, 220, 220));
 		panel_3.setBounds(10, 75, 656, 247);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);

@@ -41,6 +41,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.awt.SystemColor;
 
 
 public class TelaPaciente extends JFrame {
@@ -84,6 +85,7 @@ public class TelaPaciente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(220, 220, 220));
 		panel_3.setBounds(10, 75, 507, 293);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
@@ -432,8 +434,9 @@ public class TelaPaciente extends JFrame {
 		panel.add(btnNewButton_2);
 		
 		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBackground(new Color(220, 220, 220));
 		panel_1_1.setLayout(null);
-		panel_1_1.setBounds(527, 75, 457, 155);
+		panel_1_1.setBounds(527, 75, 457, 168);
 		contentPane.add(panel_1_1);
 		
 		try {
