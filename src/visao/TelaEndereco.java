@@ -88,10 +88,14 @@ public class TelaEndereco extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int posicaoPessoa = tableEndereco.getSelectedRow();
 				enderecoSelecionado = listaEndereco.get(posicaoPessoa);
-				enderecoSelecionado.getCep();
-				enderecoSelecionado.getRua();
-				enderecoSelecionado.getCidade();
+				txtCep.setText(String.valueOf(enderecoSelecionado.getCep()));
+				txtRua.setText(enderecoSelecionado.getRua());
+				txtCidade.setText(enderecoSelecionado.getCidade());
+				estadoBox.setSelectedItem(enderecoSelecionado.getEstado());
 				enderecoSelecionado.getEstado();
+				if(enderecoSelecionado != null) {
+					txtCep.disable();
+				}
 			}
 		});
 		scrollPane.setViewportView(tableEndereco);
