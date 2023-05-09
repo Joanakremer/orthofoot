@@ -52,13 +52,13 @@ public class CDaoEndereco {
 					Connection c = con.conectar();
 					int valida = 0;
 					try {
-						String query = "UPDATE endereco Set cep = ?, set rua = ?, set cidade = ?, set estado = ? WHERE cep = ?";
+						String query = "UPDATE endereco Set rua = ?, cidade = ?, estado = ? WHERE cep = ?";
 						PreparedStatement stm = c.prepareStatement(query);
 						
-						stm.setLong(1, a.getCep());
-						stm.setString(2, a.getRua());
-						stm.setString(3, a.getCidade());
-						stm.setString(4, a.getEstado());				
+						stm.setString(1, a.getRua());
+						stm.setString(2, a.getCidade());
+						stm.setString(3, a.getEstado());				
+						stm.setLong(4, a.getCep());
 						valida = stm.executeUpdate();					
 					} catch (SQLException e) {
 						e.printStackTrace();

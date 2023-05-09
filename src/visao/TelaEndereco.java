@@ -231,13 +231,14 @@ public class TelaEndereco extends JFrame {
 				CDaoEndereco tableEndereco = CDaoEndereco.getInstancia();
 				boolean insert = tableEndereco.inserir(newEndereco);
 				txtCep.setText(String.valueOf(enderecoSelecionado.getCep()));
+				System.out.println(newEndereco);
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
 					atualizar();
 					txtCep.setText(null);
 					txtRua.setText(null);
 					txtCidade.setText(null);
-					estadoBox.setSelectedItem("Acre");
+					estadoBox.setSelectedItem(null);
 					atualizar();
 					limparCampos();
 				} else {
