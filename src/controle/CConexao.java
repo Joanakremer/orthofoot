@@ -10,7 +10,7 @@ public class CConexao {
 	private static CConexao instancia;
 	private static final String DATABASE = "orthofoot";
 	private static final String USER = "root";
-	private static final String PSW = "pwds";
+	private static final String PSW = "aluno";
 	
 	private CConexao() {
 		

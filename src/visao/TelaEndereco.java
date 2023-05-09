@@ -233,7 +233,7 @@ public class TelaEndereco extends JFrame {
 				txtCep.setText(String.valueOf(enderecoSelecionado.getCep()));
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
-
+					
 					txtCep.setText(null);
 					txtRua.setText(null);
 					txtCidade.setText(null);
@@ -241,6 +241,7 @@ public class TelaEndereco extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
+				atualizar();
 			}
 		});
 		btnNewButton_2.addActionListener(new ActionListener() {
