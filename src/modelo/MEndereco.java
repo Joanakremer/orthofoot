@@ -1,15 +1,15 @@
 package modelo;
 
 public class MEndereco {
-	private int cep;
+	private Long cep;
 	private String rua;
 	private String cidade;
 	private String estado;
 	
-	public int getCep() {
+	public Long getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(Long cep) {
 		this.cep = cep;
 	}
 	public String getRua() {

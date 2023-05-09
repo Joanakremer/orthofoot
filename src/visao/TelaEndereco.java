@@ -95,6 +95,8 @@ public class TelaEndereco extends JFrame {
 				enderecoSelecionado.getEstado();
 				if(enderecoSelecionado != null) {
 					txtCep.disable();
+					
+					
 				}
 			}
 		});
@@ -210,7 +212,7 @@ public class TelaEndereco extends JFrame {
 				if (cep == null || cep.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CEP está vazio");
 				} else {
-					newEndereco.setCep(Integer.valueOf(cep));
+					newEndereco.setCep(Long.valueOf(cep));
 				}
 				String rua = txtRua.getText();
 				if (rua == null || rua.trim().isEmpty()) {
@@ -228,21 +230,22 @@ public class TelaEndereco extends JFrame {
 				newEndereco.setEstado(estado);
 				CDaoEndereco tableEndereco = CDaoEndereco.getInstancia();
 				boolean insert = tableEndereco.inserir(newEndereco);
-				txtCep.disable();
-				txtCep.enable(false);
 				txtCep.setText(String.valueOf(enderecoSelecionado.getCep()));
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
-					
+					atualizar();
 					txtCep.setText(null);
 					txtRua.setText(null);
 					txtCidade.setText(null);
 					estadoBox.setSelectedItem("Acre");
+					atualizar();
+					limparCampos();
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
 				atualizar();
 			}
+			
 		});
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -263,7 +266,7 @@ public class TelaEndereco extends JFrame {
 				if (cep == null || cep.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CEP está vazio");
 				} else {
-					newEndereco.setCep(Integer.valueOf(cep));
+					newEndereco.setCep(Long.valueOf(cep));
 				}
 				String rua = txtRua.getText();
 				if (rua == null || rua.trim().isEmpty()) {
@@ -283,23 +286,24 @@ public class TelaEndereco extends JFrame {
 				boolean insert = tableEndereco.inserir(newEndereco);
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
-
 					txtCep.setText(null);
 					txtRua.setText(null);
 					txtCidade.setText(null);
 					estadoBox.setSelectedItem("Acre");
+					atualizar();
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
+				atualizar();
 			}
 		});
-	atualizar();
+
 	}
 	public void atualizar() {
 
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "cep", "rua",
 				"cidade", "estado"});
-		tableEndereco.setModel(modelo);
+		listaEndereco = daoEndereco.listarEndereco();
 		if (listaEndereco.size() > 0 && listaEndereco != null) {
 			for (MEndereco endereco : listaEndereco) {
 				if(endereco == null) {
@@ -310,5 +314,12 @@ public class TelaEndereco extends JFrame {
 				}
 			}
 		}
+		tableEndereco.setModel(modelo);
+	}
+	protected void limparCampos() {
+		txtCep.setText(null);
+		txtCidade.setText(null);
+		txtRua.setText(null);
+		estadoBox.setSelectedItem(null);
 	}
 }

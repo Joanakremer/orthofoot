@@ -32,12 +32,13 @@ public class CDaoEndereco {
 				String query = "INSERT INTO endereco (cep, rua, cidade, estado) VALUES (?, ?, ?, ?);";
 				PreparedStatement stm = c.prepareStatement(query);
 				
-				stm.setInt(1, a.getCep());
+				stm.setLong(1, a.getCep());
 				stm.setString(2, a.getRua());
 				stm.setString(3, a.getCidade());
 				stm.setString(4, a.getEstado());				
 				valida = stm.executeUpdate();
 				System.out.println(stm);
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
@@ -54,7 +55,7 @@ public class CDaoEndereco {
 						String query = "UPDATE endereco Set cep = ?, set rua = ?, set cidade = ?, set estado = ? WHERE cep = ?";
 						PreparedStatement stm = c.prepareStatement(query);
 						
-						stm.setInt(1, a.getCep());
+						stm.setLong(1, a.getCep());
 						stm.setString(2, a.getRua());
 						stm.setString(3, a.getCidade());
 						stm.setString(4, a.getEstado());				
@@ -74,7 +75,7 @@ public class CDaoEndereco {
 					try {
 						String query = "DELETE FROM endereco Where cep = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
-						stm.setInt(1, a.getCep());
+						stm.setLong(1, a.getCep());
 						stm.setString(2, a.getRua());
 						stm.setString(3, a.getCidade());
 						stm.setString(4, a.getEstado());				
@@ -98,7 +99,7 @@ public class CDaoEndereco {
 				String query = "SELECT * FROM endereco";
 				ResultSet rs = stm.executeQuery(query);
 				while (rs.next()) {
-					int cep = rs.getInt("cep");
+					long cep = rs.getLong("cep");
 					String rua = rs.getString("rua");
 					String cidade = rs.getString("cidade");
 					String estado = rs.getString("estado");

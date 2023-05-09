@@ -1,4 +1,4 @@
-package visaoCad;
+package visao;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 import controle.CDaoMedico;
 import modelo.MMedico;
 import modelo.MPaciente;
-import visao.VisaoPrincipal;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -33,7 +32,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaCadastroMedico extends JFrame {
+public class TelaMedico extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCrm;
@@ -55,7 +54,7 @@ public class TelaCadastroMedico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCadastroMedico frame = new TelaCadastroMedico();
+					TelaMedico frame = new TelaMedico();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +66,7 @@ public class TelaCadastroMedico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroMedico() {
+	public TelaMedico() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 543, 670);
 		contentPane = new JPanel();

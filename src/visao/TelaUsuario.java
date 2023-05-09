@@ -19,7 +19,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import net.miginfocom.swing.MigLayout;
-import visaoCad.TelaCadastroMedico;
 
 public class TelaUsuario extends JFrame {
 
@@ -78,8 +77,8 @@ public class TelaUsuario extends JFrame {
 		btnNewButton = new JButton("Cadastrar Médico");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroMedico frame = null;
-				frame = new TelaCadastroMedico();
+				TelaMedico frame = null;
+				frame = new TelaMedico();
 				frame.setVisible(true);
 			}
 		});
