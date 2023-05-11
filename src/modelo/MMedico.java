@@ -7,9 +7,6 @@ public class MMedico {
 	private String nomeCompleto;
 	private String sexo;
 	private LocalDate dataNasc;
-	private MAgenda agenda;
-	private MPaciente paciente;
-	
 	public long getCrm() {
 		return crm;
 	}
