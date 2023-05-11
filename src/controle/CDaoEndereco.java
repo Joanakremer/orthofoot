@@ -21,7 +21,7 @@ public class CDaoEndereco {
 		}
 		return instancia;
 		}
-		private CDaoEndereco() {
+		public CDaoEndereco() {
 		}
 	//Insert -------------------------------------------------------------------------------
 		public boolean inserir(MEndereco a) {
@@ -75,11 +75,8 @@ public class CDaoEndereco {
 					try {
 						String query = "DELETE FROM endereco Where cep = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
-						stm.setLong(1, a.getCep());
-						stm.setString(2, a.getRua());
-						stm.setString(3, a.getCidade());
-						stm.setString(4, a.getEstado());				
-						valida = stm.executeUpdate();
+						stm.setLong(1, a.getCep());				
+						stm.executeUpdate();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}finally {

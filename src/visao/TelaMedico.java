@@ -112,7 +112,6 @@ public class TelaMedico extends JFrame {
 		for (int i = 0; i < 110; i++) {
 			cbDia.addItem(String.valueOf(dia));
 			dia++;
-			//TODO cbDia
 		}
 		cbDia.setBounds(262, 182, 68, 29);
 		panel_3.add(cbDia);
