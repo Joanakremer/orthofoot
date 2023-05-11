@@ -10,6 +10,22 @@ public class MAgenda {
 	private Date data;
 	private Time hora;
 	private String titulo;
+	private MMedico medico;
+	private MPaciente paciente;
+	
+	public MMedico getMedico() {
+		return medico;
+	}
+	public void setMedico(MMedico medico) {
+		this.medico = medico;
+	}
+	public MPaciente getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(MPaciente paciente) {
+		this.paciente = paciente;
+	}
+	
 	
 	public int getIdConsulta() {
 		return idConsulta;

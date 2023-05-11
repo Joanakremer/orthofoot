@@ -14,6 +14,7 @@ import modelo.MEndereco;
 
 public class CDaoAgenda {
 	private CConexao con;
+	//TODO dao todo errado precisando de adição de crm prontuario e algumas foreingKey como nomeCompleto convenio e 
 	//Insert -------------------------------------------------------------------------------
 		public boolean inserir(MAgenda s) {
 	con = CConexao.getInstancia();
@@ -96,6 +97,8 @@ public class CDaoAgenda {
 		            s.setData(data);
 		            s.setHora(hora);
 		            agenda.add(s);
+		            
+		            
 		        }
 		    } catch (SQLException e) {
 		        e.printStackTrace();
