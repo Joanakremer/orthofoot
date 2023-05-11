@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
-import visaoCad.TelaCadastroMedico;
 
 import java.awt.Cursor;
 import javax.swing.SwingConstants;
@@ -176,7 +175,7 @@ public class VisaoPrincipal extends JFrame {
 				panel_7.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 			public void mouseClicked(MouseEvent e) {				
-				TelaCadastroMedico frame = new TelaCadastroMedico();
+				TelaMedico frame = new TelaMedico();
 				frame.setVisible(true);
 				dispose();
 			}

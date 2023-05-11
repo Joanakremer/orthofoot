@@ -43,7 +43,7 @@ public class CDao {
 			stm.setString(4, p.getContato());
 			stm.setDate(5, Date.valueOf(p.getdataNasc()));
 			stm.setString(6, p.getConvenio());
-			stm.setString(7, p.getnCarteira());
+			stm.setInt(7, p.getnCarteira());
 			stm.setString(8, p.getSexo());
 			System.out.println(stm);
 			valida = stm.executeUpdate();
@@ -70,7 +70,7 @@ public class CDao {
 			stm.setString(3, p.getContato());
 			stm.setDate(4, Date.valueOf(p.getdataNasc()));
 			stm.setString(5, p.getConvenio());
-			stm.setString(6, p.getnCarteira());
+			stm.setInt(6, p.getnCarteira());
 			stm.setString(7, p.getSexo());
 			stm.setInt(8, p.getProntuario());
 			valida = stm.executeUpdate();
@@ -92,14 +92,8 @@ public class CDao {
 			String query = "DELETE FROM paciente Where prontuario = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 			stm.setInt(1, p.getProntuario());
-			stm.setString(2, p.getnomeCompleto());
-			stm.setLong(3, p.getCpf());
-			stm.setString(4, p.getContato());
-			stm.setDate(5, Date.valueOf(p.getdataNasc()));
-			stm.setString(6, p.getConvenio());
-			stm.setString(7, p.getnCarteira());
-			stm.setString(8, p.getSexo());
-			valida = stm.executeUpdate();
+			
+			stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -127,7 +121,7 @@ public class CDao {
 				String contato = rs.getString("contato");
 				Date dataNasc = rs.getDate("dataNasc");
 				String convenio = rs.getString("convenio");
-				String nCarteira = rs.getString("nCarteira");
+				int nCarteira = rs.getInt("nCarteira");
 				String sexo = rs.getString("sexo");
 				MPaciente p = new MPaciente();
 				p.setProntuario(prontuario);

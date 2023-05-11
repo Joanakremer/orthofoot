@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +26,7 @@ import visaoCad.TelaCadastroPaciente;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 import controle.CDao;
 import modelo.MPaciente;
@@ -223,6 +225,9 @@ public class TelaPaciente extends JFrame {
 				cbMes.setSelectedIndex(pacienteSelecionado.getdataNasc().getMonthValue());
 				cbAno.setSelectedItem(pacienteSelecionado.getdataNasc().getYear()+"");
 				sexoBox.setSelectedItem(pacienteSelecionado.getSexo());
+				if(pacienteSelecionado != null) {
+					txtProntuario.disable();
+				}
 			}
 		});
 		scrollPane.setViewportView(tablePacientes);
@@ -267,22 +272,18 @@ public class TelaPaciente extends JFrame {
 
 				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				newPaciente.setDataNasc(data);
-				/*
-				 * LocalDate data1 = LocalDate.parse(dataNascimento);
-				 * newPaciente.setdataNasc(Date.valueOf(dataNascimento));
-				 */
-
+	
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
 				} else {
 					newPaciente.setCpf(Long.valueOf(cpf));
 				}
-				String carteira = txtCarteira.getText();
-				if (carteira == null || carteira.trim().isEmpty()) {
+				String carteira = txtCarteira.getText().trim();
+				if (carteira.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
-				} else {
-					newPaciente.setnCarteira(carteira);
+				} else {//TODO erro de string vazia da carteira
+					newPaciente.setnCarteira(Integer.valueOf(carteira));
 				}
 				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-",
 						"");
@@ -307,7 +308,6 @@ public class TelaPaciente extends JFrame {
 
 					txtProntuario.setText(null);
 					txtNome.setText(null);
-					//txtDia.setText(null);
 					txtCpf.setText(null);
 					txtCarteira.setText(null);
 					txtContato.setText(null);
@@ -332,7 +332,7 @@ public class TelaPaciente extends JFrame {
 			txtNome.setText(this.pacienteSelecionado.getnomeCompleto());
 			txtCpf.setText(String.valueOf(this.pacienteSelecionado.getCpf()));
 			cbDia.setSelectedItem(this.pacienteSelecionado.getdataNasc());
-			txtCarteira.setText(this.pacienteSelecionado.getnCarteira());
+			txtCarteira.setText(String.valueOf(this.pacienteSelecionado.getnCarteira()));
 			txtContato.setText(this.pacienteSelecionado.getContato());
 			txtConvenio.setText(this.pacienteSelecionado.getConvenio());
 			sexoBox.setSelectedItem(this.pacienteSelecionado.getSexo());
@@ -363,7 +363,7 @@ public class TelaPaciente extends JFrame {
 				if (carteira == null || carteira.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
 				} else {
-					pacienteSelecionado.setnCarteira(carteira);
+					pacienteSelecionado.setnCarteira(Integer.valueOf(carteira));
 				}
 				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-", "");
 				if (contato == null || contato.isEmpty()) {
@@ -416,7 +416,10 @@ public class TelaPaciente extends JFrame {
 		
 		btnNewButton_2 = new JButton("Deletar");
 		btnNewButton_2.addActionListener(new ActionListener() {
+			CDao c = new CDao();
 			public void actionPerformed(ActionEvent e) {
+				c.delete(pacienteSelecionado);
+				listaPaciente.remove(pacienteSelecionado);
 				if(pacienteSelecionado != null) {
 					listaPaciente.remove(pacienteSelecionado);
 					
@@ -440,8 +443,18 @@ public class TelaPaciente extends JFrame {
 		contentPane.add(panel_1_1);
 		
 		try {
-			txtCarteira = new JFormattedTextField(new MaskFormatter("#####################"));
-		} catch (ParseException e1) {
+			NumberFormat format = NumberFormat.getInstance();
+			format.setGroupingUsed(false);//Remove comma from number greater than 4 digit
+			NumberFormatter sleepFormatter = new NumberFormatter(format);
+			sleepFormatter.setValueClass(Integer.class);
+			sleepFormatter.setMinimum(0);
+			sleepFormatter.setMaximum(3600);
+			sleepFormatter.setAllowsInvalid(false);
+
+			sleepFormatter.setCommitsOnValidEdit(true);
+			
+			txtCarteira = new JFormattedTextField(sleepFormatter);
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 		txtCarteira.setBounds(10, 115, 437, 29);

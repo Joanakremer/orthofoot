@@ -1,8 +1,8 @@
-CREATE database orthofoot;
+CREATE DATABASE IF NOT EXISTS orthofoot;
 USE orthofoot;
 
 CREATE table endereco(
-cep INT NOT NULL PRIMARY KEY,
+cep bigint NOT NULL PRIMARY KEY,
 rua VARCHAR(100)NOT NULL,
 cidade VARCHAR(100)NOT NULL,
 estado VARCHAR(100)NOT NULL

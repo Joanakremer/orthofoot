@@ -28,9 +28,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import net.miginfocom.swing.MigLayout;
-import visaoCad.TelaCadastroMedico;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 public class TelaUsuario extends JFrame {
 
@@ -99,39 +96,9 @@ public class TelaUsuario extends JFrame {
 		btnNewButton = new JButton("Cadastrar Médico");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MMedico newMedico = new MMedico();
-				String crm = txtCrm.getText();
-				if (crm == null || crm.trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O campo CRM está vazio");
-				} else {
-					newMedico.setCrm(Long.valueOf(crm));
-				}
-				String nomeCompleto = txtNomeCompleto.getText();
-				if (nomeCompleto == null || nomeCompleto.trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "O campo NOME COMPLETO está vazio");
-				} else {
-					newMedico.setnomeCompleto(nomeCompleto);
-				}
-				String dia = (String) cbDia.getSelectedItem();
-				String mes = (String) cbMes.getSelectedItem();
-				String ano = (String) cbAno.getSelectedItem();
-				
-				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
-				newMedico.setdataNasc(data);
-			
-				
-				String sexo =String.valueOf(cbSexo.getSelectedItem().toString());
-				newMedico.setSexo(sexo);
-				
-				CDaoMedico tableMedico = CDaoMedico.getInstancia();
-				boolean insert = tableMedico.inserir(newMedico);
-				if (insert == true) {
-					JOptionPane.showMessageDialog(null, "Cadastro realizado");
-					atualizar();
-					limparCampos();
-				} else {
-					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
-				}
+				TelaMedico frame = null;
+				frame = new TelaMedico();
+				frame.setVisible(true);
 			}
 		});
 		btnNewButton.setBackground(Color.WHITE);

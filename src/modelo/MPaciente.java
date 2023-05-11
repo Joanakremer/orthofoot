@@ -9,7 +9,7 @@ public class MPaciente {
 	private String nomeCompleto;
 	private String contato;
 	private String convenio;
-	private String nCarteira;
+	private int nCarteira;
 	private String sexo;
 	private LocalDate dataNasc;
 	private Long cpf;
@@ -71,11 +71,11 @@ public class MPaciente {
 		this.convenio = convenio;
 	}
 
-	public String getnCarteira() {
+	public int getnCarteira() {
 		return nCarteira;
 	}
 
-	public void setnCarteira(String nCarteira) {
+	public void setnCarteira(int nCarteira) {
 		this.nCarteira = nCarteira;
 	}
 
