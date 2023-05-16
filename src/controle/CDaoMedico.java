@@ -81,13 +81,14 @@ con = CConexao.getInstancia();
 					PreparedStatement stm = c.prepareStatement(query);
 					stm.setLong(1, m.getCrm());
 					
-					stm.executeUpdate();
+					valida = stm.executeUpdate();
 					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}finally {
 					con.fecharConexao();
 				}
+				
 				return (valida == 0 ? false : true);
 			}
 	//List -------------------------------------------------------------------------------
