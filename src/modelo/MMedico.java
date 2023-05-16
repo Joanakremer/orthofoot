@@ -34,4 +34,9 @@ public class MMedico {
 	public void setdataNasc(LocalDate data) {
 		this.dataNasc = data;
 	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nomeCompleto;
+	}
 }

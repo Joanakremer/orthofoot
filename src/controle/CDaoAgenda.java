@@ -21,12 +21,15 @@ public class CDaoAgenda {
 		int valida = 0;
 			Connection c = con.conectar();
 			try {
-				String query = "INSERT INTO agenda (idConsulta, data, hora) VALLUES (?, ?);";
+				String query = "INSERT INTO agendas (data_cons, hora, titulo, nCartao, prontuario, crm) VALUES (?, ?, ?, ?, ?, ?);";
 				PreparedStatement stm = c.prepareStatement(query);
+				stm.setDate(1, s.getData());
+				stm.setTime(2, s.getHora());
+				stm.setString(3, s.getTitulo());
+				stm.setInt(4, s.getPaciente().getnCarteira());
+				stm.setInt(5, s.getPaciente().getProntuario());
+				stm.setLong(6, s.getMedico().getCrm());
 				
-				stm.setInt(1, s.getIdConsulta());
-				stm.setDate(4, s.getData());
-				stm.setTime(5, s.getHora());
 				valida = stm.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
