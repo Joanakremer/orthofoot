@@ -28,6 +28,7 @@ class TesteMedico {
 		mmedico.setnomeCompleto("Leonardo");
 		mmedico.setdataNasc(LocalDate.parse("26/04/2004", formatter));
 		mmedico.setSexo("Masculino");
+		
 		assertTrue(dao.inserir(mmedico));
 	}
 	@Test
@@ -41,6 +42,7 @@ class TesteMedico {
 		mmedico.setnomeCompleto("Kaillane");
 		mmedico.setdataNasc(LocalDate.parse("16/10/2004", formatter));
 		mmedico.setSexo("Feminino");
+		
 		assertTrue(dao.update(mmedico));
 	}
 	

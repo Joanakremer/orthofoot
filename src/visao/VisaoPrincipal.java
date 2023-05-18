@@ -145,7 +145,7 @@ public class VisaoPrincipal extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaPaciente frame = new TelaPaciente();
+				VisaoPaciente frame = new VisaoPaciente();
 				frame.setVisible(true);
 				dispose();
 			}
