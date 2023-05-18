@@ -85,7 +85,6 @@ public class TelaAgenda extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int posicaoAgenda = tableAgenda.getSelectedRow();
 				agendaSelecionada = listAgendas.get(posicaoAgenda);
-				atualizar();
 			}
 			
 		});
@@ -115,7 +114,6 @@ public class TelaAgenda extends JFrame {
 				daoAgenda = new CDaoAgenda();
 
 				MMedico medico = (MMedico) cbMedico.getSelectedItem();
-				atualizar();
 				MPaciente paciente = (MPaciente) cbPaciente.getSelectedItem();
 				MAgenda agenda = new MAgenda();
 				String data = txtData.getText();
@@ -144,7 +142,7 @@ public class TelaAgenda extends JFrame {
 					e3.printStackTrace();
 				}
 				daoAgenda.inserir(agenda);
-				atualizar();
+				
 			}
 		});
 		btnCad.setBounds(156, 135, 89, 23);
@@ -186,7 +184,6 @@ public class TelaAgenda extends JFrame {
 					a.delete(agendaSelecionada);
 					listAgendas.remove(agendaSelecionada);
 					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
-					atualizar();
 				}
 				atualizar();
 			}
