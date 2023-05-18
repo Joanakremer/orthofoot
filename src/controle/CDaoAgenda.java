@@ -11,10 +11,22 @@ import java.util.ArrayList;
 
 import modelo.MAgenda;
 import modelo.MEndereco;
+import modelo.MMedico;
+import modelo.MPaciente;
 
 public class CDaoAgenda {
 	private CConexao con;
-	//TODO dao todo errado precisando de adição de crm prontuario e algumas foreingKey como nomeCompleto convenio e 
+	private static CDaoAgenda instancia;
+	
+	public static CDaoAgenda getInstancia() {
+		if(instancia == null) {
+			instancia = new CDaoAgenda();
+		}
+		return instancia;
+	}
+	public CDaoAgenda(){		
+	}
+	
 	//Insert -------------------------------------------------------------------------------
 		public boolean inserir(MAgenda s) {
 	con = CConexao.getInstancia();
@@ -44,7 +56,7 @@ public class CDaoAgenda {
 					Connection c = con.conectar();
 					int valida = 0;
 					try {
-						String query = "UPDATE agenda Set idConsulta = ?, set nomeCompleto = ?, set contato = ?, set data = ?, set hora = ?, set titulo = ? WHERE cep = ?";
+						String query = "UPDATE agendas Set idConsulta = ?, set nomeCompleto = ?, set contato = ?, set data = ?, set hora = ?, set titulo = ? WHERE cep = ?";
 						PreparedStatement stm = c.prepareStatement(query);
 	
 						stm.setInt(1, s.getIdConsulta());
@@ -64,7 +76,7 @@ public class CDaoAgenda {
 					Connection c = con.conectar();
 					int valida = 0;
 					try {
-						String query = "DELETE FROM agenda Where idConsulta = ?"; 
+						String query = "DELETE FROM agendas Where idConsulta = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
 						stm.setInt(1, s.getIdConsulta());
 						stm.setDate(4, s.getData());	
@@ -79,27 +91,44 @@ public class CDaoAgenda {
 				}
 		//List -------------------------------------------------------------------------------
 		public ArrayList<MAgenda> listarAgenda() {
-		    ArrayList<MAgenda> agenda = new ArrayList<>();
+		    ArrayList<MAgenda> agendas = new ArrayList<>();
 		    
 		    con = CConexao.getInstancia();
 		    Connection c = con.conectar();
 		    
 		    try {
 		        Statement stm = c.createStatement();
-		        String query = "SELECT * FROM agenda";
+		        String query = "SELECT agendas.*, paciente.* "
+		        		+ "FROM orthofoot.agendas "
+		        		+ "inner join orthofoot.paciente on paciente.prontuario = agendas.prontuario";
 		        ResultSet rs = stm.executeQuery(query);
 		        while (rs.next()) {
-		            int idConsulta = rs.getInt("idConsulta");
+		            int idConsulta = rs.getInt("idconsulta");
 		            String nomeCompleto = rs.getString("nomeCompleto");
 		            String contato = rs.getString("contato");
-		            Date data = rs.getDate("data");
+		            Date data = rs.getDate("data_cons");
 		            Time hora = rs.getTime("hora");
+		            Integer crm = rs.getInt("crm");
+		            Integer nCarteira = rs.getInt("nCartao");
+		            Integer prontuario = rs.getInt("prontuario");
 		            String titulo = rs.getString("titulo");
+		            
 		            MAgenda s = new MAgenda();
 		            s.setIdConsulta(idConsulta);
 		            s.setData(data);
 		            s.setHora(hora);
-		            agenda.add(s);
+		            
+		            MPaciente p = new MPaciente();
+		            p.setProntuario(prontuario);
+		            p.setnomeCompleto(nomeCompleto);
+		            p.setnCarteira(nCarteira);
+		            p.setConvenio(titulo);		      
+		            s.setPaciente(p);
+		            
+		            MMedico m = new MMedico();
+		            m.setCrm(crm);
+		            s.setMedico(m);
+		            agendas.add(s);
 		            
 		            
 		        }
@@ -108,7 +137,7 @@ public class CDaoAgenda {
 		    }finally {
 		    	con.fecharConexao();
 			}
-		    return agenda;
+		    return agendas;
 
 		}
 }
