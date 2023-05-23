@@ -31,7 +31,7 @@
 <h2> 📉 Diagrama de casos de uso </h2>
 
 
-![Captura de tela 2023-03-23 115135](https://user-images.githubusercontent.com/111135808/227242231-15ab4733-289e-4695-a653-d12b006fe627.png)
+![Diagrama sem nome drawio](https://github.com/Joanakremer/orthofoot/assets/111135808/410e3a5e-9255-48c1-916b-a2828ef7ca03)
 
 
 
