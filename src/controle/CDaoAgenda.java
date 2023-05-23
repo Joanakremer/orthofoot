@@ -78,9 +78,7 @@ public class CDaoAgenda {
 					try {
 						String query = "DELETE FROM agendas Where idConsulta = ?"; 
 						PreparedStatement stm = c.prepareStatement(query);
-						stm.setInt(1, s.getIdConsulta());
-						stm.setDate(4, s.getData());	
-						stm.setTime(4, s.getHora());						
+						stm.setInt(1, s.getIdConsulta());					
 						valida = stm.executeUpdate();
 					} catch (SQLException e) {
 						e.printStackTrace();

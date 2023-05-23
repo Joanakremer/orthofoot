@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import controle.CDaoAgenda;
@@ -76,7 +77,7 @@ public class TelaAgenda extends JFrame {
 		scrollPane.setBounds(10, 243, 694, 261);
 		contentPane.add(scrollPane);
 		
-		tableAgenda = new JTable();// TODO fazer a seleção das rows
+		tableAgenda = new JTable();
 		atualizar();
 		tableAgenda.addMouseListener(new MouseAdapter() {
 			
@@ -86,7 +87,6 @@ public class TelaAgenda extends JFrame {
 				int posicaoAgenda = tableAgenda.getSelectedRow();
 				agendaSelecionada = listAgendas.get(posicaoAgenda);
 			}
-			
 		});
 		scrollPane.setViewportView(tableAgenda);
 
@@ -142,7 +142,7 @@ public class TelaAgenda extends JFrame {
 					e3.printStackTrace();
 				}
 				daoAgenda.inserir(agenda);
-				
+				atualizar();
 			}
 		});
 		btnCad.setBounds(156, 135, 89, 23);
@@ -180,14 +180,18 @@ public class TelaAgenda extends JFrame {
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CDaoAgenda a = new CDaoAgenda();
-				if (agendaSelecionada != null) {
-					a.delete(agendaSelecionada);
-					listAgendas.remove(agendaSelecionada);
-					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
-				}
+					if (agendaSelecionada != null) {
+						a.delete(agendaSelecionada);
+						listAgendas.remove(agendaSelecionada);
+						atualizar();
+						JOptionPane.showMessageDialog(null, "dado removido com sucesso");
+				}else {
+					JOptionPane.showMessageDialog(null, "erro na remoção de dados");
+					}
 				atualizar();
 			}
 		});
+		atualizar();
 		btnDel.setBounds(558, 135, 89, 23);
 		contentPane.add(btnDel);
 	}

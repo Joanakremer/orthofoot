@@ -45,7 +45,6 @@ FOREIGN KEY(prontuario) REFERENCES paciente(prontuario),
 FOREIGN KEY(crm) REFERENCES medicos(crm)
 );
 
-
 insert into usuarios(idusuario,login,senha,tipoUsuario ) values (1, 'Admin', 'Admin', 1);
 
 SELECT * FROM usuarios;
