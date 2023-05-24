@@ -1,6 +1,7 @@
 # Clínica Ortopédica
 
-![Baner](https://user-images.githubusercontent.com/111136680/225655759-25216db6-fa78-44b6-a025-793989817888.png)
+![Logo banner](https://github.com/Joanakremer/orthofoot/assets/111135808/fb885e1b-dde6-4d24-b6a0-441aa4b1d7d9)
+
 
 <h2> 📈 Projeto </h2>
 
