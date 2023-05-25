@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
@@ -16,8 +16,7 @@ import javax.swing.text.MaskFormatter;
 import controle.CDaoEndereco;
 import controle.CDaoMedico;
 import modelo.MEndereco;
-import visaoAtualizar.TelaAtualizarEndereco;
-import visaoCad.TelaCadastroEndereco;
+
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -157,7 +156,7 @@ public class TelaEndereco extends JFrame {
 		lblCidade.setBounds(10, 94, 383, 31);
 		panel_3.add(lblCidade);
 		
-		txtCidade = new JTextField();
+		txtCidade = new JFormattedTextField();
 		txtCidade.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtCidade.setColumns(10);
 		txtCidade.setBounds(10, 125, 636, 31);

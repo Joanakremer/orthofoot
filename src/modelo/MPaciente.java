@@ -102,5 +102,9 @@ public class MPaciente {
 	public boolean isEmpty() {
 		return false;
 	}
-
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nomeCompleto;
+	}
 }

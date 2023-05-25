@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,7 +22,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import net.miginfocom.swing.MigLayout;
-import visaoCad.TelaCadastroPaciente;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
@@ -174,7 +173,7 @@ public class TelaPaciente extends JFrame {
 		panel_3.add(cbAno);
 		
 		try {
-			txtContato = new JFormattedTextField(new MaskFormatter("(+##)## #####-####"));
+			txtContato = new JFormattedTextField(new MaskFormatter("(+##)## #####-##"));
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
@@ -249,8 +248,6 @@ public class TelaPaciente extends JFrame {
 		btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroPaciente frame = null;
-				frame = new TelaCadastroPaciente();
 
 				MPaciente newPaciente = new MPaciente();
 				String prontuario = txtProntuario.getText().replace("", "");
@@ -498,6 +495,7 @@ public class TelaPaciente extends JFrame {
 		panel_2.setBounds(527, 254, 457, 31);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
+		
 		
 		JLabel lblNewLabel_2 = new JLabel("Adicionar Endereço *");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
