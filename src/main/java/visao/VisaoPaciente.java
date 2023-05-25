@@ -3,6 +3,7 @@ package visao;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 import javax.swing.DefaultComboBoxModel;
@@ -21,6 +22,8 @@ import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
+
 import controle.CDao;
 import modelo.MPaciente;
 import javax.swing.JScrollPane;
@@ -31,7 +34,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
-
 
 public class VisaoPaciente extends JFrame {
 
@@ -47,12 +49,11 @@ public class VisaoPaciente extends JFrame {
 	private JTextField txtNome;
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
-	private JTextField txtCarteira;
+	private JFormattedTextField txtCarteira;
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
-	
-	
+
 	public VisaoPaciente() {
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -254,6 +255,22 @@ public class VisaoPaciente extends JFrame {
 		panel_10.add(lblNewLabel_13, "cell 4 3,growy");
 		
 		JButton btnNewButton = new JButton("Deletar");
+		CDao c = new CDao();
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.delete(pacienteSelecionado);
+				listaPaciente.remove(pacienteSelecionado);
+				if(pacienteSelecionado != null) {
+					listaPaciente.remove(pacienteSelecionado);
+					
+					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
+					atualizar();
+				}else {
+					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
+				}
+				
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -395,7 +412,19 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_3_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_13.add(lblNewLabel_14_3_1, "cell 0 2 12 1,grow");
 		
-		txtCarteira = new JTextField();
+		try {
+			NumberFormat format = NumberFormat.getInstance();
+			format.setGroupingUsed(false);//Remove comma from number greater than 4 digit
+			NumberFormatter sleepFormatter = new NumberFormatter(format);
+			sleepFormatter.setValueClass(Integer.class);
+			sleepFormatter.setMinimum(0);
+			sleepFormatter.setMaximum(3600);
+			sleepFormatter.setAllowsInvalid(false);
+			sleepFormatter.setCommitsOnValidEdit(true);
+			txtCarteira = new JFormattedTextField(sleepFormatter);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		txtCarteira.setBackground(new Color(255, 245, 238));
 		txtCarteira.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtCarteira.setColumns(10);
@@ -459,10 +488,84 @@ public class VisaoPaciente extends JFrame {
 		
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "Prontuario", "Nome",
 				"Data Nascimento", "CPF", "N° Carteira", "Contato", "Convenio", "Sexo" });
-
 		tablePacientes.setModel(modelo);
 		
+		
 		JButton btnNewButton_1 = new JButton("Cadastrar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+
+	public void actionPerformed(ActionEvent e) {
+				MPaciente newPaciente = new MPaciente();
+				String prontuario = txtProntuario.getText().replace("", "");
+				if (prontuario == null || prontuario.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo PRONTUARIO está vazio");
+				} else {
+					newPaciente.setProntuario(Integer.valueOf(prontuario));
+				}
+				String nome = txtNome.getText();
+				if (nome == null || nome.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo NOME está vazio");
+				} else {
+					newPaciente.setnomeCompleto(nome);
+				}
+
+				String dia = (String) cbDia.getSelectedItem();
+				String mes = (String) cbMes.getSelectedItem();
+				String ano = (String) cbAno.getSelectedItem();
+
+				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
+				newPaciente.setDataNasc(data);
+	
+				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
+				if (cpf == null || cpf.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
+				} else {
+					newPaciente.setCpf(Long.valueOf(cpf));
+				}
+				String carteira = txtCarteira.getText().trim();
+				if (carteira.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
+				} else {//TODO erro de string vazia da carteira
+					newPaciente.setnCarteira(Integer.valueOf(carteira));
+				}
+				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-",
+						"");
+				if (contato == null || contato.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CONTATO está vazio");
+				} else {
+					newPaciente.setContato(contato);
+				}
+				String convenio = txtConvenio.getText();
+				if (convenio == null || convenio.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "O campo CONVENIO está vazio");
+				} else {
+					newPaciente.setConvenio(convenio);
+				}
+				String sexo = sexoBox.getSelectedItem().toString();
+				newPaciente.setSexo(sexo);
+
+				CDao tablePacientes = CDao.getInstancia();
+				atualizar();
+
+				boolean insert = tablePacientes.inserir(newPaciente);
+				if (insert == true) {
+					JOptionPane.showMessageDialog(null, "Cadastro realizado");
+					txtProntuario.setText(null);
+					txtNome.setText(null);
+					txtCpf.setText(null);
+					txtCarteira.setText(null);
+					txtContato.setText(null);
+					txtConvenio.setText(null);
+					sexoBox.setSelectedItem("Masculino");
+					cbDia.setSelectedItem("1");
+					cbMes.setSelectedItem("1");
+					cbAno.setSelectedItem("2023");
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
+				}
+				atualizar();
+			}
+		});
 		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnNewButton_1.setBorder(new LineBorder(new Color(95, 158, 160)));
@@ -532,6 +635,8 @@ public class VisaoPaciente extends JFrame {
 					pacienteSelecionado.setSexo(sexo);
 
 				CDao tablePacientes = CDao.getInstancia();
+				atualizar();
+
 				boolean update = tablePacientes.update(pacienteSelecionado);
 				if (update == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
@@ -539,20 +644,18 @@ public class VisaoPaciente extends JFrame {
 					txtProntuario.setText(null);
 					txtNome.setText(null);
 					txtCpf.setText(null);
-					cbDia.setSelectedItem(null);
-					cbMes.setSelectedItem(null);
-					cbAno.setSelectedItem(null);
 					txtCarteira.setText(null);
 					txtContato.setText(null);
 					txtConvenio.setText(null);
 					sexoBox.setSelectedItem("Masculino");
-					
-					dispose();
-					TelaPaciente frame = new TelaPaciente();
-					frame.setVisible(true);
+					cbDia.setSelectedItem("1");
+					cbMes.setSelectedItem("1");
+					cbAno.setSelectedItem("2023");
 				}else {
 					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
 				}
+				atualizar();
+
 			}
 		});
 		
@@ -566,19 +669,34 @@ public class VisaoPaciente extends JFrame {
 				txtNome.setText(pacienteSelecionado.getnomeCompleto());
 				txtContato.setText(String.valueOf(pacienteSelecionado.getContato()));
 				txtConvenio.setText(pacienteSelecionado.getConvenio());
-				txtCarteira.setText(String.valueOf(pacienteSelecionado.getnCarteira()));
-				cbDia.setSelectedIndex(pacienteSelecionado.getdataNasc().getDayOfMonth());
-				cbMes.setSelectedIndex(pacienteSelecionado.getdataNasc().getMonthValue());
+				txtCarteira.setText(String.valueOf(pacienteSelecionado.getnCarteira()+""));
+				cbDia.setSelectedItem(pacienteSelecionado.getdataNasc().getDayOfMonth()+"");
+				cbMes.setSelectedItem(pacienteSelecionado.getdataNasc().getMonthValue()+"");
 				cbAno.setSelectedItem(pacienteSelecionado.getdataNasc().getYear()+"");
 				sexoBox.setSelectedItem(pacienteSelecionado.getSexo());
 				if(pacienteSelecionado != null) {
 					txtProntuario.disable();
 				}
 				btnNewButton_1_2.setEnabled(true);
+				btnNewButton_1.setEnabled(false);
 			}
 		});
-		
+		atualizar();
 		JButton btnNewButton_1_1 = new JButton("Limpar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtProntuario.setText(null);
+				txtNome.setText(null);
+				txtCpf.setText(null);
+				txtCarteira.setText(null);
+				txtContato.setText(null);
+				txtConvenio.setText(null);
+				sexoBox.setSelectedItem("Masculino");
+				cbDia.setSelectedItem("1");
+				cbMes.setSelectedItem("1");
+				cbAno.setSelectedItem("2023");
+			}
+		});
 		btnNewButton_1_1.setFocusPainted(false);
 		btnNewButton_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnNewButton_1_1.setBorder(new LineBorder(new Color(95, 158, 160)));
@@ -612,19 +730,21 @@ public class VisaoPaciente extends JFrame {
 			cbDia.addItem(String.valueOf(dia));
 			dia++;
 		}
+		atualizar();
 	}
+
 	public void atualizar() {
 
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "Prontuario", "Nome",
 				"Data Nascimento", "CPF", "N° Carteira", "Contato", "Convenio", "Sexo" });
 
 		tablePacientes.setModel(modelo);
-		
+
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-				if(paciente == null) {
+				if (paciente == null) {
 					System.out.println("paciente está vazio");
-				}else {
+				} else {
 					modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
 							paciente.getdataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
 							paciente.getConvenio(), paciente.getSexo() });
@@ -632,5 +752,4 @@ public class VisaoPaciente extends JFrame {
 			}
 		}
 	}
-	}
-
+}

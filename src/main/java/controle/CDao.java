@@ -105,7 +105,7 @@ public class CDao {
 	// List
 	// -------------------------------------------------------------------------------
 	public ArrayList<MPaciente> listarPaciente() {
-		ArrayList<MPaciente> paciente = new ArrayList<>();
+		ArrayList<MPaciente> paciente = new ArrayList<MPaciente>();
 
 		con = CConexao.getInstancia();
 		Connection c = con.conectar();
