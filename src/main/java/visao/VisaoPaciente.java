@@ -52,8 +52,10 @@ public class VisaoPaciente extends JFrame {
 	private JFormattedTextField txtCarteira;
 	private JTextField textField_8;
 	private JTextField textField_9;
-	private JTextField textField_10;
-
+	private JTextField textField_10;//TODO fazer combo box de cidade e convenio 
+	//TODO fazer validações relacionadas a mascaras combobox.
+	
+	
 	public VisaoPaciente() {
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
