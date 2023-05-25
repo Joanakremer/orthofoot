@@ -1,3 +1,0 @@
-SELECT agendas.*, paciente.contato as contato_paciente, paciente.convenio as convenio_paciente 
-FROM orthofoot.agendas 
-inner join orthofoot.paciente on paciente.prontuario = agendas.prontuario

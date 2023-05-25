@@ -1,12 +1,10 @@
 package visao;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.time.LocalDate;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,39 +16,19 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import net.miginfocom.swing.MigLayout;
-import visaoCad.TelaCadastroPaciente;
-
-import java.awt.EventQueue;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
-
-import componentesVisuais.HintTextField;
 import controle.CDao;
 import modelo.MPaciente;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.event.ActionEvent;
-import java.awt.Frame;
 import javax.swing.JTextField;
-import javax.swing.JInternalFrame;
-import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 
