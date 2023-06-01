@@ -9,14 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,11 +26,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
-
 import controle.CDao;
 import controle.CDaoMedico;
-import modelo.MMascaraLetra;
 import modelo.MMedico;
 import modelo.MPaciente;
 import net.miginfocom.swing.MigLayout;
@@ -41,12 +36,16 @@ public class VisaoMedico extends JFrame {
 	
 	private JTextField textField_1;
 	private JPanel contentPane;
+	private JLabel lblNewLabel_3;
 	private JTable tableMedico;
 	private CDaoMedico daoMedico;
+	private JComboBox<String> cbDia,cbMes,cbAno;
 	private ArrayList<MMedico> listarMedico;
 	private MMedico medicoSelecionado;
+	private JTable table;
+	private JComboBox cbSexo;
 	private String crm;
-	private JFormattedTextField txtCrm;
+	private JTextField txtCrm;
 	private JTextField txtNome;
 	
 	public VisaoMedico() {
@@ -293,11 +292,7 @@ public class VisaoMedico extends JFrame {
 		lblNewLabel_14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_12.add(lblNewLabel_14, "cell 0 0 7 1,grow");
 		
-		try {
-			txtCrm = new JFormattedTextField(new MaskFormatter("######"));
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
+		txtCrm = new JTextField();
 		txtCrm.setForeground(Color.BLACK);
 		txtCrm.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtCrm.setColumns(10);
@@ -306,7 +301,7 @@ public class VisaoMedico extends JFrame {
 		JLabel lblNewLabel_14_1 = new JLabel("Nome Completo *");
 		lblNewLabel_14_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_12.add(lblNewLabel_14_1, "cell 0 2 7 1");
-		MMascaraLetra txtNome = new MMascaraLetra(45);
+		txtNome = new JTextField();
 		txtNome.setBackground(new Color(255, 245, 238));
 		txtNome.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtNome.setColumns(10);
@@ -458,6 +453,7 @@ public class VisaoMedico extends JFrame {
 		});
 		
 		JButton deletar = new JButton("Deletar");
+	
 		deletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CDaoMedico c = new CDaoMedico();
