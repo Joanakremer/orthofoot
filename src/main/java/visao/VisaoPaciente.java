@@ -25,7 +25,7 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
 import controle.CDao;
-import modelo.MMascara;
+import modelo.MMascaraLetra;
 import modelo.MPaciente;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -46,7 +46,7 @@ public class VisaoPaciente extends JFrame {
 	private JTextField textField_1;
 	private JFormattedTextField txtProntuario;
 	private JFormattedTextField txtCpf;
-	private MMascara txtNome;
+	private MMascaraLetra txtNome;
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JFormattedTextField txtCarteira;
@@ -344,7 +344,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_12.add(lblNewLabel_14_2, "cell 0 2 12 1");
 		
-		txtNome = new MMascara(35);
+		txtNome = new MMascaraLetra(35);
 		txtNome.setBackground(new Color(255, 245, 238));
 		txtNome.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtNome.setColumns(10);
@@ -468,7 +468,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_2_1_2_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_14.add(lblNewLabel_14_2_1_2_1_1, "cell 0 4 12 1");
 		
-		MMascara textField_10 = new MMascara(60);
+		MMascaraLetra textField_10 = new MMascaraLetra(60);
 		textField_10.setBackground(new Color(255, 245, 238));
 		textField_10.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		textField_10.setColumns(10);

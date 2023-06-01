@@ -5,11 +5,11 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-public final class MMascara extends JTextField {
+public final class MMascaraLetra extends JTextField {
     private static final long serialVersionUID = 1L;
     private int maxCharacters;
 
-    public MMascara(int maxCharacters) {
+    public MMascaraLetra(int maxCharacters) {
         super();
         this.maxCharacters = maxCharacters;
         setDocument(new LettersOnlyDocument());
