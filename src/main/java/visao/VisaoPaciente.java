@@ -560,12 +560,14 @@ public class VisaoPaciente extends JFrame {
 					cbDia.setSelectedItem("1");
 					cbMes.setSelectedItem("1");
 					cbAno.setSelectedItem("2023");
+					atualizar();
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
 				atualizar();
 			}
 		});
+		atualizar();
 		btnNewButton_1.setFocusPainted(false);
 		btnNewButton_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnNewButton_1.setBorder(new LineBorder(new Color(95, 158, 160)));
@@ -633,10 +635,9 @@ public class VisaoPaciente extends JFrame {
 				LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				String sexo = sexoBox.getSelectedItem().toString();
 					pacienteSelecionado.setSexo(sexo);
-
+				atualizar();
 				CDao tablePacientes = CDao.getInstancia();
 				atualizar();
-
 				boolean update = tablePacientes.update(pacienteSelecionado);
 				if (update == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
@@ -655,10 +656,9 @@ public class VisaoPaciente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
 				}
 				atualizar();
-
 			}
 		});
-		
+		atualizar();
 		tablePacientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

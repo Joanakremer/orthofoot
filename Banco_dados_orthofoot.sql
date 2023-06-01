@@ -34,7 +34,7 @@ sexo VARCHAR (45)
 );
 
 CREATE table agendas(
-idconsulta INT NOT NULL PRIMARY KEY,
+idconsulta INT NOT NULL PRIMARY KEY auto_increment,
 data_cons DATE NOT NULL,
 hora TIME NOT NULL,
 titulo VARCHAR(45),

@@ -387,6 +387,7 @@ public class VisaoMedico extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
+				atualizar();
 			}
 		});
 		cadastrar.setFocusPainted(false);
@@ -435,8 +436,10 @@ public class VisaoMedico extends JFrame {
 				
 				String sexo =String.valueOf(cbSexo.getSelectedItem().toString());
 					medicoSelecionado.setSexo(sexo);
-
+				
+				
 				CDaoMedico tableMedico = CDaoMedico.getInstancia();
+				atualizar();
 				boolean update = tableMedico.update(medicoSelecionado);
 				if (update == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
@@ -454,6 +457,7 @@ public class VisaoMedico extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
 				}
+				atualizar();
 			}
 		});
 		
@@ -476,7 +480,7 @@ public class VisaoMedico extends JFrame {
 				}else {
 					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
 				}
-				
+				atualizar();
 			}
 		});
 		deletar.addMouseListener(new MouseAdapter() {
