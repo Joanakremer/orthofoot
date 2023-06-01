@@ -11,7 +11,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,7 +26,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-
 import controle.CDao;
 import controle.CDaoMedico;
 import modelo.MMedico;
@@ -38,14 +36,10 @@ public class VisaoMedico extends JFrame {
 	
 	private JTextField textField_1;
 	private JPanel contentPane;
-	private JLabel lblNewLabel_3;
 	private JTable tableMedico;
 	private CDaoMedico daoMedico;
-	private JComboBox<String> cbDia,cbMes,cbAno;
 	private ArrayList<MMedico> listarMedico;
 	private MMedico medicoSelecionado;
-	private JTable table;
-	private JComboBox cbSexo;
 	private String crm;
 	private JTextField txtCrm;
 	private JTextField txtNome;
@@ -268,40 +262,6 @@ public class VisaoMedico extends JFrame {
 		lblNewLabel_13.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar24.png")));
 		panel_10.add(lblNewLabel_13, "cell 4 3,growy");
 		
-		JButton deletar = new JButton("Deletar");
-		CDao c = new CDao();
-		deletar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CDaoMedico c = new CDaoMedico();
-				if(medicoSelecionado != null) {
-					c.delete(medicoSelecionado);
-					listarMedico.remove(medicoSelecionado);
-					
-					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
-					atualizar();
-				}else {
-					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
-				}
-				
-			}
-		});
-		deletar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				deletar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				deletar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
-		});
-		deletar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		deletar.setBorder(new LineBorder(new Color(95, 158, 160)));
-		deletar.setFocusPainted(false);
-		deletar.setForeground(Color.BLACK);
-		deletar.setBackground(Color.WHITE);
-		panel_10.add(deletar, "cell 11 3 2 1,grow");
-		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(220, 220, 220));
 		panel_2.add(panel_9, "cell 25 0 12 21,grow");
@@ -409,7 +369,12 @@ public class VisaoMedico extends JFrame {
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
 					atualizar();
-					limparCampos();
+					txtNome.setText(null);
+					txtCrm.setText(null);
+					cbSexo.setSelectedItem("Masculino");
+					cbDia.setSelectedIndex(0);
+					cbMes.setSelectedIndex(0);
+					cbAno.setSelectedItem("2023");
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao fazer o cadastro");
 				}
@@ -467,8 +432,12 @@ public class VisaoMedico extends JFrame {
 				if (update == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
 
-					txtCrm.setText(null);
 					txtNome.setText(null);
+					txtCrm.setText(null);
+					cbSexo.setSelectedItem("Masculino");
+					cbDia.setSelectedIndex(0);
+					cbMes.setSelectedIndex(0);
+					cbAno.setSelectedItem("2023");
 					atualizar();
 					atualizar.setEnabled(false);
 					cadastrar.setEnabled(true);
@@ -479,10 +448,54 @@ public class VisaoMedico extends JFrame {
 			}
 		});
 		
+		JButton deletar = new JButton("Deletar");
+		deletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CDaoMedico c = new CDaoMedico();
+				if(medicoSelecionado != null) {
+					c.delete(medicoSelecionado);
+					listarMedico.remove(medicoSelecionado);
+					JOptionPane.showMessageDialog(null, "dado removido com sucesso");
+					atualizar();
+					txtNome.setText(null);
+					txtCrm.setText(null);
+					cbSexo.setSelectedItem("Masculino");
+					cbDia.setSelectedIndex(0);
+					cbMes.setSelectedIndex(0);
+					cbAno.setSelectedItem("2023");
+					txtCrm.enable();
+				}else {
+					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
+				}
+				
+			}
+		});
+		deletar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				deletar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				deletar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		deletar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		deletar.setBorder(new LineBorder(new Color(95, 158, 160)));
+		deletar.setFocusPainted(false);
+		deletar.setForeground(Color.BLACK);
+		deletar.setBackground(Color.WHITE);
+		panel_10.add(deletar, "cell 11 3 2 1,grow");
+		
 		JButton limpar = new JButton("Limpar");
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				limparCampos();
+				txtNome.setText(null);
+				txtCrm.setText(null);
+				cbSexo.setSelectedItem("Masculino");
+				cbDia.setSelectedIndex(0);
+				cbMes.setSelectedIndex(0);
+				cbAno.setSelectedItem("2023");
 			}
 		});
 		limpar.setFocusPainted(false);
@@ -545,13 +558,8 @@ public class VisaoMedico extends JFrame {
 		atualizar();
 
 		}
-	protected void limparCampos() {
-		txtNome.setText(null);
-		txtCrm.setText(null);
-		cbSexo.setSelectedItem(null);
-	}
 	
-	public void atualizar() {
+		public void atualizar() {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {},
 				new String[] {"crm", "nomeCompleto", "dataNasc", "sexo"});
 		listarMedico = daoMedico.listarMedico();
