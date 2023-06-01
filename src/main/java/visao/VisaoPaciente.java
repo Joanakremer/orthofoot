@@ -25,6 +25,7 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
 import controle.CDao;
+import modelo.MMascara;
 import modelo.MPaciente;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -46,7 +47,7 @@ public class VisaoPaciente extends JFrame {
 	private JTextField textField_1;
 	private JFormattedTextField txtProntuario;
 	private JFormattedTextField txtCpf;
-	private JTextField txtNome;
+	private MMascara txtNome;
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JFormattedTextField txtCarteira;
@@ -345,7 +346,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_12.add(lblNewLabel_14_2, "cell 0 2 12 1");
 		
-		txtNome = new JTextField();
+		txtNome = new MMascara(35);
 		txtNome.setBackground(new Color(255, 245, 238));
 		txtNome.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtNome.setColumns(10);
@@ -469,7 +470,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_2_1_2_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_14.add(lblNewLabel_14_2_1_2_1_1, "cell 0 4 12 1");
 		
-		textField_10 = new JTextField();
+		MMascara textField_10 = new MMascara(60);
 		textField_10.setBackground(new Color(255, 245, 238));
 		textField_10.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		textField_10.setColumns(10);
@@ -527,7 +528,7 @@ public class VisaoPaciente extends JFrame {
 				String carteira = txtCarteira.getText().trim();
 				if (carteira.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NUMERO CARTEIRA está vazio");
-				} else {//TODO erro de string vazia da carteira
+				} else {
 					newPaciente.setnCarteira(Integer.valueOf(carteira));
 				}
 				String contato = txtContato.getText().replace("(", "").replace(")", "").replace("+", "").replace("-",
