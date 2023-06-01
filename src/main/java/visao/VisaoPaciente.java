@@ -43,7 +43,6 @@ public class VisaoPaciente extends JFrame {
 	private MPaciente pacienteSelecionado;
 	private ArrayList<MPaciente> listaPaciente;
 	private CDao dao;
-	private JTextField textField;
 	private JTextField textField_1;
 	private JFormattedTextField txtProntuario;
 	private JFormattedTextField txtCpf;
@@ -191,8 +190,8 @@ public class VisaoPaciente extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {				
-				VisaoUsuario visaoUsuario = new VisaoUsuario();
-				visaoUsuario.setVisible(true);
+				VisaoMedico VisaoMedico = new VisaoMedico();
+				VisaoMedico.setVisible(true);
 				dispose();
 			}
 		});
@@ -204,7 +203,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_6.setIcon(new ImageIcon(VisaoPrincipal.class.getResource("/imagens/usuarios32.png")));
 		panel_7.add(lblNewLabel_6, "cell 0 0,growx");
 		
-		JLabel lblNewLabel_10 = new JLabel("Usuário");
+		JLabel lblNewLabel_10 = new JLabel("Médico");
 		lblNewLabel_10.setForeground(Color.BLACK);
 		lblNewLabel_10.setFont(new Font("Yu Gothic UI", Font.BOLD, 28));
 		panel_7.add(lblNewLabel_10, "cell 1 0");
@@ -234,12 +233,12 @@ public class VisaoPaciente extends JFrame {
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setBackground(new Color(220, 220, 220));
-		panel_2.add(panel_10, "cell 1 0 22 21,grow");
-		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:40px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:45px,grow]"));
+		panel_2.add(panel_10, "cell 1 0 24 21,grow");
+		panel_10.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:40px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:45px,grow]"));
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(95, 158, 160));
-		panel_10.add(panel_11, "cell 0 0 12 2,grow");
+		panel_10.add(panel_11, "cell 0 0 13 2,grow");
 		panel_11.setLayout(new MigLayout("", "[20px:n:820px,grow]", "[20px:n:100px,grow]"));
 		
 		JLabel lblNewLabel_12 = new JLabel("PACIENTE");
@@ -283,18 +282,17 @@ public class VisaoPaciente extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				btnNewButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
-			CDao c = new CDao();
 		});
 		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnNewButton.setBorder(new LineBorder(new Color(95, 158, 160)));
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setBackground(Color.WHITE);
-		panel_10.add(btnNewButton, "cell 10 3 2 1,grow");
+		panel_10.add(btnNewButton, "cell 11 3 2 1,grow");
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(220, 220, 220));
-		panel_2.add(panel_9, "cell 23 0 14 21,grow");
+		panel_2.add(panel_9, "cell 25 0 12 21,grow");
 		panel_9.setLayout(new MigLayout("", "[20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow][20px:n:80px,grow]", "[20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:20px,grow][20px:n:70px,grow]"));
 		
 		JPanel panel_11_1 = new JPanel();
@@ -316,7 +314,7 @@ public class VisaoPaciente extends JFrame {
 		
 		JLabel lblNewLabel_14 = new JLabel("Prontuário *");
 		lblNewLabel_14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		panel_12.add(lblNewLabel_14, "cell 0 0 8 1,grow");
+		panel_12.add(lblNewLabel_14, "cell 0 0 7 1,grow");
 		
 		JLabel lblNewLabel_14_1 = new JLabel("CPF *");
 		lblNewLabel_14_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
@@ -482,7 +480,7 @@ public class VisaoPaciente extends JFrame {
 		panel_15.setLayout(new MigLayout("", "[20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow]", "[20px:n:50px,grow]"));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		panel_10.add(scrollPane, "cell 0 5 12 20,grow");
+		panel_10.add(scrollPane, "cell 0 5 13 20,grow");
 		
 		dao = CDao.getInstancia();
 		listaPaciente = dao.listarPaciente();
@@ -496,8 +494,7 @@ public class VisaoPaciente extends JFrame {
 		
 		JButton btnNewButton_1 = new JButton("Cadastrar");
 		btnNewButton_1.addActionListener(new ActionListener() {
-
-	public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				MPaciente newPaciente = new MPaciente();
 				String prontuario = txtProntuario.getText().replace("", "");
 				if (prontuario == null || prontuario.trim().isEmpty()) {
@@ -633,7 +630,7 @@ public class VisaoPaciente extends JFrame {
 				String dia = (String) cbDia.getSelectedItem();
 				String mes = (String) cbMes.getSelectedItem();
 				String ano = (String) cbAno.getSelectedItem();
-				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
+				LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				String sexo = sexoBox.getSelectedItem().toString();
 					pacienteSelecionado.setSexo(sexo);
 

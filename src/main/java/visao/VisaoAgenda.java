@@ -156,8 +156,8 @@ public class VisaoAgenda extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {				
-				VisaoUsuario visaoUsuario = new VisaoUsuario();
-				visaoUsuario.setVisible(true);
+				VisaoMedico VisaoMedico = new VisaoMedico();
+				VisaoMedico.setVisible(true);
 				dispose();
 			}
 		});

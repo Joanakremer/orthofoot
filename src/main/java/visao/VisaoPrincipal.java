@@ -175,7 +175,7 @@ public class VisaoPrincipal extends JFrame {
 				panel_7.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 			public void mouseClicked(MouseEvent e) {				
-				TelaMedico frame = new TelaMedico();
+				VisaoMedico frame = new VisaoMedico();
 				frame.setVisible(true);
 				dispose();
 			}

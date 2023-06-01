@@ -36,7 +36,7 @@ public class TelaMedico extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCrm;
-	private JTextField txtNomeCompleto;
+	private JTextField txtNome;
 	private JLabel lblNewLabel_3;
 	private JTable tableMedico;
 	private CDaoMedico daoMedico;
@@ -135,25 +135,24 @@ public class TelaMedico extends JFrame {
 		lblNomeCompleto.setForeground(Color.BLACK);
 		lblNomeCompleto.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		
-		txtNomeCompleto = new JTextField();
-		txtNomeCompleto.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		txtNomeCompleto.setBounds(10, 110, 487, 29);
-		panel_3.add(txtNomeCompleto);
-		txtNomeCompleto.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtNome.setBounds(10, 110, 487, 29);
+		panel_3.add(txtNome);
+		txtNome.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("CRM *");
-		lblNewLabel.setBounds(10, 11, 265, 29);
-		panel_3.add(lblNewLabel);
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel.setBounds(10, 11, 265, 29);
+		panel_3.add(lblNewLabel);
 		
 		txtCrm = new JTextField();
-		txtCrm.setBounds(10, 40, 487, 29);
-		panel_3.add(txtCrm);
 		txtCrm.setForeground(Color.BLACK);
 		txtCrm.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtCrm.setColumns(10);
-
+		panel_3.add(txtCrm);
+		txtCrm.setBounds(10, 40, 487, 29);
 		
 		lblNewLabel_3 = new JLabel("Sexo *");
 		lblNewLabel_3.setForeground(Color.BLACK);
@@ -169,7 +168,6 @@ public class TelaMedico extends JFrame {
 		cbSexo.addItem("Feminino");
 		
 		daoMedico = CDaoMedico.getInstancia();
-		
 		tableMedico = new JTable();
 		scrollPane.setViewportView(tableMedico);
 		
@@ -191,7 +189,7 @@ public class TelaMedico extends JFrame {
 				} else {
 					newMedico.setCrm(Long.valueOf(crm));
 				}
-				String nomeCompleto = txtNomeCompleto.getText();
+				String nomeCompleto = txtNome.getText();
 				if (nomeCompleto == null || nomeCompleto.trim().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NOME COMPLETO está vazio");
 				} else {
@@ -236,7 +234,7 @@ public class TelaMedico extends JFrame {
 				} else {
 					medicoSelecionado.setCrm(Long.valueOf(crm));
 				}
-				String nomeCompleto = txtNomeCompleto.getText();
+				String nomeCompleto = txtNome.getText();
 				if (nomeCompleto == null || nomeCompleto.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo NOME está vazio");
 				} else {
@@ -258,7 +256,7 @@ public class TelaMedico extends JFrame {
 					JOptionPane.showMessageDialog(null, "Cadastro atualizado");
 
 					txtCrm.setText(null);
-					txtNomeCompleto.setText(null);
+					txtNome.setText(null);
 					atualizar();
 				}else {
 					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados");
@@ -318,7 +316,7 @@ public class TelaMedico extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int posicaoPessoa = tableMedico.getSelectedRow();
 				medicoSelecionado = listarMedico.get(posicaoPessoa);
-				txtNomeCompleto.setText(medicoSelecionado.getnomeCompleto());
+				txtNome.setText(medicoSelecionado.getnomeCompleto());
 				txtCrm.setText(String.valueOf(medicoSelecionado.getCrm()));
 				cbDia.setSelectedIndex(medicoSelecionado.getdataNasc().getDayOfMonth());
 				cbMes.setSelectedIndex(medicoSelecionado.getdataNasc().getMonthValue());
@@ -331,7 +329,7 @@ public class TelaMedico extends JFrame {
 		});	
 	}
 	protected void limparCampos() {
-		txtNomeCompleto.setText(null);
+		txtNome.setText(null);
 		txtCrm.setText(null);
 		cbSexo.setSelectedItem(null);
 	}
