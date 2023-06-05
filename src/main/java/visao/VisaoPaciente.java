@@ -608,7 +608,8 @@ public class VisaoPaciente extends JFrame {
 			}
 		});
 		
-		JButton deletar = new JButton("Deletar");
+		JButton deletar = new JButton("  Deletar");
+		deletar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\perigo24.png"));
 		CDao c = new CDao();
 		deletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -651,7 +652,8 @@ public class VisaoPaciente extends JFrame {
 		deletar.setBackground(Color.WHITE);
 		panel_10.add(deletar, "cell 11 3 2 1,grow");
 		
-		JButton limpar = new JButton("Limpar");
+		JButton limpar = new JButton("");
+		limpar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\lixeira24.png"));
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtProntuario.setText(null);

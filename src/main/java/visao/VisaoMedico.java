@@ -191,11 +191,9 @@ public class VisaoMedico extends JFrame {
 		panel_7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				panel_7.setBackground(Color.WHITE);
 				panel_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-				panel_7.setBackground(new Color(95, 158, 160));
 				panel_7.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 			@Override
@@ -249,9 +247,9 @@ public class VisaoMedico extends JFrame {
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(95, 158, 160));
 		panel_10.add(panel_11, "cell 0 0 13 2,grow");
-		panel_11.setLayout(new MigLayout("", "[20px:n:820px,grow]", "[20px:n:100px,grow]"));
+		panel_11.setLayout(new MigLayout("", "[20px:n:1200px,grow]", "[20px:n:100px,grow]"));
 		
-		JLabel lblNewLabel_12 = new JLabel("PACIENTE");
+		JLabel lblNewLabel_12 = new JLabel("MÉDICO");
 		lblNewLabel_12.setForeground(Color.WHITE);
 		panel_11.add(lblNewLabel_12, "cell 0 0,growx,aligny top");
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 38));
@@ -260,11 +258,6 @@ public class VisaoMedico extends JFrame {
 		textField_1 = new JTextField();
 		panel_10.add(textField_1, "cell 0 3 4 1,grow");
 		textField_1.setColumns(10);
-		
-		JLabel lblNewLabel_13 = new JLabel("");
-		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_13.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar24.png")));
-		panel_10.add(lblNewLabel_13, "cell 4 3,growy");
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(220, 220, 220));
@@ -295,6 +288,7 @@ public class VisaoMedico extends JFrame {
 		txtCrm = new JTextField();
 		txtCrm.setForeground(Color.BLACK);
 		txtCrm.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtCrm.setBackground(new Color(255, 245, 238));
 		txtCrm.setColumns(10);
 		panel_12.add(txtCrm, "cell 0 1 6 1,grow");
 		
@@ -456,8 +450,8 @@ public class VisaoMedico extends JFrame {
 			}
 		});
 		
-		JButton deletar = new JButton("Deletar");
-	
+		JButton deletar = new JButton("  Deletar");
+		deletar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\perigo24.png"));
 		deletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CDaoMedico c = new CDaoMedico();
@@ -473,6 +467,8 @@ public class VisaoMedico extends JFrame {
 					cbMes.setSelectedIndex(0);
 					cbAno.setSelectedItem("2023");
 					txtCrm.enable();
+					atualizar.setEnabled(false);
+					cadastrar.setEnabled(true);
 				}else {
 					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
 				}
@@ -489,6 +485,24 @@ public class VisaoMedico extends JFrame {
 				deletar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
 		});
+		
+		JButton pesquisar = new JButton("");
+		pesquisar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\procurar24.png"));
+		pesquisar.setFocusPainted(false);
+		pesquisar.setBorder(new LineBorder(new Color(95, 158, 160)));
+		pesquisar.setBackground(Color.WHITE);
+		panel_10.add(pesquisar, "cell 4 3,grow");
+		pesquisar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				pesquisar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				pesquisar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+		});
+		
 		deletar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		deletar.setBorder(new LineBorder(new Color(95, 158, 160)));
 		deletar.setFocusPainted(false);
@@ -496,7 +510,8 @@ public class VisaoMedico extends JFrame {
 		deletar.setBackground(Color.WHITE);
 		panel_10.add(deletar, "cell 11 3 2 1,grow");
 		
-		JButton limpar = new JButton("Limpar");
+		JButton limpar = new JButton("");
+		limpar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\lixeira24.png"));
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtNome.setText(null);
@@ -570,7 +585,7 @@ public class VisaoMedico extends JFrame {
 	
 		public void atualizar() {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {},
-				new String[] {"crm", "nomeCompleto", "dataNasc", "sexo"});
+				new String[] {"CRM", "Nome Completo", "Data de Nascimento", "Sexo"});
 		listarMedico = daoMedico.listarMedico();
 
 		if (listarMedico.size() > 0 && listarMedico != null) {
