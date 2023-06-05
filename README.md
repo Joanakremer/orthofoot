@@ -27,9 +27,11 @@
  
  <h2> 🔍 Banco de dados </h2>
  
- ![bd-removebg-preview (1)](https://user-images.githubusercontent.com/111135808/224034862-977c955a-6309-423b-a669-64b03ea63782.png)
+![image](https://github.com/Joanakremer/orthofoot/assets/111135808/e847963e-3e6b-406a-ab91-d69e23adc904)
  
  <h2> 📉 Diagrama de casos de uso </h2>
+ 
+![image](https://github.com/Joanakremer/orthofoot/assets/111135808/ec4dcba4-dd66-4410-8f97-c17eb104312d)
 
 
 <h2> 💡 Diagrama de classes </h2>
