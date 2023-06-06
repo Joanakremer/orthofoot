@@ -196,12 +196,6 @@ public class VisaoMedico extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				panel_7.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {				
-				VisaoUsuario visaoUsuario = new VisaoUsuario();
-				visaoUsuario.setVisible(true);
-				dispose();
-			}
 		});
 		panel_7.setBackground(Color.WHITE);
 		panel_3.add(panel_7, "cell 0 7 2 1,grow");

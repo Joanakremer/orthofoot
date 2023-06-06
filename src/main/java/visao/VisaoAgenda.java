@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import controle.CDao;
 import controle.CDaoAgenda;
@@ -37,6 +38,7 @@ import modelo.MMedico;
 import modelo.MPaciente;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 public class VisaoAgenda extends JFrame {
 
@@ -300,7 +302,12 @@ public class VisaoAgenda extends JFrame {
 		lblNewLabel_14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_12.add(lblNewLabel_14, "cell 0 0 7 1,grow");
 		
-		txtData = new JTextField();
+		try {
+			txtData = new JFormattedTextField(new MaskFormatter("##/##/####"));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		txtData.setForeground(Color.BLACK);
 		txtData.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtData.setBackground(new Color(255, 245, 238));
@@ -310,7 +317,12 @@ public class VisaoAgenda extends JFrame {
 		JLabel lblNewLabel_14_1 = new JLabel("Horário da Consulta");
 		lblNewLabel_14_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_12.add(lblNewLabel_14_1, "cell 0 2 7 1");
-		txtHora = new JTextField();
+		try {
+			txtHora = new JFormattedTextField(new MaskFormatter("##:##"));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		txtHora.setBackground(new Color(255, 245, 238));
 		txtHora.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtHora.setColumns(10);
@@ -354,7 +366,7 @@ public class VisaoAgenda extends JFrame {
 				MMedico medico = (MMedico) cbMedico.getSelectedItem();
 				MPaciente paciente = (MPaciente) cbPaciente.getSelectedItem();
 				MAgenda agenda = new MAgenda();
-				String data = txtData.getText();
+				String data = txtData.getText(); //.replace("/", "");
 				String hora = txtHora.getText();
 				agenda.setMedico(medico);
 				agenda.setPaciente(paciente);
@@ -363,6 +375,7 @@ public class VisaoAgenda extends JFrame {
 				try {
 					Date dataFormatada = formater.parse(data);
 					agenda.setData(new java.sql.Date(dataFormatada.getTime()));
+					JOptionPane.showMessageDialog(null, "Data Cadastrada com sucesso");
 				} catch (ParseException f) {
 					JOptionPane.showMessageDialog(null, "formato de data invalida");
 					// return;

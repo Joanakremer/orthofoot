@@ -729,7 +729,6 @@ public class VisaoPaciente extends JFrame {
 			cbDia.addItem(String.valueOf(dia));
 			dia++;
 		}
-		atualizar();
 	}
 
 	public void atualizar() {
