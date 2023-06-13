@@ -1,5 +1,6 @@
 package modelo;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class MMedico {
@@ -27,6 +28,11 @@ public class MMedico {
 	}
 	public LocalDate getdataNasc() {
 		return dataNasc;
+	}
+	public String getDataFormatada() {
+		String pattern = "dd/MM/yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		return simpleDateFormat.format(dataNasc);
 	}
 	public void setdataNasc(LocalDate data) {
 		this.dataNasc = data;

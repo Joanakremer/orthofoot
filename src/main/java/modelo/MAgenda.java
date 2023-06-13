@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 
 public class MAgenda {
 	private  int idConsulta;
@@ -30,6 +31,13 @@ public class MAgenda {
 	}
 	public void setIdConsulta(int idConsulta) {
 		this.idConsulta = idConsulta;
+	}
+	
+
+	public String getDataFormatada() {
+		String pattern = "dd/MM/yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		return simpleDateFormat.format(data);
 	}
 	public Date getData() {
 		return data;

@@ -584,7 +584,7 @@ public class VisaoMedico extends JFrame {
 
 		if (listarMedico.size() > 0 && listarMedico != null) {
 			for (MMedico medico : listarMedico) {
-				modelo.addRow(new Object[] { medico.getCrm(), medico.getnomeCompleto(), medico.getdataNasc(),
+				modelo.addRow(new Object[] { medico.getCrm(), medico.getnomeCompleto(), medico.getDataFormatada(),
 						medico.getSexo()});
 			}
 		}

@@ -1,4 +1,4 @@
-package visao;
+		package visao;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -494,7 +494,7 @@ public class VisaoAgenda extends JFrame {
 		
 		if (listAgendas.size() > 0 && listAgendas != null) {
 			for (MAgenda agenda : listAgendas) {
-				modelo.addRow(new Object[] { agenda.getIdConsulta(),agenda.getPaciente().getProntuario(),agenda.getPaciente().getNomeCompleto(), agenda.getHora(), agenda.getData(),agenda.getMedico().getCrm(),agenda.getPaciente().getConvenio(), agenda.getPaciente().getnCarteira()});
+				modelo.addRow(new Object[] { agenda.getIdConsulta(),agenda.getPaciente().getProntuario(),agenda.getPaciente().getNomeCompleto(), agenda.getHora(), agenda.getDataFormatada(),agenda.getMedico().getCrm(),agenda.getPaciente().getConvenio(), agenda.getPaciente().getnCarteira()});
 			}
 		}
 		tableAgenda.setModel(modelo);

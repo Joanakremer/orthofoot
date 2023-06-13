@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class MPaciente {
@@ -22,7 +23,11 @@ public class MPaciente {
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
-
+	public String getDataFormatada() {
+		String pattern = "dd/MM/yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		return simpleDateFormat.format(dataNasc);
+	}
 	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
