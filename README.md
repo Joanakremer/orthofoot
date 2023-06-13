@@ -8,22 +8,19 @@
 
 <h2> 🖥️ Métodos </h2>
 
-+ Cadastrar
 + Login 
-+ Consultar corpo clinico
-+ Informações
-+ Contatos
-+ Agendar consultas
-+ Status das consultas
-+ Agenda de consultas
-+ Cadastro dos prontuários
-+ Consultar os prontuários
++ Manter Paciente
++ Manter Consulta
++ Manter Médico
 
 <h2> 🚀 Tecnologia </h2>
  
- + Java 
+ + Java
+ + Eclipse 2023-03 IDE Improvements.
  + WindowBuilder
- + MySQL
+ + Miglayout
+ + Apache Maven
+ + JUnit
  
  <h2> 🔍 Banco de dados </h2>
  
