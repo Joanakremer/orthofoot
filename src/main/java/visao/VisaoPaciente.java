@@ -31,8 +31,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
+
 import controle.CDao;
-import controle.CDaoMedico;
 import modelo.MMascaraLetra;
 import modelo.MPaciente;
 import net.miginfocom.swing.MigLayout;
@@ -503,7 +503,7 @@ public class VisaoPaciente extends JFrame {
 
 				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				newPaciente.setDataNasc(data);
-				
+
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
@@ -523,7 +523,7 @@ public class VisaoPaciente extends JFrame {
 				} else {
 					newPaciente.setContato(contato);
 				}
-				
+
 				/*
 				 * String convenio = txtConvenio.getText(); if (convenio == null ||
 				 * convenio.isEmpty()) { JOptionPane.showMessageDialog(null,
@@ -721,7 +721,7 @@ public class VisaoPaciente extends JFrame {
 				txtcidade.setText(null);
 				txtrua.setText(null);
 				Estadobox.setSelectedItem("Acre");
-				
+
 			}
 		});
 		limpar.setFocusPainted(false);
@@ -796,13 +796,15 @@ public class VisaoPaciente extends JFrame {
 
 		if (this.listaPaciente == null) {
 			this.listaPaciente = new ArrayList<>();
+			c = CDao.getInstancia();
+			this.listaPaciente = c.listarPaciente();
 		}
 
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-					modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
-							paciente.getDataFormatada(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
-							paciente.getConvenio(), paciente.getSexo() });
+				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
+						paciente.getDataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
+						paciente.getConvenio(), paciente.getSexo() });
 			}
 		}
 		tablePacientes.setModel(modelo);
