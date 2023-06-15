@@ -32,6 +32,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 import controle.CDao;
+import controle.CDaoMedico;
 import modelo.MMascaraLetra;
 import modelo.MPaciente;
 import net.miginfocom.swing.MigLayout;
@@ -40,6 +41,7 @@ public class VisaoPaciente extends JFrame {
 
 	private JTable tablePacientes;
 	private JPanel contentPane;
+	private CDao c;
 	private MPaciente pacienteSelecionado;
 	private ArrayList<MPaciente> listaPaciente;
 	private JTextField textField_1;
@@ -49,8 +51,8 @@ public class VisaoPaciente extends JFrame {
 	private JFormattedTextField txtContato;
 	private JTextField txtConvenio;
 	private JFormattedTextField txtCarteira;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	private JTextField txtcep;
+	private JTextField txtcidade;
 	private JComboBox sexoBox;
 
 	public VisaoPaciente() {
@@ -435,41 +437,41 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_4_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_14.add(lblNewLabel_14_4_1, "cell 6 0 6 1");
 
-		textField_8 = new JTextField();
-		textField_8.setBackground(new Color(255, 245, 238));
-		textField_8.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		textField_8.setColumns(10);
-		panel_14.add(textField_8, "cell 0 1 5 1,grow");
+		txtcep = new JTextField();
+		txtcep.setBackground(new Color(255, 245, 238));
+		txtcep.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtcep.setColumns(10);
+		panel_14.add(txtcep, "cell 0 1 5 1,grow");
 
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia",
+		JComboBox Estadobox = new JComboBox();
+		Estadobox.setModel(new DefaultComboBoxModel(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia",
 				"Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul",
 				"Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
 				"Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo",
 				"Sergipe", "Tocantins" }));
-		comboBox_2.setBackground(new Color(255, 245, 238));
-		comboBox_2.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		panel_14.add(comboBox_2, "cell 6 1 6 1,grow");
+		Estadobox.setBackground(new Color(255, 245, 238));
+		Estadobox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		panel_14.add(Estadobox, "cell 6 1 6 1,grow");
 
 		JLabel lblNewLabel_14_2_1_2_1 = new JLabel("Cidade *");
 		lblNewLabel_14_2_1_2_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_14.add(lblNewLabel_14_2_1_2_1, "cell 0 2 12 1");
 
-		textField_9 = new JTextField();
-		textField_9.setBackground(new Color(255, 245, 238));
-		textField_9.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		textField_9.setColumns(10);
-		panel_14.add(textField_9, "cell 0 3 12 1,grow");
+		txtcidade = new JTextField();
+		txtcidade.setBackground(new Color(255, 245, 238));
+		txtcidade.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtcidade.setColumns(10);
+		panel_14.add(txtcidade, "cell 0 3 12 1,grow");
 
 		JLabel lblNewLabel_14_2_1_2_1_1 = new JLabel("Rua *");
 		lblNewLabel_14_2_1_2_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_14.add(lblNewLabel_14_2_1_2_1_1, "cell 0 4 12 1");
 
-		MMascaraLetra textField_10 = new MMascaraLetra(60);
-		textField_10.setBackground(new Color(255, 245, 238));
-		textField_10.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
-		textField_10.setColumns(10);
-		panel_14.add(textField_10, "cell 0 5 12 1,grow");
+		MMascaraLetra txtrua = new MMascaraLetra(60);
+		txtrua.setBackground(new Color(255, 245, 238));
+		txtrua.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
+		txtrua.setColumns(10);
+		panel_14.add(txtrua, "cell 0 5 12 1,grow");
 
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(Color.LIGHT_GRAY);
@@ -501,7 +503,7 @@ public class VisaoPaciente extends JFrame {
 
 				LocalDate data = LocalDate.of(Integer.valueOf(ano), Integer.valueOf(mes), Integer.valueOf(dia));
 				newPaciente.setDataNasc(data);
-
+				
 				String cpf = txtCpf.getText().replace(".", "").replace("-", "");
 				if (cpf == null || cpf.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "O campo CPF está vazio");
@@ -521,7 +523,7 @@ public class VisaoPaciente extends JFrame {
 				} else {
 					newPaciente.setContato(contato);
 				}
-
+				
 				/*
 				 * String convenio = txtConvenio.getText(); if (convenio == null ||
 				 * convenio.isEmpty()) { JOptionPane.showMessageDialog(null,
@@ -533,7 +535,9 @@ public class VisaoPaciente extends JFrame {
 				newPaciente.setSexo(sexo);
 
 				CDao tablePacientes = CDao.getInstancia();
+				atualizar();
 				boolean insert = tablePacientes.inserir(newPaciente);
+				atualizar();
 				if (insert == true) {
 					JOptionPane.showMessageDialog(null, "Cadastro realizado");
 					atualizar();
@@ -707,12 +711,17 @@ public class VisaoPaciente extends JFrame {
 				txtCpf.setText(null);
 				txtCarteira.setText(null);
 				txtContato.setText(null);
-				convenioBox.setSelectedItem("Convênio");
-				// txtConvenio.setText(null);
 				sexoBox.setSelectedItem("Masculino");
 				cbDia.setSelectedIndex(0);
 				cbMes.setSelectedIndex(0);
 				cbAno.setSelectedItem("2023");
+				convenioBox.setSelectedItem("Convênio");
+				txtCarteira.setText(null);
+				txtcep.setText(null);
+				txtcidade.setText(null);
+				txtrua.setText(null);
+				Estadobox.setSelectedItem("Acre");
+				
 			}
 		});
 		limpar.setFocusPainted(false);
@@ -791,13 +800,9 @@ public class VisaoPaciente extends JFrame {
 
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-				if (paciente == null) {
-					System.out.println("paciente está vazio");
-				} else {
 					modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
 							paciente.getDataFormatada(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
 							paciente.getConvenio(), paciente.getSexo() });
-				}
 			}
 		}
 		tablePacientes.setModel(modelo);
