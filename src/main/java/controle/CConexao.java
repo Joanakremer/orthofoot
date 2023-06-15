@@ -1,5 +1,8 @@
 package controle;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,9 +11,9 @@ import java.sql.SQLException;
 public class CConexao {
 	private static Connection conexao;
 	private static CConexao instancia;
-	private static final String DATABASE = "orthofoot";
-	private static final String USER = "root";
-	private static final String PSW = "aluno";
+	private static String DATABASE;
+	private static String USER;
+	private static String PSW;
 	
 	private CConexao() {
 		
@@ -19,6 +22,7 @@ public class CConexao {
 	public static CConexao getInstancia() {
 		if(instancia == null) {
 			instancia = new CConexao();
+			leituraArquivoBD();
 		}
 		return instancia;
 	}
@@ -40,5 +44,21 @@ public class CConexao {
 				return false;
 			}
 			 return true;
+		}
+		public static void leituraArquivoBD() {
+			// Lê as informações de login e senha do arquivo de texto
+			try {
+				BufferedReader reader = new BufferedReader(new FileReader("arquivoBD.txt"));
+				if (reader != null) {
+					DATABASE = reader.readLine(); 
+					USER = reader.readLine(); 
+					PSW = reader.readLine(); 
+				}
+				reader.close();
+
+			} catch (IOException e) {
+				System.err.println("Erro ao ler o arquivo: " + e.getMessage());
+				return;
+			}
 		}
 }
