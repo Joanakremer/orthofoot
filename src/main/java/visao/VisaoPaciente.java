@@ -47,10 +47,10 @@ public class VisaoPaciente extends JFrame {
 
 	private JTable tablePacientes;
 	private JPanel contentPane;
-	private CDao c;
+	private CDao daoPaciente;
 	private MPaciente pacienteSelecionado;
 	private ArrayList<MPaciente> listaPaciente;
-	private JTextField textField_1;
+	private JTextField txtBuscaNome;
 	private JFormattedTextField txtProntuario;
 	private JFormattedTextField txtCpf;
 	private MMascaraLetra txtNome;
@@ -60,6 +60,13 @@ public class VisaoPaciente extends JFrame {
 	private JTextField txtcep;
 	private JTextField txtcidade;
 	private JComboBox sexoBox;
+	private JComboBox<String> cbDia;
+	private JComboBox<String> cbAno;
+	private JComboBox<String> cbMes;
+	private JComboBox<String> convenioBox;
+	private MMascaraLetra txtrua;
+	private JComboBox<String> cadastrar;
+	private JComboBox<String> Estadobox;
 
 	public VisaoPaciente() {
 		setExtendedState(MAXIMIZED_BOTH);
@@ -269,11 +276,67 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 38));
 		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
 
-		textField_1 = new JTextField();
-		panel_10.add(textField_1, "cell 0 3 4 1,grow");
-		textField_1.setColumns(10);
+		txtBuscaNome = new JTextField();
+		panel_10.add(txtBuscaNome, "cell 0 3 4 1,grow");
+		txtBuscaNome.setColumns(10);
 
 		JLabel lblNewLabel_13 = new JLabel("");
+		lblNewLabel_13.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArrayList<MPaciente> pacientes = daoPaciente.listarPaciente();
+
+				String nomeDigitado = txtBuscaNome.getText();
+
+				if (!nomeDigitado.isEmpty()) {
+
+					nomeDigitado = nomeDigitado.toLowerCase();
+
+					ArrayList<MPaciente> pacienteFiltrados = new ArrayList<>();
+
+					for (MPaciente mPaciente : pacientes) {
+
+						if (mPaciente.getNomeCompleto().toLowerCase().contains(nomeDigitado)) {
+							pacienteFiltrados.add(mPaciente);
+						}
+					}
+
+					// monta a tabela filtrada
+
+					DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "Prontuario",
+							"Nome", "Data Nascimento", "CPF", "N° Carteira", "Contato", "Convenio", "Sexo" });
+
+					if (pacienteFiltrados.size() > 0 && pacienteFiltrados != null) {
+						for (MPaciente paciente : pacienteFiltrados) {
+							try {
+								modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
+										paciente.getDataFormatada(), paciente.getCpfFormatado(),
+										paciente.getnCarteira(), paciente.getContato(), paciente.getConvenio(),
+										paciente.getSexo() });
+							} catch (ParseException e2) {
+								e2.printStackTrace();
+							}
+						}
+					}
+					tablePacientes.setModel(modelo);
+
+					TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tablePacientes.getModel());
+					tablePacientes.setRowSorter(sorter);
+
+					List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+					sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+					sorter.setSortKeys(sortKeys);
+
+					DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+					centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+					for (int i = 0; i < tablePacientes.getColumnCount(); i++) {
+						tablePacientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+					}
+
+				}
+			}
+		});
 		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_13.setIcon(new ImageIcon(VisaoPaciente.class.getResource("/imagens/procurar24.png")));
 		panel_10.add(lblNewLabel_13, "cell 4 3,growy");
@@ -357,12 +420,12 @@ public class VisaoPaciente extends JFrame {
 		sexoBox.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		sexoBox.setBounds(10, 179, 181, 29);
 
-		JComboBox<String> cbDia = new JComboBox<String>();
+		cbDia = new JComboBox<String>();
 		cbDia.setBackground(new Color(255, 245, 238));
 		panel_12.add(cbDia, "cell 6 5 2 1,grow");
 		cbDia.setBounds(262, 179, 68, 29);
 
-		JComboBox<String> cbMes = new JComboBox<String>();
+		cbMes = new JComboBox<String>();
 		cbMes.setBackground(new Color(255, 245, 238));
 		panel_12.add(cbMes, "cell 8 5 2 1,grow");
 		cbMes.setBounds(340, 179, 68, 28);
@@ -397,7 +460,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_3.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_13.add(lblNewLabel_14_3, "cell 0 0 12 1");
 
-		JComboBox convenioBox = new JComboBox();
+		JComboBox<String> convenioBox = new JComboBox<>();
 		convenioBox.setBackground(new Color(255, 245, 238));
 		convenioBox.setModel(new DefaultComboBoxModel(new String[] { "Convênio", "Bradesco", "Boa Vida", "Clinipam",
 				"Laboral", "Salvamed", "SASC", "Unimed" }));
@@ -473,7 +536,7 @@ public class VisaoPaciente extends JFrame {
 		lblNewLabel_14_2_1_2_1_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		panel_14.add(lblNewLabel_14_2_1_2_1_1, "cell 0 4 12 1");
 
-		MMascaraLetra txtrua = new MMascaraLetra(60);
+		txtrua = new MMascaraLetra(60);
 		txtrua.setBackground(new Color(255, 245, 238));
 		txtrua.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));
 		txtrua.setColumns(10);
@@ -683,9 +746,12 @@ public class VisaoPaciente extends JFrame {
 					cbMes.setSelectedIndex(0);
 					cbAno.setSelectedItem("2023");
 					txtProntuario.enable();
+					cadastrar.setEnabled(true);
+
 				} else {
 					JOptionPane.showInternalMessageDialog(null, "erro na remoção do dado");
 				}
+				limpaCampos();
 				atualizar();
 			}
 		});
@@ -712,24 +778,10 @@ public class VisaoPaciente extends JFrame {
 				"C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\lixeira24.png"));
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtProntuario.setText(null);
-				txtNome.setText(null);
-				txtCpf.setText(null);
-				txtCarteira.setText(null);
-				txtContato.setText(null);
-				sexoBox.setSelectedItem("Masculino");
-				cbDia.setSelectedIndex(0);
-				cbMes.setSelectedIndex(0);
-				cbAno.setSelectedItem("2023");
-				convenioBox.setSelectedItem("Convênio");
-				txtCarteira.setText(null);
-				txtcep.setText(null);
-				txtcidade.setText(null);
-				txtrua.setText(null);
-				Estadobox.setSelectedItem("Acre");
-
+				limpaCampos();
 			}
 		});
+
 		limpar.setFocusPainted(false);
 		limpar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		limpar.setBorder(new LineBorder(new Color(95, 158, 160)));
@@ -795,14 +847,35 @@ public class VisaoPaciente extends JFrame {
 		atualizar();
 	}
 
+	public void limpaCampos() {
+		txtProntuario.setText(null);
+		txtNome.setText(null);
+		txtCpf.setText(null);
+		txtCarteira.setText(null);
+		txtContato.setText(null);
+		sexoBox.setSelectedItem("Masculino");
+//		cbDia.setSelectedIndex(0);
+//		cbMes.setSelectedIndex(0);
+//		cbAno.setSelectedItem("2023");
+		convenioBox.setSelectedItem("Convênio");
+		txtCarteira.setText(null);
+		txtcep.setText(null);
+		txtcidade.setText(null);
+		txtrua.setText(null);
+		cadastrar.setEnabled(true);
+		Estadobox.setSelectedItem("Acre");
+
+		// colocar os outros campos aqui
+	}
+
 	public void atualizar() {
 
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "Prontuario", "Nome",
 				"Data Nascimento", "CPF", "N° Carteira", "Contato", "Convenio", "Sexo" });
 
 		this.listaPaciente = new ArrayList<>();
-		c = CDao.getInstancia();
-		this.listaPaciente = c.listarPaciente();
+		daoPaciente = CDao.getInstancia();
+		this.listaPaciente = daoPaciente.listarPaciente();
 
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
