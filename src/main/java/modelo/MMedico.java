@@ -2,6 +2,7 @@ package modelo;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class MMedico {
 	private long crm;
@@ -30,9 +31,9 @@ public class MMedico {
 		return dataNasc;
 	}
 	public String getDataFormatada() {
-		String pattern = "dd/MM/yyyy";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		return simpleDateFormat.format(dataNasc);
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String formattedDate = dataNasc.format(dateTimeFormatter);  //17-02-2022
+		return formattedDate;
 	}
 	public void setdataNasc(LocalDate data) {
 		this.dataNasc = data;

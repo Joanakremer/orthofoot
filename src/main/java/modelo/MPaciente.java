@@ -1,9 +1,13 @@
 package modelo;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
+
+import javax.swing.text.MaskFormatter;
 
 public class MPaciente {
 
@@ -16,7 +20,7 @@ public class MPaciente {
 	private LocalDate dataNasc;
 	private Long cpf;
 	private MEndereco endereco;
-	
+
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -24,11 +28,13 @@ public class MPaciente {
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
+
 	public String getDataFormatada() {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String formattedDate = dataNasc.format(dateTimeFormatter);  //17-02-2022
+		String formattedDate = dataNasc.format(dateTimeFormatter); // 17-02-2022
 		return formattedDate;
 	}
+
 	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
@@ -97,6 +103,13 @@ public class MPaciente {
 		return dataNasc;
 	}
 
+	public String getCpfFormatado() throws ParseException {
+		MaskFormatter formatter;
+		formatter = new MaskFormatter("###.###.###-##");
+		formatter.setValueContainsLiteralCharacters(false);
+		return formatter.valueToString(String.valueOf(this.cpf));
+	}
+
 	public Long getCpf() {
 		return cpf;
 	}
@@ -108,6 +121,7 @@ public class MPaciente {
 	public boolean isEmpty() {
 		return false;
 	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

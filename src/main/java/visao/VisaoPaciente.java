@@ -28,6 +28,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
@@ -797,13 +798,16 @@ public class VisaoPaciente extends JFrame {
 		this.listaPaciente = new ArrayList<>();
 		c = CDao.getInstancia();
 		this.listaPaciente = c.listarPaciente();
-		
 
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
-				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
-						paciente.getDataFormatada(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
-						paciente.getConvenio(), paciente.getSexo() });
+				try {
+					modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
+							paciente.getDataFormatada(), paciente.getCpfFormatado(), paciente.getnCarteira(),
+							paciente.getContato(), paciente.getConvenio(), paciente.getSexo() });
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		tablePacientes.setModel(modelo);
