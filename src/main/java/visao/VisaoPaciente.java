@@ -794,16 +794,15 @@ public class VisaoPaciente extends JFrame {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "Prontuario", "Nome",
 				"Data Nascimento", "CPF", "N° Carteira", "Contato", "Convenio", "Sexo" });
 
-		if (this.listaPaciente == null) {
-			this.listaPaciente = new ArrayList<>();
-			c = CDao.getInstancia();
-			this.listaPaciente = c.listarPaciente();
-		}
+		this.listaPaciente = new ArrayList<>();
+		c = CDao.getInstancia();
+		this.listaPaciente = c.listarPaciente();
+		
 
 		if (listaPaciente.size() > 0 && listaPaciente != null) {
 			for (MPaciente paciente : listaPaciente) {
 				modelo.addRow(new Object[] { paciente.getProntuario(), paciente.getnomeCompleto(),
-						paciente.getDataNasc(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
+						paciente.getDataFormatada(), paciente.getCpf(), paciente.getnCarteira(), paciente.getContato(),
 						paciente.getConvenio(), paciente.getSexo() });
 			}
 		}

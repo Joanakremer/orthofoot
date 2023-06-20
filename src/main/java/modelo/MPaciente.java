@@ -3,6 +3,7 @@ package modelo;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class MPaciente {
 
@@ -24,9 +25,9 @@ public class MPaciente {
 		this.nomeCompleto = nomeCompleto;
 	}
 	public String getDataFormatada() {
-		String pattern = "dd/MM/yyyy";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		return simpleDateFormat.format(dataNasc);
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String formattedDate = dataNasc.format(dateTimeFormatter);  //17-02-2022
+		return formattedDate;
 	}
 	public LocalDate getDataNasc() {
 		return dataNasc;

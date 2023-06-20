@@ -45,6 +45,10 @@ FOREIGN KEY(prontuario) REFERENCES paciente(prontuario),
 FOREIGN KEY(crm) REFERENCES medicos(crm)
 );
 
+ALTER TABLE `orthofoot`.`agendas` 
+CHANGE COLUMN `idconsulta` `idconsulta` INT NOT NULL AUTO_INCREMENT ;
+
+
 insert into usuarios(idusuario,login,senha,tipoUsuario ) values (1, 'Admin', 'Admin', 1);
 
 SELECT * FROM usuarios;
