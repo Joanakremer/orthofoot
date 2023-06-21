@@ -684,12 +684,6 @@ public class VisaoPaciente extends JFrame {
 				} else {
 					pacienteSelecionado.setContato(contato);
 				}
-				/*
-				 * String convenio = txtConvenio.getText(); if (convenio == null ||
-				 * convenio.isEmpty()) { JOptionPane.showMessageDialog(null,
-				 * "O campo CONVENIO está vazio"); } else {
-				 * pacienteSelecionado.setConvenio(convenio); }
-				 */
 				String dia = (String) cbDia.getSelectedItem();
 				String mes = (String) cbMes.getSelectedItem();
 				String ano = (String) cbAno.getSelectedItem();
@@ -746,6 +740,7 @@ public class VisaoPaciente extends JFrame {
 					cbMes.setSelectedIndex(0);
 					cbAno.setSelectedItem("2023");
 					txtProntuario.enable();
+					atualizar.setEnabled(false);
 					cadastrar.setEnabled(true);
 
 				} else {
