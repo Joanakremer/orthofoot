@@ -11,6 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,10 +24,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 import controle.CDao;
 import controle.CDaoMedico;
 import modelo.MMedico;
@@ -591,6 +599,21 @@ public class VisaoMedico extends JFrame {
 
 		tableMedico.setModel(modelo);
 		
+		tableMedico.setModel(modelo);
+
+		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableMedico.getModel());
+		tableMedico.setRowSorter(sorter);
+
+		List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+		sorter.setSortKeys(sortKeys);
+
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+		for (int i = 0; i < tableMedico.getColumnCount(); i++) {
+			tableMedico.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+		}
 	}
 }
 
