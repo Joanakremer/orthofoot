@@ -49,7 +49,7 @@ import javax.swing.JFormattedTextField;
 public class VisaoAgenda extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_1;
+	private JTextField txtBuscaNome;
 	private String crm;
 	private JTextField txtData;
 	private JTextField txtHora;
@@ -261,9 +261,9 @@ public class VisaoAgenda extends JFrame {
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 38));
 		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		textField_1 = new JTextField();
-		panel_10.add(textField_1, "cell 0 3 4 1,grow");
-		textField_1.setColumns(10);
+		txtBuscaNome = new JTextField();
+		panel_10.add(txtBuscaNome, "cell 0 3 4 1,grow");
+		txtBuscaNome.setColumns(10);
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(220, 220, 220));
@@ -302,7 +302,66 @@ public class VisaoAgenda extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				pesquisar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArrayList<MAgenda> pacientes = daoAgenda.listarAgenda();
+
+				String nomeDigitado = txtBuscaNome.getText();
+
+				if (!nomeDigitado.isEmpty()) {
+
+					nomeDigitado = nomeDigitado.toLowerCase();
+
+					ArrayList<MAgenda> agendaFiltrada = new ArrayList<>();
+
+					for (MAgenda mPaciente : pacientes) {
+						
+	
+						if (String.valueOf(mPaciente.getMedico().getCrm()).contains(nomeDigitado)) {
+							agendaFiltrada.add(mPaciente);
+						}
+					}
+
+					// monta a tabela filtrada
+
+					
+					DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, new String[] { "ID Consulta", "Prontuário","Nome Completo", "Hora", "Data", "CRM", "Título", "Numero do Cartão", });
+					daoAgenda = new CDaoAgenda();
+					listAgendas = daoAgenda.listarAgenda();
+					
+					if (agendaFiltrada.size() > 0 && agendaFiltrada != null) {
+						for (MAgenda agenda : agendaFiltrada) {
+							modelo.addRow(new Object[] { agenda.getIdConsulta(),
+									agenda.getPaciente().getProntuario(),
+									agenda.getPaciente().getNomeCompleto(),
+									agenda.getHora(),
+									agenda.getDataFormatada(),
+									agenda.getMedico().getCrm(),
+									agenda.getPaciente().getConvenio(),
+									agenda.getPaciente().getnCarteira()});
+						}
+					}
+					
+					tableAgenda.setModel(modelo);
+
+					TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableAgenda.getModel());
+					tableAgenda.setRowSorter(sorter);
+
+					List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+					sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+					sorter.setSortKeys(sortKeys);
+
+					DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+					centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+					for (int i = 0; i < tableAgenda.getColumnCount(); i++) {
+						tableAgenda.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+					}
+
+				}
+			}
 		});
+		
 		
 		JLabel lblNewLabel_14 = new JLabel("Data da Consulta *");
 		lblNewLabel_14.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
@@ -503,8 +562,6 @@ public class VisaoAgenda extends JFrame {
 				modelo.addRow(new Object[] { agenda.getIdConsulta(),agenda.getPaciente().getProntuario(),agenda.getPaciente().getNomeCompleto(), agenda.getHora(), agenda.getDataFormatada(),agenda.getMedico().getCrm(),agenda.getPaciente().getConvenio(), agenda.getPaciente().getnCarteira()});
 			}
 		}
-		tableAgenda.setModel(modelo);
-		
 		tableAgenda.setModel(modelo);
 
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableAgenda.getModel());

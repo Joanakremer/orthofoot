@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ import net.miginfocom.swing.MigLayout;
 
 public class VisaoMedico extends JFrame {
 	
-	private JTextField textField_1;
+	private JTextField txtBuscaNome;
 	private JPanel contentPane;
 	private JLabel lblNewLabel_3;
 	private JTable tableMedico;
@@ -257,9 +258,9 @@ public class VisaoMedico extends JFrame {
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 38));
 		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		textField_1 = new JTextField();
-		panel_10.add(textField_1, "cell 0 3 4 1,grow");
-		textField_1.setColumns(10);
+		txtBuscaNome = new JTextField();
+		panel_10.add(txtBuscaNome, "cell 0 3 4 1,grow");
+		txtBuscaNome.setColumns(10);
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(220, 220, 220));
@@ -503,7 +504,57 @@ public class VisaoMedico extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				pesquisar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
-		});
+			@Override
+				public void mouseClicked(MouseEvent e) {
+					ArrayList<MMedico> medico = daoMedico.listarMedico();
+
+					String nomeDigitado = txtBuscaNome.getText();
+
+					if (!nomeDigitado.isEmpty()) {
+
+						nomeDigitado = nomeDigitado.toLowerCase();
+
+						ArrayList<MMedico> medicoFiltrados = new ArrayList<>();
+
+						for (MMedico mMedico : medico) {
+
+							if (mMedico.getnomeCompleto().toLowerCase().contains(nomeDigitado)) {
+								medicoFiltrados.add(mMedico);
+							}
+						}
+
+						// monta a tabela filtrada
+						
+						
+						DefaultTableModel modelo = new DefaultTableModel(new Object[][] {},
+								new String[] {"CRM", "Nome Completo", "Data de Nascimento", "Sexo"});
+						listarMedico = daoMedico.listarMedico();
+
+						if (medicoFiltrados.size() > 0 && medicoFiltrados != null) {
+							for (MMedico medico1 : medicoFiltrados) {
+								modelo.addRow(new Object[] { medico1.getCrm(), medico1.getnomeCompleto(), medico1.getDataFormatada(),
+										medico1.getSexo()});
+							}
+						}
+						tableMedico.setModel(modelo);
+
+						TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableMedico.getModel());
+						tableMedico.setRowSorter(sorter);
+
+						List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+						sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+						sorter.setSortKeys(sortKeys);
+
+						DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+						centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+						for (int i = 0; i < tableMedico.getColumnCount(); i++) {
+							tableMedico.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+						}
+
+					}
+				}
+			});
 		
 		deletar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		deletar.setBorder(new LineBorder(new Color(95, 158, 160)));
