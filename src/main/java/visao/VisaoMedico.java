@@ -454,7 +454,7 @@ public class VisaoMedico extends JFrame {
 		});
 		
 		JButton deletar = new JButton("  Deletar");
-		deletar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\perigo24.png"));
+		deletar.setIcon(new ImageIcon(VisaoMedico.class.getResource("/imagens/perigo24.png")));
 		deletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CDaoMedico c = new CDaoMedico();
@@ -490,7 +490,7 @@ public class VisaoMedico extends JFrame {
 		});
 		
 		JButton pesquisar = new JButton("");
-		pesquisar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\procurar24.png"));
+		pesquisar.setIcon(new ImageIcon(VisaoMedico.class.getResource("/imagens/procurar24.png")));
 		pesquisar.setFocusPainted(false);
 		pesquisar.setBorder(new LineBorder(new Color(95, 158, 160)));
 		pesquisar.setBackground(Color.WHITE);
@@ -564,7 +564,7 @@ public class VisaoMedico extends JFrame {
 		panel_10.add(deletar, "cell 11 3 2 1,grow");
 		
 		JButton limpar = new JButton("");
-		limpar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\lixeira24.png"));
+		limpar.setIcon(new ImageIcon(VisaoMedico.class.getResource("/imagens/lixeira24.png")));
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtNome.setText(null);

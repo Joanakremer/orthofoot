@@ -288,7 +288,7 @@ public class VisaoAgenda extends JFrame {
 		panel_12.setLayout(new MigLayout("", "[20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow][20px:n:50px,grow]", "[20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow][20px:n:30px,grow]"));
 		
 		JButton pesquisar = new JButton("");
-		pesquisar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\procurar24.png"));
+		pesquisar.setIcon(new ImageIcon(VisaoAgenda.class.getResource("/imagens/procurar24.png")));
 		pesquisar.setFocusPainted(false);
 		pesquisar.setBorder(new LineBorder(new Color(95, 158, 160)));
 		pesquisar.setBackground(Color.WHITE);
@@ -476,7 +476,7 @@ public class VisaoAgenda extends JFrame {
 		});
 		
 		JButton deletar = new JButton("  Deletar");
-		deletar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\perigo24.png"));
+		deletar.setIcon(new ImageIcon(VisaoAgenda.class.getResource("/imagens/perigo24.png")));
 		deletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CDaoAgenda a = new CDaoAgenda();
@@ -508,7 +508,7 @@ public class VisaoAgenda extends JFrame {
 		panel_10.add(deletar, "cell 11 3 2 1,grow");
 		
 		JButton limpar = new JButton("");
-		limpar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Documents\\Repositorio\\orthofoot\\src\\main\\resources\\imagens\\lixeira24.png"));
+		limpar.setIcon(new ImageIcon(VisaoAgenda.class.getResource("/imagens/lixeira24.png")));
 		limpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			txtData.setText(null);
