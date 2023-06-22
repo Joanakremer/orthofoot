@@ -27,11 +27,13 @@
 ![image](https://github.com/Joanakremer/orthofoot/assets/111135808/e847963e-3e6b-406a-ab91-d69e23adc904)
  
  <h2> 📉 Diagrama de casos de uso </h2>
- 
-![image](https://github.com/Joanakremer/orthofoot/assets/111135808/ec4dcba4-dd66-4410-8f97-c17eb104312d)
+
+![image](https://github.com/Joanakremer/orthofoot/assets/111135808/31183da9-202a-4352-98f8-8d2c8e968fb0)
 
 
 <h2> 💡 Diagrama de classes </h2>
+
+![image](https://github.com/Joanakremer/orthofoot/assets/111135808/404c29b4-ea17-4be6-92b4-a41319ff6b55)
 
 
  <h2> 🧑‍🎓 Discentes: </h2>
